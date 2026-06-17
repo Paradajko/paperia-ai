@@ -55,6 +55,9 @@ export function ChecklistPreview() {
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Ria output</p>
                   <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink">Clear notes before paid help</h3>
+                  <p className="mt-2 text-xs font-medium leading-5 text-slate-600">
+                    I am not a lawyer. This is guidance only, not legal advice.
+                  </p>
                 </div>
                 <span className="w-fit rounded-full bg-[#FFF8DD] px-3 py-1 text-xs font-semibold text-caution ring-1 ring-[#F4C95D]/45">
                   Medium risk

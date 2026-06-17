@@ -18,8 +18,8 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
             Tell Ria what you already know.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Ria asks a few practical questions and creates a first checklist in the browser. No account, uploads, or
-            backend connection in this MVP.
+            Ria asks a few practical questions and creates a first checklist. No account or document uploads are needed
+            for this first step.
           </p>
           <button
             type="button"
@@ -45,7 +45,7 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
             ))}
           </div>
           <div className="mt-5 rounded-3xl border border-dashed border-[#BFE6D2] bg-white/70 p-5">
-            <p className="text-sm font-semibold text-ink">Frontend-only MVP</p>
+            <p className="text-sm font-semibold text-ink">First checklist MVP</p>
             <p className="mt-1 text-sm leading-6 text-slate-600">
               The first checklist is generated from static rules for employment, study, family, business, and unclear
               cases. Ria does not file applications or provide legal advice.

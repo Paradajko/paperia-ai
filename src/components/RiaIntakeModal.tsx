@@ -177,7 +177,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     if (!validate()) return;
 
     if (!supabase) {
-      setSubmitError('Niečo sa pokazilo, skús znova.');
+      setSubmitError('Something went wrong. Please try again.');
       return;
     }
 
@@ -188,13 +188,13 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
       const { error } = await supabase.from('leads').insert(buildLeadInsert(values));
 
       if (error) {
-        setSubmitError('Niečo sa pokazilo, skús znova.');
+        setSubmitError('Something went wrong. Please try again.');
         return;
       }
 
       setSubmitted(true);
     } catch {
-      setSubmitError('Niečo sa pokazilo, skús znova.');
+      setSubmitError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -235,7 +235,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
               <div className="rounded-[1.5rem] border border-[#BFE6D2] bg-white/82 p-5 shadow-sm">
                 <p className="text-sm font-semibold text-[#0F8A6A]">Lead saved</p>
                 <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#0B1726]">
-                  Ďakujeme, Ria pripravuje tvoj checklist.
+                  Thank you. Ria is preparing your checklist.
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   Your answers are saved. You can review the first checklist on the right.
@@ -333,6 +333,9 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
                 >
                   {isSubmitting ? 'Saving...' : "Show Ria's first checklist"}
                 </button>
+                <p className="mt-3 text-center text-xs font-medium leading-5 text-slate-600">
+                  I am not a lawyer. This is guidance only, not legal advice.
+                </p>
               </form>
             )}
 
@@ -348,7 +351,8 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
                     </p>
                   </div>
                   <p className="mt-8 rounded-2xl border border-[#DDE8DF] bg-[#FFFCF6] p-4 text-sm font-medium leading-6 text-slate-700">
-                    Guidance only. Not legal advice. No application filing or approval guarantee.
+                    I am not a lawyer. This is guidance only, not legal advice. No application filing or approval
+                    guarantee.
                   </p>
                 </div>
               ) : (
@@ -446,7 +450,7 @@ function FirstChecklist({
         </button>
       </div>
       <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
-        Guidance only · Not legal advice · No approval guarantee
+        I am not a lawyer. This is guidance only, not legal advice. No approval guarantee.
       </p>
     </div>
   );

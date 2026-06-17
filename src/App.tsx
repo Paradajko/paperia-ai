@@ -248,6 +248,9 @@ function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showT
           View sample case
         </button>
       </div>
+      <p className="mx-auto mt-3 max-w-xl text-xs font-medium leading-5 text-slate-600">
+        I am not a lawyer. This is guidance only, not legal advice.
+      </p>
       {showTrust && (
         <div className="mt-4">
           <TrustLine />
