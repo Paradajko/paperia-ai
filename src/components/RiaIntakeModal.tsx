@@ -1,4 +1,6 @@
 import { useMemo, useState, type FormEvent } from 'react';
+import { buildLeadInsert } from '../lib/leads';
+import { supabase } from '../lib/supabase';
 
 type Purpose = '' | 'employment' | 'study' | 'family' | 'business' | 'other';
 
@@ -129,6 +131,8 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
   const [values, setValues] = useState<IntakeValues>(initialValues);
   const [errors, setErrors] = useState<IntakeErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const result = useMemo(() => {
     if (!values.purpose) return null;
@@ -139,6 +143,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
 
   const updateValue = <Key extends keyof IntakeValues>(key: Key, value: IntakeValues[Key]) => {
     setValues((current) => ({ ...current, [key]: value }));
+    setSubmitError('');
     if (key === 'nationality' || key === 'purpose' || key === 'email') {
       setErrors((current) => ({ ...current, [key]: undefined }));
     }
@@ -167,16 +172,40 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
-    setSubmitted(true);
+
+    if (!supabase) {
+      setSubmitError('Niečo sa pokazilo, skús znova.');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      setSubmitError('');
+
+      const { error } = await supabase.from('leads').insert(buildLeadInsert(values));
+
+      if (error) {
+        setSubmitError('Niečo sa pokazilo, skús znova.');
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setSubmitError('Niečo sa pokazilo, skús znova.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetAndClose = () => {
     onClose();
     setTimeout(() => {
       setSubmitted(false);
+      setIsSubmitting(false);
+      setSubmitError('');
       setErrors({});
     }, 180);
   };
@@ -202,91 +231,110 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
           </div>
 
           <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[1fr_0.9fr]">
-            <form onSubmit={handleSubmit} className="rounded-[1.5rem] border border-[#DDE8DF] bg-white/82 p-4 shadow-sm sm:p-5">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <SelectField
-                  label="Nationality"
-                  value={values.nationality}
-                  placeholder="Choose nationality"
-                  options={nationalities}
-                  error={errors.nationality}
-                  onChange={(value) => updateValue('nationality', value)}
-                  required
-                />
-                <SelectField
-                  label="Current location"
-                  value={values.currentLocation}
-                  placeholder="Where are you now?"
-                  options={locations}
-                  onChange={(value) => updateValue('currentLocation', value)}
-                />
-                <SelectField
-                  label="Purpose of stay"
-                  value={values.purpose}
-                  placeholder="Choose purpose"
-                  options={Object.entries(purposeLabels).map(([value, label]) => ({ value, label }))}
-                  error={errors.purpose}
-                  onChange={(value) => updateValue('purpose', value as Purpose)}
-                  required
-                />
-                <SelectField
-                  label="Current status / reason"
-                  value={values.statusReason}
-                  placeholder="What best describes you?"
-                  options={statusReasons}
-                  onChange={(value) => updateValue('statusReason', value)}
-                />
+            {submitted ? (
+              <div className="rounded-[1.5rem] border border-[#BFE6D2] bg-white/82 p-5 shadow-sm">
+                <p className="text-sm font-semibold text-[#0F8A6A]">Lead saved</p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#0B1726]">
+                  Ďakujeme, Ria pripravuje tvoj checklist.
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Your answers are saved. You can review the first checklist on the right.
+                </p>
               </div>
-
-              <fieldset className="mt-5">
-                <legend className="text-sm font-semibold text-slate-800">Documents you already have</legend>
-                <div className="mt-3 grid gap-2 sm:grid-cols-2">
-                  {documentOptions.map((documentName) => (
-                    <label key={documentName} className="flex items-center gap-2 rounded-2xl border border-[#DDE8DF] bg-[#F7FBF8] px-3 py-2 text-sm font-medium text-slate-700">
-                      <input
-                        type="checkbox"
-                        checked={values.documents.includes(documentName)}
-                        onChange={() => toggleDocument(documentName)}
-                        className="h-4 w-4 rounded border-[#BFE6D2] accent-[#0F8A6A]"
-                      />
-                      {documentName}
-                    </label>
-                  ))}
+            ) : (
+              <form onSubmit={handleSubmit} className="rounded-[1.5rem] border border-[#DDE8DF] bg-white/82 p-4 shadow-sm sm:p-5">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <SelectField
+                    label="Nationality"
+                    value={values.nationality}
+                    placeholder="Choose nationality"
+                    options={nationalities}
+                    error={errors.nationality}
+                    onChange={(value) => updateValue('nationality', value)}
+                    required
+                  />
+                  <SelectField
+                    label="Current location"
+                    value={values.currentLocation}
+                    placeholder="Where are you now?"
+                    options={locations}
+                    onChange={(value) => updateValue('currentLocation', value)}
+                  />
+                  <SelectField
+                    label="Purpose of stay"
+                    value={values.purpose}
+                    placeholder="Choose purpose"
+                    options={Object.entries(purposeLabels).map(([value, label]) => ({ value, label }))}
+                    error={errors.purpose}
+                    onChange={(value) => updateValue('purpose', value as Purpose)}
+                    required
+                  />
+                  <SelectField
+                    label="Current status / reason"
+                    value={values.statusReason}
+                    placeholder="What best describes you?"
+                    options={statusReasons}
+                    onChange={(value) => updateValue('statusReason', value)}
+                  />
                 </div>
-              </fieldset>
 
-              <label className="mt-5 block">
-                <span className="text-sm font-semibold text-slate-800">Biggest question or concern</span>
-                <textarea
-                  value={values.concern}
-                  onChange={(event) => updateValue('concern', event.target.value)}
-                  rows={3}
-                  placeholder="Example: I am not sure if my criminal record needs apostille."
-                  className="mt-2 w-full rounded-2xl border border-[#DDE8DF] bg-white px-3 py-3 text-sm text-slate-800 shadow-sm transition focus:border-[#0F8A6A]"
-                />
-              </label>
+                <fieldset className="mt-5">
+                  <legend className="text-sm font-semibold text-slate-800">Documents you already have</legend>
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {documentOptions.map((documentName) => (
+                      <label key={documentName} className="flex items-center gap-2 rounded-2xl border border-[#DDE8DF] bg-[#F7FBF8] px-3 py-2 text-sm font-medium text-slate-700">
+                        <input
+                          type="checkbox"
+                          checked={values.documents.includes(documentName)}
+                          onChange={() => toggleDocument(documentName)}
+                          className="h-4 w-4 rounded border-[#BFE6D2] accent-[#0F8A6A]"
+                        />
+                        {documentName}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
 
-              <label className="mt-5 block">
-                <span className="text-sm font-semibold text-slate-800">Email</span>
-                <input
-                  type="email"
-                  value={values.email}
-                  onChange={(event) => updateValue('email', event.target.value)}
-                  placeholder="you@example.com"
-                  className={`mt-2 w-full rounded-2xl border bg-white px-3 py-3 text-sm text-slate-800 shadow-sm transition focus:border-[#0F8A6A] ${
-                    errors.email ? 'border-[#D97757]' : 'border-[#DDE8DF]'
-                  }`}
-                />
-                {errors.email && <span className="mt-1 block text-sm font-medium text-[#B9573D]">{errors.email}</span>}
-              </label>
+                <label className="mt-5 block">
+                  <span className="text-sm font-semibold text-slate-800">Biggest question or concern</span>
+                  <textarea
+                    value={values.concern}
+                    onChange={(event) => updateValue('concern', event.target.value)}
+                    rows={3}
+                    placeholder="Example: I am not sure if my criminal record needs apostille."
+                    className="mt-2 w-full rounded-2xl border border-[#DDE8DF] bg-white px-3 py-3 text-sm text-slate-800 shadow-sm transition focus:border-[#0F8A6A]"
+                  />
+                </label>
 
-              <button
-                type="submit"
-                className="mt-6 w-full rounded-full bg-[#0F8A6A] px-5 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
-              >
-                Show Ria's first checklist
-              </button>
-            </form>
+                <label className="mt-5 block">
+                  <span className="text-sm font-semibold text-slate-800">Email</span>
+                  <input
+                    type="email"
+                    value={values.email}
+                    onChange={(event) => updateValue('email', event.target.value)}
+                    placeholder="you@example.com"
+                    className={`mt-2 w-full rounded-2xl border bg-white px-3 py-3 text-sm text-slate-800 shadow-sm transition focus:border-[#0F8A6A] ${
+                      errors.email ? 'border-[#D97757]' : 'border-[#DDE8DF]'
+                    }`}
+                  />
+                  {errors.email && <span className="mt-1 block text-sm font-medium text-[#B9573D]">{errors.email}</span>}
+                </label>
+
+                {submitError && (
+                  <p className="mt-4 rounded-2xl border border-[#F2C8B8] bg-[#FFF5EF] px-4 py-3 text-sm font-semibold text-[#B9573D]">
+                    {submitError}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="mt-6 w-full rounded-full bg-[#0F8A6A] px-5 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
+                >
+                  {isSubmitting ? 'Saving...' : "Show Ria's first checklist"}
+                </button>
+              </form>
+            )}
 
             <aside className="rounded-[1.5rem] border border-[#BFE6D2] bg-[#EEF7F1] p-4 sm:p-5">
               {!submitted || !result ? (
@@ -295,8 +343,8 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
                     <p className="text-sm font-semibold text-[#0F8A6A]">Ria is ready</p>
                     <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#0B1726]">Answer a few basics.</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-600">
-                      Ria will create a first route, likely missing documents, risks, and next steps. This stays
-                      frontend-only in the MVP.
+                      Ria will create a first route, likely missing documents, risks, and next steps after your
+                      request is saved.
                     </p>
                   </div>
                   <p className="mt-8 rounded-2xl border border-[#DDE8DF] bg-[#FFFCF6] p-4 text-sm font-medium leading-6 text-slate-700">
