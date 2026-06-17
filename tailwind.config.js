@@ -4,16 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#102033',
-        night: '#0B1726',
+        ink: '#0B1726',
+        night: '#064E3B',
         paper: '#F7F3EA',
         porcelain: '#FFFCF6',
-        line: '#E7DED0',
-        slateblue: '#1f4f75',
-        harbor: '#0f766e',
-        approval: '#166534',
-        caution: '#a16207',
-        coral: '#C96F5B',
+        line: '#DDE8DF',
+        slateblue: '#0F8A6A',
+        harbor: '#0F8A6A',
+        approval: '#0F8A6A',
+        caution: '#9A6A08',
+        coral: '#D97757',
       },
       boxShadow: {
         soft: '0 18px 55px rgba(16, 32, 51, 0.10)',

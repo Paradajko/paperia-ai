@@ -8,8 +8,8 @@ export function Footer() {
           <div className="max-w-xl">
             <Logo sublabel />
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              Ria provides general guidance and document organization support. It is not a law firm and does not
-              provide legal advice. For complex cases, consult a licensed immigration professional.
+              Ria provides general guidance and document organization support inside Paperia. She is not a lawyer and
+              does not provide legal advice. For complex cases, consult a licensed immigration professional.
             </p>
           </div>
           <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2 md:text-right">
@@ -19,11 +19,8 @@ export function Footer() {
             <a href="#faq" className="hover:text-ink">
               FAQ
             </a>
-            <a href="#" onClick={(event) => event.preventDefault()} className="hover:text-ink">
-              Privacy placeholder
-            </a>
-            <a href="mailto:hello@withria.ai" className="hover:text-ink">
-              hello@withria.ai
+            <a href="mailto:hello@paperia.ai" className="hover:text-ink">
+              Contact Paperia
             </a>
           </div>
         </div>

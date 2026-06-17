@@ -13,7 +13,7 @@ export function PricingCard({ title, price, description, featured = false }: Pri
       }`}
     >
       {featured && (
-        <span className="mb-4 inline-flex rounded-full bg-night px-3 py-1 text-xs font-semibold text-white">
+        <span className="mb-4 inline-flex rounded-full bg-harbor px-3 py-1 text-xs font-semibold text-white">
           Most useful first
         </span>
       )}

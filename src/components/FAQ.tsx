@@ -2,32 +2,32 @@ const faqs = [
   {
     question: 'Is Ria legal advice?',
     answer:
-      'No. Ria provides general guidance and document organization support. It is not a law firm and does not provide legal advice.',
+      'No. Ria provides general guidance and document organization support. She is not a lawyer and does not provide legal advice.',
   },
   {
-    question: 'Can Ria guarantee approval?',
+    question: 'Can Ria submit my application?',
     answer:
-      'No. Ria does not file applications, represent applicants, or guarantee approval. It helps you understand and organize the process.',
+      'No. Ria does not file applications, represent applicants, or guarantee approval. She helps you understand and prepare the process.',
   },
   {
-    question: 'Which country is supported first?',
+    question: 'Which countries does Ria support?',
     answer:
       'The first MVP focuses on temporary residence in Slovakia, starting with employment-based residence for non-EU citizens.',
   },
   {
-    question: 'Can agencies use Ria?',
+    question: 'What documents can I upload?',
     answer:
-      'Yes. The professional track is designed for agencies, lawyers, translators, and relocation helpers that want cleaner intake and document preparation.',
+      'Not yet. Ria starts with the basics you type in. Document upload is planned for a later release.',
   },
   {
-    question: 'Does Ria store my documents?',
+    question: 'Is my data private?',
     answer:
-      'Not in this MVP. There is no backend and no document upload. Future document tools should use explicit privacy and storage controls.',
+      'This MVP does not store sensitive personal documents. Future document tools should use explicit privacy and storage controls.',
   },
   {
-    question: 'What if my case is complicated?',
+    question: 'When should I contact an expert?',
     answer:
-      'Ria can flag risk factors and prepare a summary for expert handoff later. Complex cases should be reviewed by a licensed immigration professional.',
+      'Contact an expert if your case includes refusals, missing records, dependents, unusual timelines, or any legal uncertainty.',
   },
 ];
 
@@ -38,17 +38,22 @@ export function FAQ() {
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-harbor">FAQ</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Clear boundaries, clear next steps.
+            Guidance first. Expert support when needed.
           </h2>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            Ria is here to help you understand and prepare, not to replace qualified professionals.
+          </p>
         </div>
-        <div className="mt-10 divide-y divide-line rounded-3xl border border-line bg-porcelain shadow-sm">
+        <div className="mt-10 divide-y divide-line rounded-[2rem] border border-line bg-white/70 shadow-sm">
           {faqs.map((faq) => (
-            <details key={faq.question} className="group p-5 open:bg-slate-50 first:rounded-t-3xl last:rounded-b-3xl">
+            <details key={faq.question} className="group p-5 open:bg-porcelain/70 sm:p-6">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-ink">
                 {faq.question}
-                <span className="text-xl text-slate-400 transition group-open:rotate-45">+</span>
+                <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-porcelain text-lg text-harbor transition group-open:rotate-45">
+                  +
+                </span>
               </summary>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{faq.answer}</p>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">{faq.answer}</p>
             </details>
           ))}
         </div>

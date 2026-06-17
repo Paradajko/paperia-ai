@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { AgencySection } from './components/AgencySection';
 import { ChecklistFlow } from './components/ChecklistFlow';
 import { ChecklistPreview } from './components/ChecklistPreview';
@@ -7,120 +9,128 @@ import { Header } from './components/Header';
 import { HowItWorks } from './components/HowItWorks';
 import { PricingCard } from './components/PricingCard';
 import { ProblemCard } from './components/ProblemCard';
-import { RiaHeroMockup } from './components/RiaHeroMockup';
+import { PaperiaHeroMockup } from './components/PaperiaHeroMockup';
+import { RiaIntakeModal } from './components/RiaIntakeModal';
 
 const problems = [
   {
-    title: "I don't know which permit I need",
-    description: 'Applicants often pay for help before they even understand the likely residence route.',
+    title: 'Unclear document lists',
+    description: 'Different sources say different things, so it is hard to know what actually applies to your case.',
   },
   {
-    title: "I don't know which documents are missing",
-    description: 'Small gaps like translations, dates, or address proof can slow the entire process down.',
+    title: 'Agency costs too early',
+    description: 'Many people pay before they even understand the likely route or what is missing.',
   },
   {
-    title: "I don't understand the language or offices",
-    description: 'The process involves unfamiliar terminology, local offices, and timing that is hard to decode.',
+    title: 'Translation and apostille risks',
+    description: 'A document can look ready until an office asks for a translation, legalization, or newer version.',
   },
   {
-    title: 'I am afraid one mistake will delay my application',
-    description: 'Ria surfaces practical risks early so applicants know when expert review is worth it.',
+    title: 'Fear of one mistake',
+    description: 'Applicants often worry that one missing proof or wrong date can delay the whole process.',
   },
+  {
+    title: 'Wrong route confusion',
+    description: 'Employment, study, family, and business routes can look similar until the paperwork starts.',
+  },
+  {
+    title: 'Appointments feel high stakes',
+    description: 'It is stressful to show up without knowing which questions or missing documents may come up.',
+  },
+];
+
+const avoidItems = [
+  'Paying an agency before you understand your case',
+  'Missing translations or apostille',
+  'Wrong residence route',
+  'Confusing document requirements',
+  'Deadline surprises',
+  'Going to an appointment unprepared',
 ];
 
 const pricing = [
   {
-    title: 'Free orientation',
+    title: 'Free checklist',
     price: '€0',
-    description: 'Route overview, first document list, and guidance-only disclaimer for early clarity.',
+    description: 'Let Ria give you a first route, missing-document view, and guidance-only disclaimer.',
   },
   {
-    title: 'Ria personal checklist',
+    title: 'Document review later',
     price: 'from €29',
-    description: 'A deeper checklist, preparation timeline, and missing-document view for your case.',
+    description: 'A deeper Ria checklist, timeline, translation flags, and case summary when you need it.',
     featured: true,
   },
   {
-    title: 'Document preparation pack',
+    title: 'Agency handoff later',
     price: 'from €79',
-    description: 'Document organization support, translation flags, employer questions, and expert-ready handoff notes.',
+    description: 'Prepare a clearer expert-ready summary before speaking with an agency or relocation specialist.',
   },
 ];
 
 function App() {
-  const scrollToChecklist = () => {
-    document.getElementById('checklist')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const [intakeOpen, setIntakeOpen] = useState(false);
+
+  const openIntake = () => {
+    setIntakeOpen(true);
   };
 
-  const scrollToAgencies = () => {
-    document.getElementById('agencies')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  const showWaitlistPlaceholder = () => {
-    window.alert('Partner waitlist is a placeholder in this MVP. No data is submitted yet.');
+  const contactPartnerTeam = () => {
+    window.location.href = 'mailto:hello@paperia.ai?subject=Paperia%20partner%20workspace';
   };
 
   return (
     <div id="top" className="min-h-screen bg-paper text-ink">
-      <Header onStart={scrollToChecklist} />
+      <Header onStart={openIntake} />
 
-      <main>
-        <section className="overflow-hidden border-b border-line bg-[linear-gradient(180deg,#F7F3EA_0%,#FFFCF6_62%,#F3F7F4_100%)] py-12 sm:py-16 lg:py-20">
-          <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:px-8 xl:gap-10">
-            <div className="min-w-0">
-              <p className="inline-flex rounded-full border border-line bg-porcelain px-3 py-1 text-sm font-semibold text-harbor shadow-sm">
-                AI residence guide for Europe
+      <main className="pt-[68px]">
+        <section className="overflow-hidden border-b border-[#BFE6D2] bg-[radial-gradient(circle_at_50%_48%,rgba(167,243,208,0.26),transparent_30%),linear-gradient(180deg,#FFFCF6_0%,#F3FBF6_50%,#E4F5EA_100%)] py-5 sm:py-6 lg:py-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="inline-flex rounded-full bg-[#EEF7F1] px-4 py-1.5 text-sm font-semibold text-[#0F8A6A] shadow-sm ring-1 ring-[#BFE6D2]">
+                AI residence guide
               </p>
-              <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.02] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-                Meet Ria, your AI residence guide for Europe.
+              <h1 className="mx-auto mt-3 max-w-3xl text-3xl font-semibold leading-[1.06] tracking-tight text-[#0B1726] sm:text-4xl lg:text-5xl">
+                Meet <span className="text-[#0F8A6A]">Ria</span>, your guide through residence paperwork.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                Before you pay an agency, Ria helps you understand your likely residence route, missing documents,
-                timeline, and risks.
+              <p className="mx-auto mt-2 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+                Ria explains what your documents mean, what is missing, what can go wrong, and what to do next before
+                you pay an agency.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button
-                  type="button"
-                  onClick={scrollToChecklist}
-                  className="rounded-full bg-night px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(11,23,38,0.2)] transition hover:bg-slate-800"
-                >
-                  Start with Ria
-                </button>
-                <button
-                  type="button"
-                  onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                  className="rounded-full border border-line bg-porcelain px-6 py-3 text-sm font-semibold text-ink transition hover:border-slate-300 hover:bg-white"
-                >
-                  See how Ria helps
-                </button>
-              </div>
-              <div className="mt-5 grid max-w-xl grid-cols-3 gap-2">
-                <MiniProof label="First market" value="Slovakia" />
-                <MiniProof label="Starting route" value="Employment" />
-                <MiniProof label="Boundary" value="No legal advice" />
-              </div>
             </div>
-            <div className="min-w-0">
-              <RiaHeroMockup />
+
+            <div className="mx-auto mt-5 max-w-3xl text-center lg:hidden">
+              <HeroActions onStart={openIntake} showTrust={false} />
+            </div>
+
+            <div className="mt-3 sm:mt-4 lg:mt-2">
+              <PaperiaHeroMockup />
+            </div>
+
+            <div className="mx-auto mt-4 max-w-3xl text-center lg:hidden">
+              <TrustLine />
+            </div>
+
+            <div className="mx-auto mt-2 hidden max-w-3xl text-center lg:block">
+              <HeroActions onStart={openIntake} />
             </div>
           </div>
         </section>
 
         <section className="bg-porcelain py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Why Ria exists</p>
+                <p className="text-sm font-semibold uppercase tracking-wide text-harbor">The paperwork problem</p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                  Residence paperwork is expensive because the process is unclear.
+                  Residence paperwork is confusing when nobody explains it.
                 </h2>
               </div>
               <p className="rounded-3xl border border-line bg-white/70 p-5 text-base leading-7 text-slate-600 shadow-sm">
-                Ria is the cheaper first step: understand your likely path, see what is missing, and decide whether
-                your case needs a verified expert before committing to full-service support.
+                Ria gives you a calmer first step: understand what matters, see what is missing, and know when expert
+                review is worth it.
               </p>
             </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {problems.map((problem) => (
                 <ProblemCard key={problem.title} {...problem} />
               ))}
@@ -128,37 +138,42 @@ function App() {
           </div>
         </section>
 
-        <section className="bg-paper py-16 sm:py-20">
-          <div className="mx-auto grid max-w-7xl gap-5 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-            <AudienceCard
-              eyebrow="For non-EU citizens"
-              title="Start with Ria before paying for full-service help."
-              text="Understand your likely route, required documents, translations, deadlines, and common mistakes with a calm AI guide built for residence paperwork."
-              button="Start with Ria"
-              primary
-              onClick={scrollToChecklist}
-            />
-            <AudienceCard
-              eyebrow="For agencies and lawyers"
-              title="Cleaner intake before consultation."
-              text="Ria does not replace professionals. It helps prepare structured intake, missing-document views, and expert-ready summaries before the first call."
-              button="Join partner waitlist"
-              onClick={showWaitlistPlaceholder}
-            />
+        <HowItWorks />
+
+        <section className="border-y border-line bg-[linear-gradient(180deg,#FFFCF6_0%,#EEF7F1_100%)] py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">From confusion to a clearer plan</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+                What Ria helps you avoid before you pay someone
+              </h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                The same paperwork risks become a cleaner checklist, timeline, and handoff summary.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {avoidItems.map((item) => (
+                <article key={item} className="rounded-3xl border border-line bg-white/74 p-5 shadow-sm">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#EEF7F1] text-sm font-bold text-[#0F8A6A] ring-1 ring-[#DDE8DF]">
+                    ✓
+                  </span>
+                  <h3 className="mt-4 text-base font-semibold leading-6 text-ink">{item}</h3>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         <ChecklistPreview />
-        <ChecklistFlow />
-        <HowItWorks />
-        <AgencySection onJoin={showWaitlistPlaceholder} />
+        <ChecklistFlow onStart={openIntake} />
+        <AgencySection onJoin={contactPartnerTeam} />
 
         <section id="pricing" className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Pricing teaser</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Pricing preview</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                Start with orientation, pay only when deeper preparation helps.
+                Start with Ria first, pay only when deeper preparation helps.
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-600">
                 Pricing is illustrative for the MVP and not final production pricing. Ria does not guarantee
@@ -187,62 +202,70 @@ function App() {
         </section>
 
         <FAQ />
+
+        <section className="bg-[linear-gradient(180deg,#EEF7F1_0%,#FFFCF6_100%)] py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+            <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Final check</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Let Ria check your residence paperwork.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Start with a clear checklist before you decide whether you need paid expert help.
+            </p>
+            <button
+              type="button"
+              onClick={openIntake}
+              className="mt-7 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+            >
+              Get my checklist
+            </button>
+          </div>
+        </section>
       </main>
 
       <Footer />
+      <RiaIntakeModal open={intakeOpen} onClose={() => setIntakeOpen(false)} />
     </div>
   );
 }
 
-function MiniProof({ label, value }: { label: string; value: string }) {
+function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showTrust?: boolean }) {
   return (
-    <div className="min-w-0 rounded-2xl border border-line bg-white/60 px-3 py-2 shadow-sm">
-      <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-1 truncate text-sm font-semibold text-ink">{value}</p>
-    </div>
+    <>
+      <div className="flex flex-col justify-center gap-3 sm:flex-row">
+        <button
+          type="button"
+          onClick={onStart}
+          className="rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+        >
+          Get my checklist
+        </button>
+        <button
+          type="button"
+          onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          className="rounded-full border border-[#D7E9DE] bg-white/76 px-6 py-3 text-sm font-semibold text-ink transition hover:border-[#A7F3D0] hover:bg-white"
+        >
+          View sample case
+        </button>
+      </div>
+      {showTrust && (
+        <div className="mt-4">
+          <TrustLine />
+        </div>
+      )}
+    </>
   );
 }
 
-function AudienceCard({
-  eyebrow,
-  title,
-  text,
-  button,
-  primary = false,
-  onClick,
-}: {
-  eyebrow: string;
-  title: string;
-  text: string;
-  button: string;
-  primary?: boolean;
-  onClick: () => void;
-}) {
+function TrustLine() {
   return (
-    <article
-      className={`rounded-3xl border p-6 shadow-sm sm:p-8 ${
-        primary
-          ? 'border-teal-200 bg-[linear-gradient(135deg,#EAF8F4_0%,#FFFCF6_100%)] shadow-soft'
-          : 'border-line bg-porcelain'
-      }`}
-    >
-      <p className={`text-sm font-semibold uppercase tracking-wide ${primary ? 'text-harbor' : 'text-slateblue'}`}>
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 text-2xl font-semibold tracking-tight text-ink">{title}</h2>
-      <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-      <button
-        type="button"
-        onClick={onClick}
-        className={`mt-6 rounded-full px-5 py-3 text-sm font-semibold transition ${
-          primary
-            ? 'bg-harbor text-white hover:bg-teal-800'
-            : 'border border-slate-300 bg-white text-ink hover:border-slate-400'
-        }`}
-      >
-        {button}
-      </button>
-    </article>
+    <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm font-medium text-slate-600">
+      <span>Guidance only</span>
+      <span className="text-[#0F8A6A]">·</span>
+      <span>Not legal advice</span>
+      <span className="text-[#0F8A6A]">·</span>
+      <span>Expert handoff when needed</span>
+    </div>
   );
 }
 

@@ -1,8 +1,8 @@
-# Ria Landing MVP Implementation Plan
+# paperia.ai Landing MVP Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a polished, responsive Ria MVP landing page that explains the applicant-first checklist product and the secondary agency/lawyer business line.
+**Goal:** Build a polished, responsive paperia.ai MVP landing page that explains the applicant-first checklist product and the secondary agency/lawyer business line.
 
 **Architecture:** Create a new Vite React TypeScript frontend because the workspace contains no existing app. Keep the product as a static frontend with reusable presentational components, Tailwind styling, and placeholder-only CTA interactions.
 
