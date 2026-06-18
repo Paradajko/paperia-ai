@@ -1,33 +1,38 @@
 const faqs = [
   {
-    question: 'Is Ria legal advice?',
+    question: "I'm from Serbia — do I need a work permit for Slovakia?",
     answer:
-      'No. Ria provides general guidance and document organization support. She is not a lawyer and does not provide legal advice.',
+      'Visa-free entry for a short visit is not the same as permission to work or live in Slovakia. For employment, Serbian citizens generally need the correct employment and residence authorization for their situation. Your employer, job type, and length of stay affect the route, so verify the current requirements with the Slovak authorities or a licensed immigration lawyer.',
   },
   {
-    question: 'Can Ria submit my application?',
+    question: 'How is this different from asking ChatGPT?',
     answer:
-      'No. Ria does not file applications, represent applicants, or guarantee approval. She helps you understand and prepare the process.',
+      'Paperia starts with a structured Slovakia-focused wizard instead of an open-ended chat. It collects the same practical inputs every time, organizes them into a route and document plan, and gives you a personalized PDF checklist. Ria chat is available afterwards for follow-up questions.',
   },
   {
-    question: 'Which countries does Ria support?',
+    question: 'What does the free PDF checklist include?',
     answer:
-      'The first MVP focuses on temporary residence in Slovakia, starting with employment-based residence for non-EU citizens.',
+      'It includes your likely Slovakia residence route, documents you already have, likely missing items, translation or apostille reminders, a practical timeline, official-source links, and questions to verify before an appointment. It is general information, not a legal opinion.',
   },
   {
-    question: 'What documents can I upload?',
+    question: 'Is Paperia a law firm? Can you guarantee my visa approval?',
     answer:
-      'Not yet. Ria starts with the basics you type in. Document upload is planned for a later release.',
+      'No. Paperia is not a law firm, Ria is not a lawyer, and nobody can guarantee a residence or visa outcome. Paperia helps you organize information and prepare better questions. A government authority makes the final decision.',
   },
   {
-    question: 'Is my data private?',
+    question: 'When are the 2026 changes to Slovak residence law taking effect?',
     answer:
-      'This MVP does not store sensitive personal documents. Future document tools should use explicit privacy and storage controls.',
+      'There is no single blanket date that safely covers every 2026 change. Each amendment can have its own effective date and transitional rules. Check the current wording and effective date in Slov-Lex and confirm the requirement with the Slovak Ministry of Interior, a Slovak embassy, or a licensed immigration lawyer before filing.',
   },
   {
-    question: 'When should I contact an expert?',
+    question: 'What happens after I download the checklist? Do you follow up by email?',
     answer:
-      'Contact an expert if your case includes refusals, missing records, dependents, unusual timelines, or any legal uncertainty.',
+      'You receive a welcome follow-up at the email you provided, and you can keep the PDF for your own preparation. Ria remains available in the completed wizard for practical follow-up questions. Paperia does not submit the application for you.',
+  },
+  {
+    question: 'Do you handle complex cases like asylum or deportation?',
+    answer:
+      'Paperia is free for standard checklist preparation. Asylum, deportation defense, appeals, prior refusals, and other high-risk cases need a licensed professional. Paperia may recommend a partner agency or lawyer when the case is genuinely complex.',
   },
 ];
 
@@ -41,7 +46,8 @@ export function FAQ() {
             Guidance first. Expert support when needed.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Ria is here to help you understand and prepare, not to replace qualified professionals.
+            Slovakia-focused answers for applicants from the Balkans, India, Turkey, Ukraine, Georgia, Vietnam, and
+            other non-EU countries.
           </p>
         </div>
         <div className="mt-10 divide-y divide-line rounded-[2rem] border border-line bg-white/70 shadow-sm">
@@ -57,6 +63,10 @@ export function FAQ() {
             </details>
           ))}
         </div>
+        <p className="mt-6 rounded-3xl border border-[#BFE6D2] bg-[#EEF7F1] px-5 py-4 text-sm font-medium leading-6 text-slate-700">
+          I am not a lawyer. Paperia and Ria provide general information, not legal advice. Verify current rules with
+          an official Slovak source or a licensed immigration lawyer.
+        </p>
       </div>
     </section>
   );
