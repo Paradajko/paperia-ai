@@ -1,15 +1,19 @@
 const steps = [
   {
-    title: 'Tell Ria your situation',
-    text: 'Where you are from, why you are moving, and what documents you already have.',
+    title: 'Answer 5 questions',
+    text: 'Tell Ria where you are from, why you are moving to Slovakia, and what you already have.',
   },
   {
-    title: 'Ria builds your checklist',
-    text: 'She shows your likely route, missing documents, risks, and next steps.',
+    title: 'Ria prepares your route',
+    text: 'Ria organizes your answers into a likely residence route, document gaps, and practical next steps.',
   },
   {
-    title: 'Bring a clear case to an expert',
-    text: 'You can share a clean summary with an agency, lawyer, or relocation specialist.',
+    title: 'Download your PDF checklist',
+    text: 'Keep a personalized checklist with your route, document plan, timeline, official links, and disclaimer.',
+  },
+  {
+    title: 'Get email follow-up',
+    text: 'Receive your checklist reminder and return to Ria with follow-up questions after the wizard.',
   },
 ];
 
@@ -20,10 +24,13 @@ export function HowItWorks() {
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-harbor">How it works</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            How Ria helps you before you pay anyone
+            Five questions. One practical Slovakia checklist.
           </h2>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            The wizard does the structured work first. Ria chat is available afterwards when you need clarification.
+          </p>
         </div>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <article key={step.title} className="rounded-3xl border border-line bg-white/74 p-5 shadow-sm">
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-harbor text-sm font-bold text-white">

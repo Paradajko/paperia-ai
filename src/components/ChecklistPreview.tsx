@@ -7,7 +7,7 @@ const riaOutput = [
 ];
 
 const preparedItems = [
-  'Personalized checklist',
+  'Personalized PDF checklist',
   'Document plan',
   'Translation and apostille notes',
   'Timeline',
@@ -20,10 +20,13 @@ export function ChecklistPreview() {
     <section id="product" className="bg-porcelain py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Sample case</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">See a sample case</h2>
+          <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Sample PDF output</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            See what your checklist can include
+          </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Ria turns a messy starting point into a route, document gaps, risk notes, and a cleaner expert handoff.
+            A structured wizard becomes a portable Slovakia residence plan you can save, print, and discuss with an
+            employer, school, agency, or licensed lawyer.
           </p>
         </div>
 
@@ -53,8 +56,10 @@ export function ChecklistPreview() {
             <div className="rounded-[1.55rem] bg-white p-5 sm:p-6">
               <div className="flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Ria output</p>
-                  <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink">Clear notes before paid help</h3>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-harbor">PDF checklist preview</p>
+                  <h3 className="mt-2 text-2xl font-semibold tracking-tight text-ink">
+                    Your residence checklist for Slovakia
+                  </h3>
                   <p className="mt-2 text-xs font-medium leading-5 text-slate-600">
                     I am not a lawyer. This is guidance only, not legal advice.
                   </p>
@@ -77,7 +82,7 @@ export function ChecklistPreview() {
               </div>
 
               <div className="mt-5 rounded-2xl border border-[#BFE6D2] bg-[#EEF7F1] p-4">
-                <p className="text-sm font-semibold text-harbor">Ria's plain-English explanation</p>
+                <p className="text-sm font-semibold text-harbor">Ria's practical note</p>
                 <p className="mt-1 text-sm leading-6 text-slate-700">
                   Prepare the criminal record first, because translation and apostille rules can add time before your
                   appointment.

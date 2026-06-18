@@ -23,7 +23,7 @@ export function Logo({ compact = false, light = false, sublabel = false }: LogoP
       {!compact && (
         <span className="relative leading-none">
           <span className={`block text-[1.72rem] font-semibold tracking-[-0.035em] ${textColor}`}>Paperia</span>
-          {sublabel && <span className={`mt-1 block text-xs ${sublabelColor}`}>AI residence guide</span>}
+          {sublabel && <span className={`mt-1 block text-xs ${sublabelColor}`}>Residence guide for Slovakia</span>}
         </span>
       )}
     </a>

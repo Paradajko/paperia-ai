@@ -8,8 +8,9 @@ export function Footer() {
           <div className="max-w-xl">
             <Logo sublabel />
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              Ria provides general guidance and document organization support inside Paperia. I am not a lawyer. This
-              is guidance only, not legal advice. For complex cases, consult a licensed immigration professional.
+              Ria is your friendly, practical guide for organizing a Slovakia residence checklist. I am not a lawyer.
+              This is general information, not legal advice. For complex cases, consult a licensed immigration
+              professional.
             </p>
           </div>
           <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2 md:text-right">

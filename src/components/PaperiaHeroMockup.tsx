@@ -4,42 +4,42 @@ import riaGuide from '../assets/ria-guide-half.png';
 
 const helpCards = [
   {
-    title: 'Ria finds your route',
+    title: 'Ria maps your Slovakia route',
     tone: 'green',
     mobilePosition: 'left-[2%] top-[6%]',
     position: 'lg:left-[10%] lg:top-[9%]',
     Icon: RouteIcon,
   },
   {
-    title: 'Ria checks your documents',
+    title: 'Ria builds your PDF checklist',
     tone: 'mint',
     mobilePosition: 'right-[2%] top-[6%]',
     position: 'lg:right-[10%] lg:top-[9%]',
     Icon: ChecklistIcon,
   },
   {
-    title: 'Ria explains the confusing parts',
+    title: 'Ria flags translations and apostilles',
     tone: 'paper',
     mobilePosition: 'left-[0%] top-[38%]',
     position: 'lg:left-[6%] lg:top-[39%]',
     Icon: MessageIcon,
   },
   {
-    title: 'Ria spots risks',
+    title: 'Ria highlights missing documents',
     tone: 'risk',
     mobilePosition: 'right-[0%] top-[38%]',
     position: 'lg:right-[6%] lg:top-[39%]',
     Icon: RiskIcon,
   },
   {
-    title: 'Ria gives you next steps',
+    title: 'Ria lays out your timeline',
     tone: 'mint',
     mobilePosition: 'left-[3%] top-[70%]',
     position: 'lg:left-[11%] lg:top-[69%]',
     Icon: StepsIcon,
   },
   {
-    title: 'Ria prepares your case',
+    title: 'Ria stays for follow-up questions',
     tone: 'green',
     mobilePosition: 'right-[3%] top-[70%]',
     position: 'lg:right-[11%] lg:top-[69%]',
@@ -64,7 +64,7 @@ export function PaperiaHeroMockup() {
           <div className="pointer-events-none absolute bottom-0 left-1/2 z-[25] h-14 w-[70%] -translate-x-1/2 rounded-t-[999px] bg-[linear-gradient(180deg,rgba(238,247,241,0)_0%,rgba(238,247,241,0.78)_62%,rgba(238,247,241,0.98)_100%)] lg:hidden" />
           <img
             src={riaGuide}
-            alt="Ria, Paperia's AI residence paperwork guide"
+            alt="Ria, Paperia's residence guide for Slovakia"
             className="ria-mobile-soft relative z-20 h-[360px] w-auto max-w-none shrink-0 object-contain object-bottom drop-shadow-[0_28px_38px_rgba(15,78,59,0.22)] sm:h-[420px] lg:h-[590px] lg:drop-shadow-[0_34px_48px_rgba(15,78,59,0.24)]"
           />
         </div>

@@ -87,14 +87,15 @@ function App() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
               <p className="inline-flex rounded-full bg-[#EEF7F1] px-4 py-1.5 text-sm font-semibold text-[#0F8A6A] shadow-sm ring-1 ring-[#BFE6D2]">
-                AI residence guide
+                Free Slovakia residence checklist
               </p>
               <h1 className="mx-auto mt-3 max-w-3xl text-3xl font-semibold leading-[1.06] tracking-tight text-[#0B1726] sm:text-4xl lg:text-5xl">
-                Meet <span className="text-[#0F8A6A]">Ria</span>, your guide through residence paperwork.
+                Moving from the Balkans, India, Turkey, Ukraine, or beyond to{' '}
+                <span className="text-[#0F8A6A]">Slovakia?</span>
               </h1>
               <p className="mx-auto mt-2 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
-                Ria explains what your documents mean, what is missing, what can go wrong, and what to do next before
-                you pay an agency.
+                Answer five practical questions and Ria prepares a personalized PDF checklist for your likely
+                residence route, documents, timeline, and next steps.
               </p>
             </div>
 
@@ -126,8 +127,8 @@ function App() {
                 </h2>
               </div>
               <p className="rounded-3xl border border-line bg-white/70 p-5 text-base leading-7 text-slate-600 shadow-sm">
-                Ria gives you a calmer first step: understand what matters, see what is missing, and know when expert
-                review is worth it.
+                Paperia gives you a structured first step: build a Slovakia-specific checklist, keep the result as a
+                PDF, and know when a complex case needs licensed help.
               </p>
             </div>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -145,10 +146,10 @@ function App() {
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wide text-harbor">From confusion to a clearer plan</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                What Ria helps you avoid before you pay someone
+                What a structured checklist helps you avoid
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-600">
-                The same paperwork risks become a cleaner checklist, timeline, and handoff summary.
+                Your answers become a clearer route, document plan, PDF timeline, and handoff summary.
               </p>
             </div>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -207,17 +208,17 @@ function App() {
           <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Final check</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Let Ria check your residence paperwork.
+              Start your Slovakia residence checklist.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600">
-              Start with a clear checklist before you decide whether you need paid expert help.
+              Answer five questions, download your personalized PDF, then ask Ria any follow-up questions.
             </p>
             <button
               type="button"
               onClick={openIntake}
               className="mt-7 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
             >
-              Get my checklist
+              Get your free checklist
             </button>
           </div>
         </section>
@@ -238,14 +239,14 @@ function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showT
           onClick={onStart}
           className="rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
         >
-          Get my checklist
+          Get your free checklist
         </button>
         <button
           type="button"
           onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
           className="rounded-full border border-[#D7E9DE] bg-white/76 px-6 py-3 text-sm font-semibold text-ink transition hover:border-[#A7F3D0] hover:bg-white"
         >
-          View sample case
+          View sample PDF
         </button>
       </div>
       <p className="mx-auto mt-3 max-w-xl text-xs font-medium leading-5 text-slate-600">

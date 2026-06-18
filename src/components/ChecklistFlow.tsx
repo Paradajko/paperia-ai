@@ -3,9 +3,10 @@ type ChecklistFlowProps = {
 };
 
 const intakeSteps = [
-  ['1', 'Answer basics', 'Nationality, current location, and purpose of stay.'],
-  ['2', 'Mark documents', 'Tell Ria which papers you already have.'],
-  ['3', 'See first checklist', 'Get route, missing items, risks, and next steps.'],
+  ['1', 'Choose Slovakia', 'Confirm your destination and start the focused residence wizard.'],
+  ['2', 'Describe your situation', 'Add nationality, current location, purpose, and current status.'],
+  ['3', 'Mark your documents', 'Check the papers you already have and tell Ria what worries you most.'],
+  ['4', 'Get the PDF', 'Save your lead, review the route, and download your personalized checklist.'],
 ];
 
 export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
@@ -15,18 +16,18 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
         <div>
           <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Start here</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Tell Ria what you already know.
+            Build your Slovakia checklist step by step.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Ria asks a few practical questions and creates a first checklist. No account or document uploads are needed
-            for this first step.
+            Paperia turns five structured answers into a practical PDF checklist. No account or document uploads are
+            needed for this first version.
           </p>
           <button
             type="button"
             onClick={onStart}
             className="mt-7 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
           >
-            Get my checklist
+            Get your free checklist
           </button>
         </div>
 
@@ -45,10 +46,10 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
             ))}
           </div>
           <div className="mt-5 rounded-3xl border border-dashed border-[#BFE6D2] bg-white/70 p-5">
-            <p className="text-sm font-semibold text-ink">First checklist MVP</p>
+            <p className="text-sm font-semibold text-ink">Free, PDF-first guidance</p>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              The first checklist is generated from static rules for employment, study, family, business, and unclear
-              cases. Ria does not file applications or provide legal advice.
+              Start with a structured route and document plan. Ria is not a lawyer, does not file applications, and
+              cannot guarantee approval.
             </p>
           </div>
         </div>
