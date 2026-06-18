@@ -1,5 +1,12 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { buildLeadInsert } from '../lib/leads';
+import {
+  createInitialRiaMessage,
+  requestRiaReply,
+  RIA_FALLBACK_MESSAGE,
+  type ApplicantContext,
+  type RiaMessage,
+} from '../lib/ria';
 import { supabase } from '../lib/supabase';
 
 type Purpose = '' | 'employment' | 'study' | 'family' | 'business' | 'other';
@@ -81,63 +88,16 @@ const purposeLabels: Record<Exclude<Purpose, ''>, string> = {
   other: 'Other / not sure',
 };
 
-const checklistByPurpose: Record<Exclude<Purpose, ''>, {
-  route: string;
-  missing: string[];
-  risks: string[];
-  nextSteps: string[];
-  handoff: string;
-}> = {
-  employment: {
-    route: 'Temporary residence for employment in Slovakia',
-    missing: ['Employment contract or promise of employment', 'Translated criminal record', 'Accommodation proof'],
-    risks: ['Criminal records often need translation and legalization', 'Employer documents must match the residence route'],
-    nextSteps: ['Confirm employer paperwork', 'Check criminal record age and translation needs', 'Prepare accommodation proof'],
-    handoff: 'Optional expert handoff if your employer, job title, or document timing is unclear.',
-  },
-  study: {
-    route: 'Temporary residence for study in Slovakia',
-    missing: ['School admission confirmation', 'Proof of financial means', 'Accommodation proof'],
-    risks: ['Admission letters and bank proofs must be current', 'Some foreign documents may need official translation'],
-    nextSteps: ['Confirm admission format', 'Prepare financial proof', 'Check translation needs for foreign documents'],
-    handoff: 'Optional expert handoff if your school start date is close or documents are from multiple countries.',
-  },
-  family: {
-    route: 'Temporary residence for family reunification',
-    missing: ['Family relationship proof', 'Sponsor residence/status proof', 'Accommodation proof'],
-    risks: ['Marriage/birth documents may need apostille or legalization', 'Sponsor income or housing proof can be reviewed closely'],
-    nextSteps: ['Collect relationship documents', 'Check legalization rules', 'Prepare sponsor-side documents'],
-    handoff: 'Expert handoff is useful if relationship documents were issued abroad or your sponsor status is complex.',
-  },
-  business: {
-    route: 'Temporary residence for business or self-employment',
-    missing: ['Business plan or trade documents', 'Financial proof', 'Accommodation proof'],
-    risks: ['Business purpose must be credible and documented', 'Financial thresholds and company/trade setup details matter'],
-    nextSteps: ['Clarify business structure', 'Prepare financial proof', 'Organize trade or company documents'],
-    handoff: 'Expert handoff is recommended if you have not yet set up the business structure.',
-  },
-  other: {
-    route: 'Route unclear from the first answers',
-    missing: ['Purpose evidence', 'Identity documents', 'Proof of accommodation or stay plan'],
-    risks: ['Choosing the wrong route can waste time', 'Document requirements change by purpose and personal situation'],
-    nextSteps: ['Clarify why you want to stay', 'Collect basic identity and location details', 'Ask an expert before filing'],
-    handoff: 'Expert handoff is recommended because your route needs clarification before document preparation.',
-  },
-};
-
-type ChecklistResult = (typeof checklistByPurpose)[Exclude<Purpose, ''>];
-
 export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
   const [values, setValues] = useState<IntakeValues>(initialValues);
   const [errors, setErrors] = useState<IntakeErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  const result = useMemo(() => {
-    if (!values.purpose) return null;
-    return checklistByPurpose[values.purpose];
-  }, [values.purpose]);
+  const [messages, setMessages] = useState<RiaMessage[]>([]);
+  const [followUp, setFollowUp] = useState('');
+  const [isRiaLoading, setIsRiaLoading] = useState(false);
+  const [riaError, setRiaError] = useState('');
 
   if (!open) return null;
 
@@ -192,11 +152,65 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
         return;
       }
 
+      const initialMessage: RiaMessage = {
+        role: 'user',
+        content: createInitialRiaMessage({
+          nationality: values.nationality,
+          currentLocation: values.currentLocation,
+          residenceType: values.purpose,
+          documents: values.documents,
+          concern: values.concern,
+        }),
+      };
+      const initialMessages = [initialMessage];
+      const applicantContext: ApplicantContext = {
+        nationality: values.nationality,
+        destinationCountry: 'Slovakia',
+        residenceType: values.purpose,
+        currentStep: 'first-checklist',
+      };
+
+      setMessages(initialMessages);
       setSubmitted(true);
+      setIsRiaLoading(true);
+      setRiaError('');
+
+      try {
+        const reply = await requestRiaReply(initialMessages, applicantContext);
+        setMessages([...initialMessages, { role: 'assistant', content: reply }]);
+      } catch {
+        setRiaError(RIA_FALLBACK_MESSAGE);
+      } finally {
+        setIsRiaLoading(false);
+      }
     } catch {
       setSubmitError('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handleFollowUp = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const content = followUp.trim();
+    if (!content || isRiaLoading) return;
+
+    const nextMessages: RiaMessage[] = [
+      ...messages,
+      { role: 'user', content },
+    ];
+    setMessages(nextMessages);
+    setFollowUp('');
+    setRiaError('');
+    setIsRiaLoading(true);
+
+    try {
+      const reply = await requestRiaReply(nextMessages);
+      setMessages([...nextMessages, { role: 'assistant', content: reply }]);
+    } catch {
+      setRiaError(RIA_FALLBACK_MESSAGE);
+    } finally {
+      setIsRiaLoading(false);
     }
   };
 
@@ -207,6 +221,10 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
       setIsSubmitting(false);
       setSubmitError('');
       setErrors({});
+      setMessages([]);
+      setFollowUp('');
+      setIsRiaLoading(false);
+      setRiaError('');
     }, 180);
   };
 
@@ -340,7 +358,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
             )}
 
             <aside className="rounded-[1.5rem] border border-[#BFE6D2] bg-[#EEF7F1] p-4 sm:p-5">
-              {!submitted || !result ? (
+              {!submitted ? (
                 <div className="flex h-full min-h-[320px] flex-col justify-between rounded-3xl bg-white/76 p-5">
                   <div>
                     <p className="text-sm font-semibold text-[#0F8A6A]">Ria is ready</p>
@@ -356,7 +374,14 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
                   </p>
                 </div>
               ) : (
-                <FirstChecklist values={values} result={result} />
+                <RiaConversation
+                  messages={messages}
+                  followUp={followUp}
+                  isLoading={isRiaLoading}
+                  error={riaError}
+                  onFollowUpChange={setFollowUp}
+                  onSubmit={handleFollowUp}
+                />
               )}
             </aside>
           </div>
@@ -411,63 +436,71 @@ function SelectField({
   );
 }
 
-function FirstChecklist({
-  values,
-  result,
+function RiaConversation({
+  messages,
+  followUp,
+  isLoading,
+  error,
+  onFollowUpChange,
+  onSubmit,
 }: {
-  values: IntakeValues;
-  result: ChecklistResult;
+  messages: RiaMessage[];
+  followUp: string;
+  isLoading: boolean;
+  error: string;
+  onFollowUpChange: (value: string) => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }) {
   return (
     <div className="rounded-3xl bg-white p-5 shadow-sm">
       <p className="text-sm font-semibold text-[#0F8A6A]">Ria's first checklist</p>
-      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#0B1726]">{result.route}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-600">
-        Based on: {values.nationality || 'nationality not set'} · {values.currentLocation || 'location not set'} ·{' '}
-        {values.purpose ? purposeLabels[values.purpose] : 'purpose not set'}
-      </p>
-
-      <ChecklistBlock title="Possible missing documents" items={result.missing} />
-      <ChecklistBlock title="Risks to check" items={result.risks} warning />
-      <ChecklistBlock title="Next steps" items={result.nextSteps} />
-
-      <div className="mt-4 rounded-2xl border border-[#BFE6D2] bg-[#EEF7F1] p-4">
-        <p className="text-sm font-semibold text-[#064E3B]">Expert handoff note</p>
-        <p className="mt-1 text-sm leading-6 text-slate-700">{result.handoff}</p>
+      <div className="mt-4 space-y-3">
+        {messages.map((message, index) => (
+          <div
+            key={`${message.role}-${index}`}
+            className={`rounded-2xl px-4 py-3 text-sm leading-6 ${
+              message.role === 'assistant'
+                ? 'border border-[#BFE6D2] bg-[#EEF7F1] text-slate-700'
+                : 'ml-6 bg-[#0B1726] text-white'
+            }`}
+          >
+            <p className="whitespace-pre-wrap">{message.content}</p>
+          </div>
+        ))}
+        {isLoading && (
+          <div className="rounded-2xl border border-[#BFE6D2] bg-[#EEF7F1] px-4 py-3 text-sm font-semibold text-[#0F8A6A]">
+            Ria is preparing a response...
+          </div>
+        )}
+        {error && (
+          <p className="rounded-2xl border border-[#F2C8B8] bg-[#FFF5EF] px-4 py-3 text-sm font-semibold text-[#B9573D]">
+            {error}
+          </p>
+        )}
       </div>
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+
+      <form onSubmit={onSubmit} className="mt-4">
+        <label className="block">
+          <span className="text-sm font-semibold text-slate-800">Ask a follow-up question</span>
+          <textarea
+            value={followUp}
+            onChange={(event) => onFollowUpChange(event.target.value)}
+            rows={3}
+            placeholder="Ask Ria about your documents or next steps."
+            className="mt-2 w-full rounded-2xl border border-[#DDE8DF] bg-white px-3 py-3 text-sm text-slate-800 shadow-sm transition focus:border-[#0F8A6A]"
+          />
+        </label>
         <button
-          type="button"
-          className="rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56]"
+          type="submit"
+          disabled={isLoading || !followUp.trim()}
+          className="mt-3 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
         >
-          Email me this checklist
+          {isLoading ? 'Ria is responding...' : 'Ask Ria'}
         </button>
-        <button
-          type="button"
-          className="rounded-full border border-[#BFE6D2] bg-white px-4 py-2.5 text-sm font-semibold text-[#0B1726] transition hover:border-[#0F8A6A]/35 hover:bg-[#F7FBF8]"
-        >
-          Talk to an expert
-        </button>
-      </div>
+      </form>
       <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
         I am not a lawyer. This is guidance only, not legal advice. No approval guarantee.
       </p>
-    </div>
-  );
-}
-
-function ChecklistBlock({ title, items, warning = false }: { title: string; items: string[]; warning?: boolean }) {
-  return (
-    <div className="mt-4">
-      <p className="text-sm font-semibold text-[#0B1726]">{title}</p>
-      <ul className="mt-2 space-y-2">
-        {items.map((item) => (
-          <li key={item} className="flex gap-2 text-sm leading-6 text-slate-700">
-            <span className={warning ? 'text-[#D97757]' : 'text-[#0F8A6A]'}>{warning ? '!' : '✓'}</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
