@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { buildLeadInsert } from '../lib/leads';
+import { saveLead } from '../lib/leads';
 import {
   createInitialRiaMessage,
   requestRiaReply,
@@ -145,7 +145,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
       setIsSubmitting(true);
       setSubmitError('');
 
-      const { error } = await supabase.from('leads').insert(buildLeadInsert(values));
+      const { error } = await saveLead(values, supabase);
 
       if (error) {
         setSubmitError('Something went wrong. Please try again.');
