@@ -104,6 +104,8 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
   const [followUp, setFollowUp] = useState('');
   const [isRiaLoading, setIsRiaLoading] = useState(false);
   const [riaError, setRiaError] = useState('');
+  const [isPdfGenerating, setIsPdfGenerating] = useState(false);
+  const [pdfError, setPdfError] = useState('');
 
   if (!open) return null;
 
@@ -232,6 +234,33 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    try {
+      setIsPdfGenerating(true);
+      setPdfError('');
+      const { generateChecklistPdf } = await import('../lib/pdf');
+      const blob = await generateChecklistPdf(values);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const nationalitySlug = values.nationality
+        .toLocaleLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+
+      link.href = url;
+      link.download = `paperia-slovakia-checklist-${nationalitySlug || 'applicant'}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
+    } catch (error: unknown) {
+      console.error('PDF generation failed:', error);
+      setPdfError('Sorry, your PDF could not be generated right now. Please try again.');
+    } finally {
+      setIsPdfGenerating(false);
+    }
+  };
+
   const resetAndClose = () => {
     onClose();
     setTimeout(() => {
@@ -245,6 +274,8 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
       setFollowUp('');
       setIsRiaLoading(false);
       setRiaError('');
+      setIsPdfGenerating(false);
+      setPdfError('');
     }, 180);
   };
 
@@ -327,7 +358,12 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
             </div>
           ) : (
             <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[0.72fr_1.28fr]">
-              <CompletionSummary values={values} />
+              <CompletionSummary
+                values={values}
+                isPdfGenerating={isPdfGenerating}
+                pdfError={pdfError}
+                onDownloadPdf={handleDownloadPdf}
+              />
               <RiaConversation
                 messages={messages}
                 followUp={followUp}
@@ -560,7 +596,17 @@ function WizardStepContent({
   );
 }
 
-function CompletionSummary({ values }: { values: IntakeValues }) {
+function CompletionSummary({
+  values,
+  isPdfGenerating,
+  pdfError,
+  onDownloadPdf,
+}: {
+  values: IntakeValues;
+  isPdfGenerating: boolean;
+  pdfError: string;
+  onDownloadPdf: () => void;
+}) {
   return (
     <div className="rounded-[1.5rem] border border-[#BFE6D2] bg-white/82 p-5 shadow-sm">
       <RiaAvatar size="lg" className="mx-auto" />
@@ -580,11 +626,13 @@ function CompletionSummary({ values }: { values: IntakeValues }) {
         </p>
         <button
           type="button"
-          disabled
-          className="mt-4 w-full cursor-not-allowed rounded-full bg-slate-300 px-4 py-2.5 text-sm font-semibold text-white"
+          onClick={onDownloadPdf}
+          disabled={isPdfGenerating}
+          className="mt-4 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
         >
-          Preparing PDF download
+          {isPdfGenerating ? 'Generating your PDF...' : 'Download your PDF checklist'}
         </button>
+        {pdfError && <p className="mt-3 text-sm font-semibold text-[#B9573D]">{pdfError}</p>}
       </div>
     </div>
   );
