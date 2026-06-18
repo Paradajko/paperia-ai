@@ -1,9 +1,9 @@
 const agencyRows = [
-  ['New client intake', 'Ready for review'],
-  ['Missing documents', '4 items'],
-  ['Risk notes', 'Address proof unclear'],
-  ['Prepared case summary', 'Drafted'],
-  ['Client language', 'English / Ukrainian / Russian / Slovak'],
+  ['Case type', 'Appeal after previous refusal'],
+  ['Risk level', 'Professional review required'],
+  ['Missing documents', '3 priority items'],
+  ['Prepared summary', 'Ready for consultation'],
+  ['Client language', 'English / Ukrainian / Serbian / Slovak'],
 ];
 
 const workflow = ['Client answers', 'Ria structures', 'Professional reviews'];
@@ -18,8 +18,9 @@ export function AgencySection({ onJoin }: { onJoin: () => void }) {
             Ria does not replace experts. She prepares better clients.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#D9F6EA]/82">
-            Agencies receive clearer cases, better prepared applicants, and fewer repetitive questions before the
-            first consultation.
+            Paperia stays free for standard checklist preparation. Licensed agencies and lawyers are most useful for
+            genuinely complex cases: asylum, deportation defense, appeals, previous refusals, or family reunification
+            with a difficult case history.
           </p>
           <button
             type="button"
@@ -58,8 +59,8 @@ export function AgencySection({ onJoin }: { onJoin: () => void }) {
             <div className="mt-4 rounded-2xl border border-[#BFE6D2] bg-[#EEF7F1] p-4">
               <p className="text-sm font-semibold text-harbor">Prepared client summary</p>
               <p className="mt-1 text-sm leading-6 text-slate-700">
-                Applicant likely needs employment residence route. Criminal record translation and accommodation
-                proof need attention before consultation. Ria summary ready for professional review.
+                Applicant has a previous refusal and a family reunification route with disputed supporting evidence.
+                Ria has organized the timeline and missing records for licensed professional review.
               </p>
             </div>
           </div>

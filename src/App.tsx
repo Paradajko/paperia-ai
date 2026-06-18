@@ -50,20 +50,19 @@ const avoidItems = [
 
 const pricing = [
   {
-    title: 'Free checklist',
-    price: '€0',
-    description: 'Let Ria give you a first route, missing-document view, and guidance-only disclaimer.',
-  },
-  {
-    title: 'Document review later',
-    price: 'from €29',
-    description: 'A deeper Ria checklist, timeline, translation flags, and case summary when you need it.',
+    title: 'Paperia checklist',
+    price: 'Free',
+    description:
+      'Complete the Slovakia wizard, get your personalized PDF checklist, receive email follow-up, and ask Ria practical questions.',
+    badge: 'Always free',
     featured: true,
   },
   {
-    title: 'Agency handoff later',
-    price: 'from €79',
-    description: 'Prepare a clearer expert-ready summary before speaking with an agency or relocation specialist.',
+    title: 'Licensed agency or lawyer',
+    price: 'Case by case',
+    description:
+      'Optional paid support for asylum, deportation defense, appeals, prior refusals, or unusually complex family reunification cases.',
+    badge: 'Complex cases only',
   },
 ];
 
@@ -172,16 +171,16 @@ function App() {
         <section id="pricing" className="bg-white py-20 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Pricing preview</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Simple pricing</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                Start with Ria first, pay only when deeper preparation helps.
+                Paperia is free. Professional help is case by case.
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-600">
-                Pricing is illustrative for the MVP and not final production pricing. Ria does not guarantee
-                approval, file applications, or replace licensed legal advice.
+                There is no monthly subscription. Standard checklist generation stays free; complex legal work is
+                priced directly by the licensed agency or lawyer handling the case.
               </p>
             </div>
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
               {pricing.map((item) => (
                 <PricingCard key={item.title} {...item} />
               ))}
