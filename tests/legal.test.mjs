@@ -58,6 +58,11 @@ test('privacy policy contains the approved controller identity and GDPR disclosu
   assert.match(privacy, /Articles 15–22/);
   assert.match(privacy, /dataprotection\.gov\.sk/);
   assert.match(read('src/components/LegalPageLayout.tsx'), /June 19, 2026/);
+  assert.match(privacy, /Marketing communications/);
+  assert.match(
+    privacy,
+    /We may send you a 14-day email guide with practical residence tips and case examples\. This is opt-in: you must explicitly agree before we send these emails\. You can unsubscribe anytime using the link in each email footer\./,
+  );
 });
 
 test('terms contain service limits, governing law, contact, and update date', () => {

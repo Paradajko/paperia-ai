@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, rmSync } from 'node:fs';
+import { mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -45,7 +45,18 @@ const completeValues = {
   documents: ['Passport'],
   concern: 'I need to understand apostille requirements.',
   email: 'mira@example.com',
+  emailSequenceConsent: false,
 };
+
+test('email sequence consent defaults to false in the wizard source', () => {
+  const source = readFileSync(resolve(repoRoot, 'src/components/RiaIntakeModal.tsx'), 'utf8');
+  assert.match(source, /emailSequenceConsent:\s*false/);
+  assert.match(
+    source,
+    /Send me the 14-day Riadence email guide with practical residence tips and case examples\. I can unsubscribe anytime\./,
+  );
+  assert.match(source, /to="\/privacy"/);
+});
 
 test('step 2 requires nationality and purpose', async () => {
   const { validateWizardStep } = await importIntakeModule();

@@ -86,6 +86,12 @@ export function Privacy() {
         </p>
       </LegalSection>
 
+      <LegalSection title="Marketing communications">
+        <p>
+          We may send you a 14-day email guide with practical residence tips and case examples. This is opt-in: you must explicitly agree before we send these emails. You can unsubscribe anytime using the link in each email footer.
+        </p>
+      </LegalSection>
+
       <LegalSection title="Third parties">
         <p>
           We use service providers only where needed to operate Riadence. They

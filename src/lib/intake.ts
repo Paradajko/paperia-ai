@@ -9,6 +9,7 @@ export type IntakeValues = {
   documents: string[];
   concern: string;
   email: string;
+  emailSequenceConsent: boolean;
 };
 
 export type IntakeErrorKey = 'nationality' | 'purpose' | 'concern' | 'email';

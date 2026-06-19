@@ -36,56 +36,18 @@ async function importLeadsModule() {
   return import(`${pathToFileURL(resolve(tempDir, 'leads.js')).href}?t=${Date.now()}`);
 }
 
-test('buildLeadInsert maps intake values to the leads insert payload', async () => {
-  const { buildLeadInsert } = await importLeadsModule();
-
-  const payload = buildLeadInsert({
-    email: 'person@example.com',
-    nationality: 'Ukraine',
-    currentLocation: 'Already in Slovakia',
-    purpose: 'employment',
-    statusReason: 'I have an employer or job offer',
-    documents: ['Passport', 'Accommodation proof'],
-    concern: 'Criminal record timing',
-  });
-
-  assert.deepEqual(payload, {
-    email: 'person@example.com',
-    nationality: 'Ukraine',
-    current_location: 'Already in Slovakia',
-    purpose: 'employment',
-    status_reason: 'I have an employer or job offer',
-    documents: ['Passport', 'Accommodation proof'],
-    concern: 'Criminal record timing',
-    checklist_route: null,
-    source: 'web',
-    status: 'new',
-  });
-});
-
-test('saveLead schedules the welcome email 100ms after a successful insert', async () => {
+test('saveLead posts the intake to the server completion endpoint', async () => {
   const { saveLead } = await importLeadsModule();
-  const scheduled = [];
   const requests = [];
-  const storage = {
-    from(table) {
-      assert.equal(table, 'leads');
-      return {
-        async insert() {
-          return { error: null };
-        },
-      };
-    },
-  };
-  const schedule = (callback, delay) => {
-    scheduled.push({ callback, delay });
-    return 1;
-  };
   const fetcher = async (url, init) => {
     requests.push({ url, init });
-    return new Response(null, { status: 200 });
+    return new Response(JSON.stringify({ ok: true, sequenceCount: 5 }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   };
   const values = {
+    name: 'Ada',
     email: 'person@example.com',
     nationality: 'India',
     currentLocation: 'Outside Slovakia',
@@ -93,43 +55,22 @@ test('saveLead schedules the welcome email 100ms after a successful insert', asy
     statusReason: 'I have an employer or job offer',
     documents: ['Passport'],
     concern: '',
+    emailSequenceConsent: true,
   };
 
-  const result = await saveLead(values, storage, schedule, fetcher);
+  const result = await saveLead(values, fetcher);
 
   assert.deepEqual(result, { error: null });
-  assert.equal(requests.length, 0);
-  assert.equal(scheduled.length, 1);
-  assert.equal(scheduled[0].delay, 100);
-
-  scheduled[0].callback();
-  await Promise.resolve();
-
-  assert.equal(requests[0].url, '/api/send-welcome');
-  assert.deepEqual(JSON.parse(requests[0].init.body), {
-    email: 'person@example.com',
-    nationality: 'India',
-    destinationCountry: 'Slovakia',
-    residenceType: 'employment',
-  });
+  assert.equal(requests[0].url, '/api/complete-intake');
+  assert.deepEqual(JSON.parse(requests[0].init.body), values);
 });
 
-test('saveLead does not schedule an email when the Supabase insert fails', async () => {
+test('saveLead defaults missing consent to false', async () => {
   const { saveLead } = await importLeadsModule();
-  let scheduled = false;
-  const insertError = { message: 'Insert failed' };
-  const storage = {
-    from() {
-      return {
-        async insert() {
-          return { error: insertError };
-        },
-      };
-    },
-  };
-
-  const result = await saveLead(
+  let body;
+  await saveLead(
     {
+      name: '',
       email: 'person@example.com',
       nationality: 'India',
       currentLocation: '',
@@ -138,59 +79,31 @@ test('saveLead does not schedule an email when the Supabase insert fails', async
       documents: [],
       concern: '',
     },
-    storage,
-    () => {
-      scheduled = true;
-      return 1;
+    async (_url, init) => {
+      body = JSON.parse(init.body);
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
     },
-    async () => new Response(null, { status: 200 }),
   );
 
-  assert.equal(result.error, insertError);
-  assert.equal(scheduled, false);
+  assert.equal(body.emailSequenceConsent, false);
 });
 
-test('welcome email rejection is logged without changing the saved lead result', async () => {
+test('saveLead returns an error when the completion endpoint fails', async () => {
   const { saveLead } = await importLeadsModule();
-  let scheduledCallback;
-  const logged = [];
-  const originalConsoleError = console.error;
-  console.error = (...args) => logged.push(args);
+  const result = await saveLead(
+    {
+      name: '',
+      email: 'person@example.com',
+      nationality: 'India',
+      currentLocation: '',
+      purpose: 'employment',
+      statusReason: '',
+      documents: [],
+      concern: '',
+      emailSequenceConsent: false,
+    },
+    async () => new Response(JSON.stringify({ error: 'failed' }), { status: 500 }),
+  );
 
-  try {
-    const result = await saveLead(
-      {
-        email: 'person@example.com',
-        nationality: 'India',
-        currentLocation: '',
-        purpose: 'employment',
-        statusReason: '',
-        documents: [],
-        concern: '',
-      },
-      {
-        from() {
-          return {
-            async insert() {
-              return { error: null };
-            },
-          };
-        },
-      },
-      (callback) => {
-        scheduledCallback = callback;
-        return 1;
-      },
-      async () => {
-        throw new Error('Email service unavailable');
-      },
-    );
-
-    assert.deepEqual(result, { error: null });
-    scheduledCallback();
-    await new Promise((resolvePromise) => setTimeout(resolvePromise, 0));
-    assert.equal(logged.length, 1);
-  } finally {
-    console.error = originalConsoleError;
-  }
+  assert.ok(result.error instanceof Error);
 });

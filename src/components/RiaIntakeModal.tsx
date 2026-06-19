@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import {
   validateWizardStep,
   type IntakeErrors,
@@ -14,7 +15,6 @@ import {
   type ApplicantContext,
   type RiaMessage,
 } from '../lib/ria';
-import { supabase } from '../lib/supabase';
 import { RiaAvatar } from './RiaAvatar';
 
 type RiaIntakeModalProps = {
@@ -31,6 +31,7 @@ const initialValues: IntakeValues = {
   documents: [],
   concern: '',
   email: '',
+  emailSequenceConsent: false,
 };
 
 const nationalities = [
@@ -160,16 +161,11 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    if (!supabase) {
-      setSubmitError('Something went wrong. Please try again.');
-      return;
-    }
-
     try {
       setIsSubmitting(true);
       setSubmitError('');
 
-      const { error } = await saveLead(values, supabase);
+      const { error } = await saveLead(values);
       if (error) {
         setSubmitError('Something went wrong. Please try again.');
         return;
@@ -586,6 +582,26 @@ function WizardStepContent({
           {errors.email && (
             <span className="mt-1 block text-sm font-medium text-[#B9573D]">{errors.email}</span>
           )}
+        </label>
+        <label className="flex items-start gap-3 rounded-2xl border border-[#DDE8DF] bg-white/75 p-4 text-sm leading-6 text-slate-600">
+          <input
+            type="checkbox"
+            checked={values.emailSequenceConsent}
+            onChange={(event) =>
+              updateValue('emailSequenceConsent', event.target.checked)
+            }
+            className="mt-1 h-4 w-4 flex-none rounded border-[#BFE6D2] accent-[#0F8A6A]"
+          />
+          <span>
+            Send me the 14-day Riadence email guide with practical residence tips and case examples. I can unsubscribe anytime.{' '}
+            <Link
+              to="/privacy"
+              className="font-semibold text-[#0F8A6A] underline underline-offset-4"
+              onClick={(event) => event.stopPropagation()}
+            >
+              Privacy Policy
+            </Link>
+          </span>
         </label>
       </div>
       <p className="mt-5 rounded-2xl border border-[#BFE6D2] bg-[#EEF7F1] p-4 text-sm font-semibold leading-6 text-[#064E3B]">
