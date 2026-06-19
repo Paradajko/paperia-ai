@@ -177,12 +177,12 @@ export function ResidenceChecklistPDF({
   return (
     <Document
       title="Your Residence Checklist for Slovakia"
-      author="Paperia"
+      author="Riadence"
       subject="General residence checklist information for Slovakia"
     >
       <Page size="A4" style={[styles.page, styles.cover]}>
         <Image src={riaGuide} style={styles.avatar} />
-        <Text style={styles.eyebrow}>Paperia · prepared with Ria</Text>
+        <Text style={styles.eyebrow}>Riadence · prepared with Ria</Text>
         <Text style={styles.title}>Your Residence Checklist for Slovakia</Text>
         <Text style={styles.subtitle}>
           Prepared for {content.preparedFor} from {applicantData.nationality}. This checklist organizes your
@@ -195,7 +195,7 @@ export function ResidenceChecklistPDF({
 
       <Page size="A4" style={styles.page}>
         <Text style={styles.pageTitle}>Your route</Text>
-        <Text style={styles.pageIntro}>A structured summary based on the answers you gave Paperia.</Text>
+        <Text style={styles.pageIntro}>A structured summary based on the answers you gave Riadence.</Text>
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Likely route</Text>
           <Text>{content.routeTitle}</Text>
@@ -265,16 +265,16 @@ export function ResidenceChecklistPDF({
         <Text style={styles.pageIntro}>Read this before relying on the checklist or sharing it with someone else.</Text>
         <Text style={styles.disclaimer}>{content.disclaimer}</Text>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>What Paperia does</Text>
+          <Text style={styles.cardTitle}>What Riadence does</Text>
           <Text>
-            Paperia organizes the information you provide into a practical checklist. Ria can explain general
+            Riadence organizes the information you provide into a practical checklist. Ria can explain general
             concepts in plain English and help you prepare questions.
           </Text>
         </View>
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>What Paperia does not do</Text>
+          <Text style={styles.cardTitle}>What Riadence does not do</Text>
           <Text>
-            Paperia does not file applications, represent you, create a lawyer-client relationship, or guarantee any
+            Riadence does not file applications, represent you, create a lawyer-client relationship, or guarantee any
             visa or residence outcome.
           </Text>
         </View>
@@ -299,7 +299,7 @@ function Bullet({ children }: { children: string }) {
 function PageFooter({ pageNumber }: { pageNumber: number }) {
   return (
     <View style={styles.footer} fixed>
-      <Text>Paperia · Your residence guide for Slovakia</Text>
+      <Text>Riadence · Your residence guide for Slovakia</Text>
       <Text>{pageNumber} / 5</Text>
     </View>
   );

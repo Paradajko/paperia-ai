@@ -1,4 +1,4 @@
-import paperiaLogoMark from '../assets/paperia-logo-mark.png';
+import riadenceLogoMark from '../assets/paperia-logo-mark.png';
 
 type LogoProps = {
   compact?: boolean;
@@ -11,10 +11,10 @@ export function Logo({ compact = false, light = false, sublabel = false }: LogoP
   const sublabelColor = light ? 'text-slate-300' : 'text-slate-500';
 
   return (
-    <a href="#top" className="inline-flex items-center gap-2.5" aria-label="Paperia home">
+    <a href="#top" className="inline-flex items-center gap-2.5" aria-label="Riadence home">
       <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl">
         <img
-          src={paperiaLogoMark}
+          src={riadenceLogoMark}
           alt=""
           aria-hidden="true"
           className="h-full w-full scale-[1.78] object-contain"
@@ -22,7 +22,7 @@ export function Logo({ compact = false, light = false, sublabel = false }: LogoP
       </span>
       {!compact && (
         <span className="relative leading-none">
-          <span className={`block text-[1.72rem] font-semibold tracking-[-0.035em] ${textColor}`}>Paperia</span>
+          <span className={`block text-[1.72rem] font-semibold tracking-[-0.035em] ${textColor}`}>Riadence</span>
           {sublabel && <span className={`mt-1 block text-xs ${sublabelColor}`}>Residence guide for Slovakia</span>}
         </span>
       )}

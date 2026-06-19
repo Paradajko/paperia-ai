@@ -405,7 +405,7 @@ function WizardProgress({ step }: { step: WizardStep }) {
 
 function WizardGuide({ step }: { step: WizardStep }) {
   const descriptions = [
-    'Paperia currently focuses on non-EU citizens moving to Slovakia.',
+    'Riadence currently focuses on non-EU citizens moving to Slovakia.',
     'These answers help Ria identify the most relevant residence route.',
     'Checking what you already have makes the PDF document plan more useful.',
     'Tell Ria the uncertainty you want the checklist to address first.',
@@ -560,7 +560,7 @@ function WizardStepContent({
     <div>
       <h3 className="text-2xl font-semibold text-[#0B1726]">Get your checklist</h3>
       <p className="mt-2 text-sm leading-6 text-slate-600">
-        Add your email so Paperia can save your answers and send checklist follow-up.
+        Add your email so Riadence can save your answers and send checklist follow-up.
       </p>
       <div className="mt-6 grid gap-4">
         <label className="block">

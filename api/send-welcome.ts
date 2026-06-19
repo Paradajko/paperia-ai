@@ -37,8 +37,8 @@ type SendEmail = (
 
 const DISCLAIMER =
   'I am not a lawyer. This is general information, not legal advice.';
-const PAPERIA_URL = 'https://riadence.com';
-const RIA_AVATAR_URL = `${PAPERIA_URL}/ria-guide-half.png`;
+const RIADENCE_URL = 'https://riadence.com';
+const RIA_AVATAR_URL = `${RIADENCE_URL}/ria-guide-half.png`;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -104,7 +104,7 @@ function buildWelcomeEmail(input: WelcomeRequest): WelcomeEmail {
     : '';
 
   return {
-    from: 'Paperia <hello@riadence.com>',
+    from: 'Riadence <hello@riadence.com>',
     to: input.email,
     replyTo: 'hello@riadence.com',
     subject: 'Your Slovakia residence checklist is ready inside',
@@ -112,12 +112,12 @@ function buildWelcomeEmail(input: WelcomeRequest): WelcomeEmail {
 
 Ria has saved your answers for your Slovakia residence checklist.${textDetails}
 
-Inside Paperia, you can:
+Inside Riadence, you can:
 - Review your likely residence route and document plan
 - Download your personalized PDF checklist
 - Ask Ria practical follow-up questions
 
-Open Paperia: ${PAPERIA_URL}
+Open Riadence: ${RIADENCE_URL}
 
 ${DISCLAIMER}`,
     html: `<!doctype html>
@@ -130,7 +130,7 @@ ${DISCLAIMER}`,
             <tr>
               <td align="center" style="padding:32px 28px 22px;background:linear-gradient(180deg,#EEF7F1 0%,#FFFCF6 100%);">
                 <img src="${RIA_AVATAR_URL}" width="96" height="96" alt="Ria, your residence guide for Slovakia" style="display:block;width:96px;height:96px;border:2px solid #BFE6D2;border-radius:50%;background:#EEF7F1;object-fit:cover;object-position:top;">
-                <p style="margin:18px 0 0;color:#0F8A6A;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Paperia · guided by Ria</p>
+                <p style="margin:18px 0 0;color:#0F8A6A;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Riadence · guided by Ria</p>
                 <h1 style="margin:8px 0 0;font-size:28px;line-height:1.2;color:#0B1726;">Your Slovakia checklist is ready</h1>
               </td>
             </tr>
@@ -152,7 +152,7 @@ ${DISCLAIMER}`,
                 <table role="presentation" cellspacing="0" cellpadding="0" style="margin:24px auto;">
                   <tr>
                     <td style="border-radius:999px;background:#0F8A6A;">
-                      <a href="${PAPERIA_URL}" style="display:inline-block;padding:13px 24px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">Open Paperia</a>
+                      <a href="${RIADENCE_URL}" style="display:inline-block;padding:13px 24px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">Open Riadence</a>
                     </td>
                   </tr>
                 </table>

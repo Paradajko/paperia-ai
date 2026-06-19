@@ -7,7 +7,7 @@ const faqs = [
   {
     question: 'How is this different from asking ChatGPT?',
     answer:
-      'Paperia starts with a structured Slovakia-focused wizard instead of an open-ended chat. It collects the same practical inputs every time, organizes them into a route and document plan, and gives you a personalized PDF checklist. Ria chat is available afterwards for follow-up questions.',
+      'Riadence starts with a structured Slovakia-focused wizard instead of an open-ended chat. It collects the same practical inputs every time, organizes them into a route and document plan, and gives you a personalized PDF checklist. Ria chat is available afterwards for follow-up questions.',
   },
   {
     question: 'What does the free PDF checklist include?',
@@ -15,9 +15,9 @@ const faqs = [
       'It includes your likely Slovakia residence route, documents you already have, likely missing items, translation or apostille reminders, a practical timeline, official-source links, and questions to verify before an appointment. It is general information, not a legal opinion.',
   },
   {
-    question: 'Is Paperia a law firm? Can you guarantee my visa approval?',
+    question: 'Is Riadence a law firm? Can you guarantee my visa approval?',
     answer:
-      'No. Paperia is not a law firm, Ria is not a lawyer, and nobody can guarantee a residence or visa outcome. Paperia helps you organize information and prepare better questions. A government authority makes the final decision.',
+      'No. Riadence is not a law firm, Ria is not a lawyer, and nobody can guarantee a residence or visa outcome. Riadence helps you organize information and prepare better questions. A government authority makes the final decision.',
   },
   {
     question: 'When are the 2026 changes to Slovak residence law taking effect?',
@@ -27,12 +27,12 @@ const faqs = [
   {
     question: 'What happens after I download the checklist? Do you follow up by email?',
     answer:
-      'You receive a welcome follow-up at the email you provided, and you can keep the PDF for your own preparation. Ria remains available in the completed wizard for practical follow-up questions. Paperia does not submit the application for you.',
+      'You receive a welcome follow-up at the email you provided, and you can keep the PDF for your own preparation. Ria remains available in the completed wizard for practical follow-up questions. Riadence does not submit the application for you.',
   },
   {
     question: 'Do you handle complex cases like asylum or deportation?',
     answer:
-      'Paperia is free for standard checklist preparation. Asylum, deportation defense, appeals, prior refusals, and other high-risk cases need a licensed professional. Paperia may recommend a partner agency or lawyer when the case is genuinely complex.',
+      'Riadence is free for standard checklist preparation. Asylum, deportation defense, appeals, prior refusals, and other high-risk cases need a licensed professional. Riadence may recommend a partner agency or lawyer when the case is genuinely complex.',
   },
 ];
 
@@ -64,7 +64,7 @@ export function FAQ() {
           ))}
         </div>
         <p className="mt-6 rounded-3xl border border-[#BFE6D2] bg-[#EEF7F1] px-5 py-4 text-sm font-medium leading-6 text-slate-700">
-          I am not a lawyer. Paperia and Ria provide general information, not legal advice. Verify current rules with
+          I am not a lawyer. Riadence and Ria provide general information, not legal advice. Verify current rules with
           an official Slovak source or a licensed immigration lawyer.
         </p>
       </div>

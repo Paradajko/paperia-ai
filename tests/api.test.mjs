@@ -6,7 +6,7 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const tempDir = resolve(repoRoot, 'node_modules/.paperia-api-test');
+const tempDir = resolve(repoRoot, 'node_modules/.riadence-api-test');
 
 async function importApiModule(fileName) {
   rmSync(tempDir, { recursive: true, force: true });

@@ -47,7 +47,7 @@ const helpCards = [
   },
 ];
 
-export function PaperiaHeroMockup() {
+export function RiadenceHeroMockup() {
   return (
     <div className="relative mx-auto w-full max-w-6xl">
       <div className="relative min-h-[380px] overflow-hidden sm:min-h-[430px] lg:min-h-[510px]">
@@ -64,7 +64,7 @@ export function PaperiaHeroMockup() {
           <div className="pointer-events-none absolute bottom-0 left-1/2 z-[25] h-14 w-[70%] -translate-x-1/2 rounded-t-[999px] bg-[linear-gradient(180deg,rgba(238,247,241,0)_0%,rgba(238,247,241,0.78)_62%,rgba(238,247,241,0.98)_100%)] lg:hidden" />
           <img
             src={riaGuide}
-            alt="Ria, Paperia's residence guide for Slovakia"
+            alt="Ria, Riadence's residence guide for Slovakia"
             className="ria-mobile-soft relative z-20 h-[360px] w-auto max-w-none shrink-0 object-contain object-bottom drop-shadow-[0_28px_38px_rgba(15,78,59,0.22)] sm:h-[420px] lg:h-[590px] lg:drop-shadow-[0_34px_48px_rgba(15,78,59,0.24)]"
           />
         </div>

@@ -6,7 +6,7 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const tempDir = '/private/tmp/paperia-leads-test';
+const tempDir = '/private/tmp/riadence-leads-test';
 
 async function importLeadsModule() {
   rmSync(tempDir, { recursive: true, force: true });

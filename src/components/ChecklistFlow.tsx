@@ -19,7 +19,7 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
             Build your Slovakia checklist step by step.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            Paperia turns five structured answers into a practical PDF checklist. No account or document uploads are
+            Riadence turns five structured answers into a practical PDF checklist. No account or document uploads are
             needed for this first version.
           </p>
           <button

@@ -6,7 +6,7 @@ import test from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const tempDir = '/private/tmp/paperia-ria-test';
+const tempDir = '/private/tmp/riadence-ria-test';
 
 async function importRiaModule() {
   rmSync(tempDir, { recursive: true, force: true });

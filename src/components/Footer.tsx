@@ -21,7 +21,7 @@ export function Footer() {
               FAQ
             </a>
             <a href="mailto:hello@riadence.com" className="hover:text-ink">
-              Contact Paperia
+              Contact Riadence
             </a>
           </div>
         </div>

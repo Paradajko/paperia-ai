@@ -9,7 +9,7 @@ import { Header } from './components/Header';
 import { HowItWorks } from './components/HowItWorks';
 import { PricingCard } from './components/PricingCard';
 import { ProblemCard } from './components/ProblemCard';
-import { PaperiaHeroMockup } from './components/PaperiaHeroMockup';
+import { RiadenceHeroMockup } from './components/RiadenceHeroMockup';
 import { RiaIntakeModal } from './components/RiaIntakeModal';
 
 const problems = [
@@ -50,7 +50,7 @@ const avoidItems = [
 
 const pricing = [
   {
-    title: 'Paperia checklist',
+    title: 'Riadence checklist',
     price: 'Free',
     description:
       'Complete the Slovakia wizard, get your personalized PDF checklist, receive email follow-up, and ask Ria practical questions.',
@@ -74,7 +74,7 @@ function App() {
   };
 
   const contactPartnerTeam = () => {
-    window.location.href = 'mailto:hello@riadence.com?subject=Paperia%20partner%20workspace';
+    window.location.href = 'mailto:hello@riadence.com?subject=Riadence%20partner%20workspace';
   };
 
   return (
@@ -103,7 +103,7 @@ function App() {
             </div>
 
             <div className="mt-3 sm:mt-4 lg:mt-2">
-              <PaperiaHeroMockup />
+              <RiadenceHeroMockup />
             </div>
 
             <div className="mx-auto mt-4 max-w-3xl text-center lg:hidden">
@@ -126,7 +126,7 @@ function App() {
                 </h2>
               </div>
               <p className="rounded-3xl border border-line bg-white/70 p-5 text-base leading-7 text-slate-600 shadow-sm">
-                Paperia gives you a structured first step: build a Slovakia-specific checklist, keep the result as a
+                Riadence gives you a structured first step: build a Slovakia-specific checklist, keep the result as a
                 PDF, and know when a complex case needs licensed help.
               </p>
             </div>
@@ -173,7 +173,7 @@ function App() {
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-wide text-harbor">Simple pricing</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                Paperia is free. Professional help is case by case.
+                Riadence is free. Professional help is case by case.
               </h2>
               <p className="mt-4 text-base leading-7 text-slate-600">
                 There is no monthly subscription. Standard checklist generation stays free; complex legal work is

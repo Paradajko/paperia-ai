@@ -18,7 +18,7 @@ export function AgencySection({ onJoin }: { onJoin: () => void }) {
             Ria does not replace experts. She prepares better clients.
           </h2>
           <p className="mt-4 text-base leading-7 text-[#D9F6EA]/82">
-            Paperia stays free for standard checklist preparation. Licensed agencies and lawyers are most useful for
+            Riadence stays free for standard checklist preparation. Licensed agencies and lawyers are most useful for
             genuinely complex cases: asylum, deportation defense, appeals, previous refusals, or family reunification
             with a difficult case history.
           </p>
@@ -27,7 +27,7 @@ export function AgencySection({ onJoin }: { onJoin: () => void }) {
             onClick={onJoin}
             className="mt-7 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#064E3B] transition hover:bg-[#EEF7F1]"
           >
-            Partner with Paperia
+            Partner with Riadence
           </button>
         </div>
 
