@@ -20,7 +20,7 @@ export function Footer() {
             <a href="#faq" className="hover:text-ink">
               FAQ
             </a>
-            <a href="mailto:hello@paperia.ai" className="hover:text-ink">
+            <a href="mailto:hello@riadence.com" className="hover:text-ink">
               Contact Paperia
             </a>
           </div>

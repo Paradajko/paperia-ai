@@ -89,13 +89,13 @@ test('send-welcome personalizes both email variants and includes the disclaimer'
   assert.equal(response.statusCode, 200);
   assert.deepEqual(response.payload, { ok: true });
   assert.equal(sentEmail.to, 'ada@example.com');
-  assert.equal(sentEmail.replyTo, 'hello@paperia.ai');
+  assert.equal(sentEmail.replyTo, 'hello@riadence.com');
   assert.equal(sentEmail.subject, 'Your Slovakia residence checklist is ready inside');
   assert.match(sentEmail.text, /Hi Ada/);
   assert.match(sentEmail.html, /Hi Ada/);
   assert.match(sentEmail.text, /personalized PDF checklist/i);
   assert.match(sentEmail.text, /follow-up/i);
-  assert.match(sentEmail.html, /https:\/\/paperia-ai\.vercel\.app\/ria-guide-half\.png/);
+  assert.match(sentEmail.html, /https:\/\/riadence\.com\/ria-guide-half\.png/);
   assert.match(sentEmail.html, /personalized PDF checklist/i);
   assert.match(sentEmail.html, /<table/);
   assert.match(sentEmail.text, /I am not a lawyer\./);

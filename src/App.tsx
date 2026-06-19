@@ -74,7 +74,7 @@ function App() {
   };
 
   const contactPartnerTeam = () => {
-    window.location.href = 'mailto:hello@paperia.ai?subject=Paperia%20partner%20workspace';
+    window.location.href = 'mailto:hello@riadence.com?subject=Paperia%20partner%20workspace';
   };
 
   return (

@@ -37,7 +37,7 @@ type SendEmail = (
 
 const DISCLAIMER =
   'I am not a lawyer. This is general information, not legal advice.';
-const PAPERIA_URL = 'https://paperia-ai.vercel.app';
+const PAPERIA_URL = 'https://riadence.com';
 const RIA_AVATAR_URL = `${PAPERIA_URL}/ria-guide-half.png`;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -104,9 +104,9 @@ function buildWelcomeEmail(input: WelcomeRequest): WelcomeEmail {
     : '';
 
   return {
-    from: 'Paperia <onboarding@resend.dev>',
+    from: 'Paperia <hello@riadence.com>',
     to: input.email,
-    replyTo: 'hello@paperia.ai',
+    replyTo: 'hello@riadence.com',
     subject: 'Your Slovakia residence checklist is ready inside',
     text: `Hi ${greeting},
 
