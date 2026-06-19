@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Logo } from './Logo';
 
 export function Footer() {
@@ -14,14 +16,20 @@ export function Footer() {
             </p>
           </div>
           <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2 md:text-right">
-            <a href="#pricing" className="hover:text-ink">
+            <a href="/#pricing" className="hover:text-ink">
               Pricing
             </a>
-            <a href="#faq" className="hover:text-ink">
+            <a href="/#faq" className="hover:text-ink">
               FAQ
             </a>
+            <Link to="/privacy" className="hover:text-ink">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="hover:text-ink">
+              Terms of Service
+            </Link>
             <a href="mailto:hello@riadence.com" className="hover:text-ink">
-              Contact Riadence
+              Contact
             </a>
           </div>
         </div>

@@ -155,6 +155,11 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 1.65,
   },
+  legalLinks: {
+    marginTop: 12,
+    flexDirection: 'row',
+    gap: 14,
+  },
   footer: {
     position: 'absolute',
     left: 46,
@@ -264,6 +269,14 @@ export function ResidenceChecklistPDF({
         <Text style={styles.pageTitle}>Important disclaimer</Text>
         <Text style={styles.pageIntro}>Read this before relying on the checklist or sharing it with someone else.</Text>
         <Text style={styles.disclaimer}>{content.disclaimer}</Text>
+        <View style={styles.legalLinks}>
+          <Link src="https://riadence.com/privacy" style={styles.link}>
+            Privacy Policy
+          </Link>
+          <Link src="https://riadence.com/terms" style={styles.link}>
+            Terms of Service
+          </Link>
+        </View>
         <View style={styles.card}>
           <Text style={styles.cardTitle}>What Riadence does</Text>
           <Text>

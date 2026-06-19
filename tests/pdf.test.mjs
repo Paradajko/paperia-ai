@@ -79,4 +79,6 @@ test('buildChecklistContent includes official links and emergency contacts', asy
   assert.ok(content.officialResources.some((item) => item.url.includes('minv.sk')));
   assert.ok(content.emergencyContacts.some((item) => item.includes('112')));
   assert.match(content.disclaimer, /not a lawyer/i);
+  assert.match(content.disclaimer, /https:\/\/riadence\.com\/privacy/);
+  assert.match(content.disclaimer, /https:\/\/riadence\.com\/terms/);
 });

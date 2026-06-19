@@ -137,6 +137,8 @@ test('ria-chat sends the required model settings, context, and system prompt', a
   assert.match(completionRequest.messages[0].content, /You are Ria/);
   assert.match(completionRequest.messages[0].content, /not a lawyer/);
   assert.match(completionRequest.messages[0].content, /Slovakia/);
+  assert.match(completionRequest.messages[0].content, /\/privacy/);
+  assert.match(completionRequest.messages[0].content, /\/terms/);
 });
 
 test('ria-chat returns 500 for an invalid messages payload', async () => {

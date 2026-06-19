@@ -189,6 +189,6 @@ export function buildChecklistContent(
       timeZone: 'UTC',
     }),
     disclaimer:
-      'I am not a lawyer. I am an AI assistant, not a lawyer. This checklist provides general information, not legal advice. Verify every requirement with an official Slovak source or a licensed immigration lawyer.',
+      'I am not a lawyer. I am an AI assistant, not a lawyer. This checklist provides general information, not legal advice. Verify every requirement with an official Slovak source or a licensed immigration lawyer. Privacy Policy: https://riadence.com/privacy. Terms of Service: https://riadence.com/terms.',
   };
 }

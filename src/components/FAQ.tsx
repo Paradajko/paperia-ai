@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const faqs = [
   {
     question: "I'm from Serbia — do I need a work permit for Slovakia?",
@@ -65,7 +67,15 @@ export function FAQ() {
         </div>
         <p className="mt-6 rounded-3xl border border-[#BFE6D2] bg-[#EEF7F1] px-5 py-4 text-sm font-medium leading-6 text-slate-700">
           I am not a lawyer. Riadence and Ria provide general information, not legal advice. Verify current rules with
-          an official Slovak source or a licensed immigration lawyer.
+          an official Slovak source or a licensed immigration lawyer. Read our{' '}
+          <Link to="/privacy" className="font-semibold text-harbor underline underline-offset-4">
+            Privacy Policy
+          </Link>{' '}
+          and{' '}
+          <Link to="/terms" className="font-semibold text-harbor underline underline-offset-4">
+            Terms of Service
+          </Link>
+          .
         </p>
       </div>
     </section>
