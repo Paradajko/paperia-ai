@@ -40,6 +40,19 @@ test('SEO descriptions are unique, Slovakia-focused, and 150–160 characters', 
   assert.match(termsHtml, new RegExp(seoDescriptions.terms.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 });
 
+test('unsubscribed route has private metadata and noindex handling', () => {
+  const routeMetadata = read('src/components/RouteMetadata.tsx');
+
+  assert.match(routeMetadata, /title: 'Unsubscribed · Riadence'/);
+  assert.match(
+    routeMetadata,
+    /description: "You've been unsubscribed from Riadence email updates\."/,
+  );
+  assert.match(routeMetadata, /pathname === '\/unsubscribed'/);
+  assert.match(routeMetadata, /noindex,nofollow/);
+  assert.match(routeMetadata, /robots\?\.remove\(\)/);
+});
+
 test('legal routes and global cookie consent are configured', () => {
   const packageJson = JSON.parse(read('package.json'));
   const app = read('src/App.tsx');

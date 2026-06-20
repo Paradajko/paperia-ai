@@ -17,6 +17,10 @@ const metadata = {
     description:
       'Read the Riadence terms for using our AI residence guide for Slovakia, including service limits, user responsibilities, disclaimers, and governing law.',
   },
+  unsubscribed: {
+    title: 'Unsubscribed · Riadence',
+    description: "You've been unsubscribed from Riadence email updates.",
+  },
 } as const;
 
 export function RouteMetadata() {
@@ -28,6 +32,8 @@ export function RouteMetadata() {
         ? metadata.privacy
         : pathname === '/terms'
           ? metadata.terms
+          : pathname === '/unsubscribed'
+            ? metadata.unsubscribed
           : metadata.landing;
 
     document.title = page.title;
@@ -35,6 +41,20 @@ export function RouteMetadata() {
       'meta[name="description"]',
     );
     description?.setAttribute('content', page.description);
+
+    const robots = document.querySelector<HTMLMetaElement>(
+      'meta[name="robots"]',
+    );
+    if (pathname === '/unsubscribed') {
+      const robotsMeta = robots ?? document.createElement('meta');
+      robotsMeta.name = 'robots';
+      robotsMeta.content = 'noindex,nofollow';
+      if (!robots) {
+        document.head.appendChild(robotsMeta);
+      }
+    } else {
+      robots?.remove();
+    }
   }, [pathname]);
 
   return null;
