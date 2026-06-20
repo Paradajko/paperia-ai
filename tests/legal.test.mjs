@@ -53,6 +53,21 @@ test('unsubscribed route has private metadata and noindex handling', () => {
   assert.match(routeMetadata, /robots\?\.remove\(\)/);
 });
 
+test('home page exposes Open Graph and Twitter card metadata', () => {
+  const indexHtml = read('index.html');
+
+  assert.match(indexHtml, /property="og:title"/);
+  assert.match(indexHtml, /property="og:description"/);
+  assert.match(indexHtml, /property="og:image"\s+content="https:\/\/riadence\.com\/ria-guide-half\.png"/);
+  assert.match(indexHtml, /property="og:url" content="https:\/\/riadence\.com"/);
+  assert.match(indexHtml, /property="og:type" content="website"/);
+  assert.match(indexHtml, /property="og:site_name" content="Riadence"/);
+  assert.match(indexHtml, /name="twitter:card" content="summary_large_image"/);
+  assert.match(indexHtml, /name="twitter:title"/);
+  assert.match(indexHtml, /name="twitter:description"/);
+  assert.match(indexHtml, /name="twitter:image"\s+content="https:\/\/riadence\.com\/ria-guide-half\.png"/);
+});
+
 test('legal routes and global cookie consent are configured', () => {
   const packageJson = JSON.parse(read('package.json'));
   const app = read('src/App.tsx');
