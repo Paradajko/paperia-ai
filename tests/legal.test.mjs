@@ -98,6 +98,18 @@ test('home page exposes valid Organization and seven-question FAQPage JSON-LD', 
   assert.doesNotMatch(indexHtml, /Review|AggregateRating/);
 });
 
+test('Vercel Web Analytics is installed and rendered at the React root', () => {
+  const packageJson = JSON.parse(read('package.json'));
+  const main = read('src/main.tsx');
+
+  assert.match(packageJson.dependencies?.['@vercel/analytics'] ?? '', /^\^/);
+  assert.match(
+    main,
+    /import \{ Analytics \} from '@vercel\/analytics\/react';/,
+  );
+  assert.match(main, /<Analytics \/>/);
+});
+
 test('legal routes and global cookie consent are configured', () => {
   const packageJson = JSON.parse(read('package.json'));
   const app = read('src/App.tsx');
