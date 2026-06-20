@@ -28,10 +28,12 @@ test('legal routes and global cookie consent are configured', () => {
   assert.match(cookieConsent, /riadence_cookie_consent/);
   assert.match(cookieConsent, /'accepted'/);
   assert.match(cookieConsent, /'declined'/);
-  assert.match(
-    cookieConsent,
-    /We use only essential cookies for site functionality\.\s*No tracking, no analytics\./,
-  );
+  assert.match(cookieConsent, /Cookies &amp; Analytics/);
+  assert.match(cookieConsent, /Vercel Web Analytics/);
+  assert.match(cookieConsent, /fully anonymized/);
+  assert.match(cookieConsent, /uses no cookies/);
+  assert.match(cookieConsent, /Do Not Track/);
+  assert.match(cookieConsent, /aria-label="Close cookies and analytics notice"/);
   assert.match(cookieConsent, /to="\/privacy"/);
 });
 
@@ -63,6 +65,14 @@ test('privacy policy contains the approved controller identity and GDPR disclosu
     privacy,
     /We may send you a 14-day email guide with practical residence tips and case examples\. This is opt-in: you must explicitly agree before we send these emails\. You can unsubscribe anytime using the link in each email footer\./,
   );
+  assert.match(privacy, /title="Analytics"/);
+  assert.match(privacy, /Vercel Web Analytics/);
+  assert.match(privacy, /Counts page views/);
+  assert.match(privacy, /No IP address storage/);
+  assert.match(privacy, /No cross-site tracking/);
+  assert.match(privacy, /Vercel Inc\./);
+  assert.match(privacy, /Art\. 6\(1\)\(f\) GDPR/);
+  assert.match(privacy, /uBlock Origin/);
 });
 
 test('terms contain service limits, governing law, contact, and update date', () => {

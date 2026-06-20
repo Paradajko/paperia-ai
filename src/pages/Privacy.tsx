@@ -201,13 +201,40 @@ export function Privacy() {
         <p>
           Riadence currently uses only essential browser storage needed for
           site functionality, such as remembering your cookie notice choice,
-          session-related state, and your device color preference. We do not
-          use tracking cookies or analytics.
+          session-related state, and your device color preference. Vercel Web
+          Analytics operates without cookies.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="Analytics">
+        <p>
+          We use Vercel Web Analytics to collect anonymized usage statistics
+          about how visitors use our website.
+        </p>
+        <p>What Vercel Web Analytics does:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Counts page views using anonymous, aggregated data;</li>
+          <li>Records traffic sources, countries, and device types;</li>
+          <li>Operates without cookies or personal identifiers.</li>
+        </ul>
+        <p>What Vercel Web Analytics does not do:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>No cookies or persistent identifiers;</li>
+          <li>No IP address storage;</li>
+          <li>No cross-site tracking;</li>
+          <li>No personal data collection.</li>
+        </ul>
+        <p>
+          Data processor: Vercel Inc. (USA parent / EU-FRA data residency).
         </p>
         <p>
-          If we add analytics or other non-essential technologies, we will
-          update this policy and request consent where required before using
-          them.
+          Legal basis: Legitimate interest (Art. 6(1)(f) GDPR) — we need to
+          understand how our website is used to improve it.
+        </p>
+        <p>
+          Opt-out: You can opt out via browser privacy features such as Brave
+          browser, uBlock Origin, or Firefox Enhanced Tracking Protection, or
+          by enabling &apos;Do Not Track&apos; in your browser settings.
         </p>
       </LegalSection>
 
