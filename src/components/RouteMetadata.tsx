@@ -5,17 +5,17 @@ const metadata = {
   landing: {
     title: 'Riadence | AI Residence Guide for Europe',
     description:
-      'Riadence is an AI residence guide that helps non-EU citizens understand residence permit documents, timelines, risks, and expert handoff.',
+      'Get a personalized checklist for your Slovakia residence permit. Riadence guides non-EU citizens through documents, timelines, and official requirements.',
   },
   privacy: {
     title: 'Privacy Policy | Riadence',
     description:
-      'Learn how Riadence collects, uses, stores, and protects personal data under GDPR.',
+      'Learn how Riadence collects, uses, stores, and protects your personal data when you use our AI residence guide for Slovakia, including your GDPR rights.',
   },
   terms: {
     title: 'Terms of Service | Riadence',
     description:
-      'Read the terms for using Riadence, the free AI residence guide for people moving to Slovakia.',
+      'Read the Riadence terms for using our AI residence guide for Slovakia, including service limits, user responsibilities, disclaimers, and governing law.',
   },
 } as const;
 

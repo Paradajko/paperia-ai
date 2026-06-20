@@ -14,6 +14,32 @@ function read(relativePath) {
   }
 }
 
+const seoDescriptions = {
+  home:
+    'Get a personalized checklist for your Slovakia residence permit. Riadence guides non-EU citizens through documents, timelines, and official requirements.',
+  privacy:
+    'Learn how Riadence collects, uses, stores, and protects your personal data when you use our AI residence guide for Slovakia, including your GDPR rights.',
+  terms:
+    'Read the Riadence terms for using our AI residence guide for Slovakia, including service limits, user responsibilities, disclaimers, and governing law.',
+};
+
+test('SEO descriptions are unique, Slovakia-focused, and 150–160 characters', () => {
+  const routeMetadata = read('src/components/RouteMetadata.tsx');
+  const indexHtml = read('index.html');
+  const privacyHtml = read('privacy/index.html');
+  const termsHtml = read('terms/index.html');
+
+  assert.equal(new Set(Object.values(seoDescriptions)).size, 3);
+  for (const description of Object.values(seoDescriptions)) {
+    assert.ok(description.length >= 150 && description.length <= 160);
+    assert.match(description, /Slovakia/);
+    assert.match(routeMetadata, new RegExp(description.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
+  assert.match(indexHtml, new RegExp(seoDescriptions.home.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(privacyHtml, new RegExp(seoDescriptions.privacy.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  assert.match(termsHtml, new RegExp(seoDescriptions.terms.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+});
+
 test('legal routes and global cookie consent are configured', () => {
   const packageJson = JSON.parse(read('package.json'));
   const app = read('src/App.tsx');
