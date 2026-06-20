@@ -68,6 +68,36 @@ test('home page exposes Open Graph and Twitter card metadata', () => {
   assert.match(indexHtml, /name="twitter:image"\s+content="https:\/\/riadence\.com\/ria-guide-half\.png"/);
 });
 
+test('home page exposes valid Organization and seven-question FAQPage JSON-LD', () => {
+  const indexHtml = read('index.html');
+  const schemas = [...indexHtml.matchAll(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
+  )].map((match) => JSON.parse(match[1]));
+
+  assert.equal(schemas.length, 2);
+  const organization = schemas.find((schema) => schema['@type'] === 'Organization');
+  const faqPage = schemas.find((schema) => schema['@type'] === 'FAQPage');
+
+  assert.deepEqual(organization, {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Riadence',
+    url: 'https://riadence.com',
+    logo: 'https://riadence.com/ria-guide-half.png',
+    description: 'AI residence guide for non-EU citizens in Slovakia',
+    sameAs: [],
+  });
+  assert.equal(faqPage.mainEntity.length, 7);
+  assert.ok(faqPage.mainEntity.every(
+    (item) =>
+      item['@type'] === 'Question' &&
+      item.name &&
+      item.acceptedAnswer?.['@type'] === 'Answer' &&
+      item.acceptedAnswer.text,
+  ));
+  assert.doesNotMatch(indexHtml, /Review|AggregateRating/);
+});
+
 test('legal routes and global cookie consent are configured', () => {
   const packageJson = JSON.parse(read('package.json'));
   const app = read('src/App.tsx');
