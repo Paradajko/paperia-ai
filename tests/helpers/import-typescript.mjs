@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, rmSync, symlinkSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, rmSync, symlinkSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -19,6 +19,8 @@ export async function importTypescriptModule(repoRoot, relativePath, label) {
       'ES2022',
       '--moduleResolution',
       'bundler',
+      '--jsx',
+      'react-jsx',
       '--rootDir',
       repoRoot,
       '--outDir',
@@ -33,6 +35,13 @@ export async function importTypescriptModule(repoRoot, relativePath, label) {
     ],
     { cwd: repoRoot },
   );
+
+  const riaAvatar = resolve(repoRoot, 'src/assets/ria-guide-half.png');
+  if (existsSync(riaAvatar)) {
+    const outputAssetDir = resolve(tempDir, 'src/assets');
+    mkdirSync(outputAssetDir, { recursive: true });
+    copyFileSync(riaAvatar, resolve(outputAssetDir, 'ria-guide-half.png'));
+  }
 
   const generatedPath = relativePath.replace(/\.tsx?$/, '.js');
   return import(

@@ -7,11 +7,11 @@ import {
   Text,
   View,
 } from '@react-pdf/renderer';
-import riaGuide from '../assets/ria-guide-half.png';
+import type { SourceObject } from '@react-pdf/types';
 import {
   buildChecklistContent,
   type ChecklistApplicantData,
-} from './pdf-data';
+} from './pdf-data.js';
 
 const colors = {
   ink: '#0B1726',
@@ -173,8 +173,10 @@ const styles = StyleSheet.create({
 
 export function ResidenceChecklistPDF({
   applicantData,
+  avatarSource,
 }: {
   applicantData: ChecklistApplicantData;
+  avatarSource: SourceObject;
 }) {
   const content = buildChecklistContent(applicantData);
 
@@ -185,7 +187,7 @@ export function ResidenceChecklistPDF({
       subject="General residence checklist information for Slovakia"
     >
       <Page size="A4" style={[styles.page, styles.cover]}>
-        <Image src={riaGuide} style={styles.avatar} />
+        <Image src={avatarSource} style={styles.avatar} />
         <Text style={styles.eyebrow}>Riadence · prepared with Ria</Text>
         <Text style={styles.title}>Your Residence Checklist for Slovakia</Text>
         <Text style={styles.subtitle}>

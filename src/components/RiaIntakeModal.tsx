@@ -10,6 +10,7 @@ import {
   type WizardStep,
 } from '../lib/intake';
 import { saveLead } from '../lib/leads';
+import { downloadChecklistPdf } from '../lib/pdf-download';
 import {
   createInitialRiaMessage,
   requestRiaReply,
@@ -226,37 +227,16 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     try {
       setIsPdfGenerating(true);
       setPdfError('');
-      const response = await fetch('/api/generate-pdf', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: values.name,
-          nationality: values.nationality,
-          currentLocation: values.currentLocation,
-          purpose: values.purpose,
-          statusReason: values.statusReason,
-          documents: values.documents,
-          concern: values.concern,
-          email: values.email,
-        }),
+      await downloadChecklistPdf({
+        name: values.name,
+        nationality: values.nationality,
+        currentLocation: values.currentLocation,
+        purpose: values.purpose,
+        statusReason: values.statusReason,
+        documents: values.documents,
+        concern: values.concern,
+        email: values.email,
       });
-      if (!response.ok) {
-        throw new Error('PDF generation failed');
-      }
-      const blob = await response.blob();
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      const nationalitySlug = values.nationality
-        .toLocaleLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '');
-
-      link.href = url;
-      link.download = `paperia-slovakia-checklist-${nationalitySlug || 'applicant'}.pdf`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1_000);
     } catch (error: unknown) {
       console.error('PDF generation failed:', error);
       setPdfError(t('wizard.pdfError'));

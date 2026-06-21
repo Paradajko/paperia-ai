@@ -1,4 +1,5 @@
 import { pdf } from '@react-pdf/renderer';
+import { readFile } from 'node:fs/promises';
 
 import {
   ResidenceChecklistPDF,
@@ -299,8 +300,11 @@ async function streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
 
 export default createGeneratePdfHandler({
   renderPdf: async (applicantData) => {
+    const avatarSource = await readFile(
+      new URL('../src/assets/ria-guide-half.png', import.meta.url),
+    );
     const stream = await pdf(
-      ResidenceChecklistPDF({ applicantData }),
+      ResidenceChecklistPDF({ applicantData, avatarSource }),
     ).toBuffer();
     return streamToBuffer(stream);
   },
