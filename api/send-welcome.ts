@@ -26,6 +26,7 @@ type WelcomeRequest = {
   nationality?: string;
   destinationCountry?: string;
   residenceType?: string;
+  locale?: 'en' | 'sk' | 'rs' | 'ua';
 };
 
 type SendEmail = (
@@ -56,6 +57,10 @@ function parseWelcomeRequest(body: unknown): WelcomeRequest | null {
         nationality: optionalString(body, 'nationality'),
         destinationCountry: optionalString(body, 'destinationCountry'),
         residenceType: optionalString(body, 'residenceType'),
+        locale:
+          body.locale === 'sk' || body.locale === 'rs' || body.locale === 'ua'
+            ? body.locale
+            : 'en',
       }
     : null;
 }

@@ -188,14 +188,17 @@ test('terms contain service limits, governing law, contact, and update date', ()
 test('footer and FAQ expose legal links', () => {
   const footer = read('src/components/Footer.tsx');
   const faq = read('src/components/FAQ.tsx');
+  const english = read('src/locales/en/translation.json');
 
   assert.match(footer, /to="\/privacy"/);
-  assert.match(footer, /Privacy Policy/);
+  assert.match(footer, /t\('common\.privacy'\)/);
   assert.match(footer, /to="\/terms"/);
-  assert.match(footer, /Terms of Service/);
+  assert.match(footer, /t\('common\.terms'\)/);
   assert.match(footer, /mailto:hello@riadence\.com/);
   assert.match(faq, /to="\/privacy"/);
   assert.match(faq, /to="\/terms"/);
+  assert.match(english, /Privacy Policy/);
+  assert.match(english, /Terms of Service/);
 });
 
 test('legal metadata, sitemap, robots, and Vercel routing are configured', () => {

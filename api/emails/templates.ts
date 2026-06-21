@@ -12,6 +12,7 @@ export type EmailTemplateContext = {
   destinationCountry?: string | null;
   residenceType?: string | null;
   unsubscribeUrl: string;
+  locale?: 'en' | 'sk' | 'rs' | 'ua';
 };
 
 export type SequenceEmail = {
@@ -53,6 +54,7 @@ function plain(value: string | null | undefined, fallback: string): string {
 }
 
 function welcome(context: EmailTemplateContext): TemplateBody {
+  const locale = context.locale ?? 'en';
   const greeting = plain(context.name, 'there');
   const details = [
     context.nationality
@@ -73,6 +75,58 @@ function welcome(context: EmailTemplateContext): TemplateBody {
         .map((item) => `<li>${escapeHtml(item)}</li>`)
         .join('')}</ul>`
     : '';
+
+  if (locale === 'sk') {
+    return {
+      subject: 'Váš checklist pre pobyt na Slovensku je pripravený',
+      heading: 'Váš checklist pre Slovensko je pripravený',
+      text: `Dobrý deň, ${greeting},
+
+Ria uložila Vaše odpovede a pripravila východiskový bod pre pobyt na Slovensku.${textDetails}
+
+V Riadence môžete:
+- skontrolovať pravdepodobný typ pobytu a plán dokumentov
+- stiahnuť si personalizovaný PDF checklist
+- položiť Rii praktické doplňujúce otázky`,
+      html: `<p>Dobrý deň, ${escapeHtml(greeting)},</p><p>Ria uložila Vaše odpovede a pripravila východiskový bod pre pobyt na Slovensku.</p>${htmlDetails}<p><strong>Čo môžete urobiť ďalej</strong></p><ul><li>Skontrolovať typ pobytu a plán dokumentov</li><li>Stiahnuť personalizovaný PDF checklist</li><li>Položiť Rii praktické otázky</li></ul>`,
+      ctaLabel: 'Otvoriť Riadence',
+      ctaUrl: RIADENCE_URL,
+    };
+  }
+  if (locale === 'rs') {
+    return {
+      subject: 'Vaša kontrolna lista za boravak u Slovačkoj je spremna',
+      heading: 'Vaša kontrolna lista za Slovačku je spremna',
+      text: `Poštovani/a ${greeting},
+
+Ria je sačuvala Vaše odgovore i pripremila početnu tačku za boravak u Slovačkoj.${textDetails}
+
+U Riadence-u možete:
+- pregledati verovatan osnov boravka i plan dokumenata
+- preuzeti personalizovanu PDF kontrolnu listu
+- postaviti Rii praktična dodatna pitanja`,
+      html: `<p>Poštovani/a ${escapeHtml(greeting)},</p><p>Ria je sačuvala Vaše odgovore i pripremila početnu tačku za boravak u Slovačkoj.</p>${htmlDetails}<p><strong>Sledeći koraci</strong></p><ul><li>Pregledajte osnov boravka i plan dokumenata</li><li>Preuzmite personalizovanu PDF kontrolnu listu</li><li>Postavite Rii praktična pitanja</li></ul>`,
+      ctaLabel: 'Otvorite Riadence',
+      ctaUrl: RIADENCE_URL,
+    };
+  }
+  if (locale === 'ua') {
+    return {
+      subject: 'Ваш чекліст для проживання у Словаччині готовий',
+      heading: 'Ваш чекліст для Словаччини готовий',
+      text: `Вітаємо, ${greeting}!
+
+Ria зберегла Ваші відповіді та підготувала початковий план для проживання у Словаччині.${textDetails}
+
+У Riadence Ви можете:
+- переглянути ймовірну підставу проживання та план документів
+- завантажити персоналізований PDF-чекліст
+- поставити Ria практичні додаткові запитання`,
+      html: `<p>Вітаємо, ${escapeHtml(greeting)}!</p><p>Ria зберегла Ваші відповіді та підготувала початковий план для проживання у Словаччині.</p>${htmlDetails}<p><strong>Наступні кроки</strong></p><ul><li>Перегляньте підставу проживання та план документів</li><li>Завантажте персоналізований PDF-чекліст</li><li>Поставте Ria практичні запитання</li></ul>`,
+      ctaLabel: 'Відкрити Riadence',
+      ctaUrl: RIADENCE_URL,
+    };
+  }
 
   return {
     subject: 'Your Slovakia residence checklist is ready inside',

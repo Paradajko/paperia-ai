@@ -17,6 +17,8 @@ type ServerlessResponse = {
   json(body: unknown): void;
 };
 
+type AppLocale = 'en' | 'sk' | 'rs' | 'ua';
+
 export type CompleteIntakeInput = {
   email: string;
   name?: string;
@@ -27,6 +29,7 @@ export type CompleteIntakeInput = {
   documents: string[];
   concern: string;
   emailSequenceConsent: boolean;
+  locale: AppLocale;
 };
 
 type CompleteResult = {
@@ -62,6 +65,11 @@ function text(body: Record<string, unknown>, key: string): string {
   return typeof body[key] === 'string' ? body[key].trim() : '';
 }
 
+function locale(body: Record<string, unknown>): AppLocale {
+  const value = text(body, 'locale');
+  return value === 'sk' || value === 'rs' || value === 'ua' ? value : 'en';
+}
+
 function parseInput(body: unknown): CompleteIntakeInput | null {
   if (!isRecord(body)) {
     return null;
@@ -90,6 +98,7 @@ function parseInput(body: unknown): CompleteIntakeInput | null {
       : [],
     concern,
     emailSequenceConsent: body.emailSequenceConsent === true,
+    locale: locale(body),
   };
 }
 
@@ -133,6 +142,7 @@ export function createCompleteIntakeHandler(dependencies: Dependencies) {
         nationality: input.nationality,
         destinationCountry: 'Slovakia',
         residenceType: input.purpose,
+        locale: input.locale,
         unsubscribeUrl: buildUnsubscribeUrl(
           input.email,
           dependencies.unsubscribeSecret,
@@ -194,6 +204,7 @@ export default async function handler(
         input_documents: input.documents,
         input_concern: input.concern,
         input_email_sequence_consent: input.emailSequenceConsent,
+        input_locale: input.locale,
       });
       if (error || !data?.[0]) {
         throw error ?? new Error('Completion RPC returned no data');

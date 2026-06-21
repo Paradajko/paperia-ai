@@ -56,6 +56,7 @@ test('saveLead posts the intake to the server completion endpoint', async () => 
     documents: ['Passport'],
     concern: '',
     emailSequenceConsent: true,
+    locale: 'en',
   };
 
   const result = await saveLead(values, fetcher);
@@ -86,6 +87,7 @@ test('saveLead defaults missing consent to false', async () => {
   );
 
   assert.equal(body.emailSequenceConsent, false);
+  assert.equal(body.locale, 'en');
 });
 
 test('saveLead returns an error when the completion endpoint fails', async () => {

@@ -50,11 +50,10 @@ const completeValues = {
 
 test('email sequence consent defaults to false in the wizard source', () => {
   const source = readFileSync(resolve(repoRoot, 'src/components/RiaIntakeModal.tsx'), 'utf8');
+  const english = readFileSync(resolve(repoRoot, 'src/locales/en/translation.json'), 'utf8');
   assert.match(source, /emailSequenceConsent:\s*false/);
-  assert.match(
-    source,
-    /Send me the 14-day Riadence email guide with practical residence tips and case examples\. I can unsubscribe anytime\./,
-  );
+  assert.match(source, /t\('wizard\.consent'\)/);
+  assert.match(english, /Send me the 14-day Riadence email guide/);
   assert.match(source, /to="\/privacy"/);
 });
 

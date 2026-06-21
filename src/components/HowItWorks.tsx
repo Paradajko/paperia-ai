@@ -1,33 +1,22 @@
-const steps = [
-  {
-    title: 'Answer 5 questions',
-    text: 'Tell Ria where you are from, why you are moving to Slovakia, and what you already have.',
-  },
-  {
-    title: 'Ria prepares your route',
-    text: 'Ria organizes your answers into a likely residence route, document gaps, and practical next steps.',
-  },
-  {
-    title: 'Download your PDF checklist',
-    text: 'Keep a personalized checklist with your route, document plan, timeline, official links, and disclaimer.',
-  },
-  {
-    title: 'Get email follow-up',
-    text: 'Receive your checklist reminder and return to Ria with follow-up questions after the wizard.',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export function HowItWorks() {
+  const { t } = useTranslation();
+  const steps = t('howItWorks.steps', { returnObjects: true }) as Array<{
+    title: string;
+    text: string;
+  }>;
+
   return (
     <section id="how-it-works" className="bg-porcelain py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-harbor">How it works</p>
+          <p className="text-sm font-semibold uppercase tracking-wide text-harbor">{t('howItWorks.eyebrow')}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Five questions. One practical Slovakia checklist.
+            {t('howItWorks.title')}
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600">
-            The wizard does the structured work first. Ria chat is available afterwards when you need clarification.
+            {t('howItWorks.description')}
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

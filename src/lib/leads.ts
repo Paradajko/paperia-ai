@@ -1,3 +1,5 @@
+type AppLocale = 'en' | 'sk' | 'rs' | 'ua';
+
 export type LeadFormValues = {
   email: string;
   name?: string;
@@ -8,6 +10,7 @@ export type LeadFormValues = {
   documents: string[];
   concern: string;
   emailSequenceConsent?: boolean;
+  locale: AppLocale;
 };
 
 type LeadSaveResult = {
@@ -30,6 +33,7 @@ export async function saveLead(
       body: JSON.stringify({
         ...values,
         emailSequenceConsent: values.emailSequenceConsent ?? false,
+        locale: values.locale ?? 'en',
       }),
     });
     if (!response.ok) {

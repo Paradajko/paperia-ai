@@ -1,14 +1,360 @@
 {
-  "common": {},
-  "header": {},
-  "landing": {},
-  "footer": {},
-  "howItWorks": {},
-  "checklistFlow": {},
-  "agency": {},
-  "faq": {},
-  "pricing": {},
-  "wizard": {},
-  "email": {},
-  "metadata": {}
+  "common": {
+    "getChecklist": "Preuzmite besplatnu kontrolnu listu",
+    "samplePdf": "Pogledajte primer PDF-a",
+    "disclaimer": "Nisam pravnik. Ovo su samo opšte smernice, a ne pravni savet.",
+    "privacy": "Politika privatnosti",
+    "terms": "Uslovi korišćenja",
+    "contact": "Kontakt",
+    "pricing": "Cene",
+    "faq": "Česta pitanja",
+    "close": "Zatvori",
+    "back": "Nazad",
+    "next": "Dalje"
+  },
+  "header": {
+    "tagline": "Vaš AI vodič za boravak u Slovačkoj",
+    "nav": {
+      "how": "Kako funkcioniše",
+      "sample": "Primer PDF-a",
+      "agencies": "Za agencije",
+      "pricing": "Cene",
+      "faq": "Česta pitanja"
+    }
+  },
+  "landing": {
+    "badge": "Besplatna kontrolna lista za boravak u Slovačkoj",
+    "heroBefore": "Srpski ste državljanin u inostranstvu ili deo dijaspore i planirate preseljenje u",
+    "heroCountry": "Slovačku?",
+    "heroDescription": "Odgovorite na pet praktičnih pitanja i Ria će pripremiti personalizovanu PDF kontrolnu listu za verovatnu osnovu boravka, dokumenta, rokove i sledeće korake.",
+    "problemEyebrow": "Problem sa administracijom",
+    "problemTitle": "Dokumentacija za boravak je zbunjujuća kada je niko jasno ne objasni.",
+    "problemIntro": "Riadence Vam daje strukturiran prvi korak: kontrolnu listu za Slovačku, rezultat u PDF-u i jasan signal kada složen slučaj zahteva licenciranu pomoć.",
+    "problems": [
+      {
+        "title": "Nejasne liste dokumenata",
+        "description": "Različiti izvori navode različite zahteve, pa je teško utvrditi šta važi baš za Vaš slučaj."
+      },
+      {
+        "title": "Prerani troškovi agencije",
+        "description": "Mnogi plaćaju pre nego što razumeju verovatan postupak i šta im nedostaje."
+      },
+      {
+        "title": "Rizici prevoda i apostila",
+        "description": "Dokument može delovati spremno dok organ ne zatraži prevod, legalizaciju ili noviju verziju."
+      },
+      {
+        "title": "Strah od jedne greške",
+        "description": "Podnosioci često brinu da jedan dokaz koji nedostaje ili pogrešan datum može odložiti ceo postupak."
+      },
+      {
+        "title": "Zabuna oko osnova boravka",
+        "description": "Zaposlenje, studije, porodica i poslovanje mogu delovati slično dok ne počne priprema dokumenata."
+      },
+      {
+        "title": "Termin deluje presudno",
+        "description": "Stresno je doći bez saznanja koja pitanja ili dokumenta koja nedostaju mogu biti otvorena."
+      }
+    ],
+    "clarityEyebrow": "Od zabune do jasnijeg plana",
+    "clarityTitle": "Šta Vam strukturirana kontrolna lista pomaže da izbegnete",
+    "clarityDescription": "Vaši odgovori postaju jasniji postupak, plan dokumenata, PDF vremenska linija i sažetak za stručnjaka.",
+    "avoidItems": [
+      "Plaćanje agencije pre nego što razumete svoj slučaj",
+      "Nedostajuće prevode ili apostile",
+      "Pogrešan osnov boravka",
+      "Nejasne zahteve za dokumenta",
+      "Iznenađenja u vezi sa rokovima",
+      "Odlazak na termin bez pripreme"
+    ],
+    "pricingEyebrow": "Jednostavne cene",
+    "pricingTitle": "Riadence je besplatan. Stručna pomoć se ugovara pojedinačno.",
+    "pricingDescription": "Nema mesečne pretplate. Standardna izrada kontrolne liste ostaje besplatna; složen pravni rad naplaćuje licencirana agencija ili pravnik koji vodi slučaj.",
+    "pricingCards": [
+      {
+        "title": "Riadence kontrolna lista",
+        "price": "Besplatno",
+        "description": "Popunite vodič za Slovačku, preuzmite personalizovanu PDF listu, primite e-mail nastavak i postavite Rii praktična pitanja.",
+        "badge": "Uvek besplatno"
+      },
+      {
+        "title": "Licencirana agencija ili pravnik",
+        "price": "Prema slučaju",
+        "description": "Opciona plaćena podrška za azil, odbranu od deportacije, žalbe, ranija odbijanja ili posebno složeno spajanje porodice.",
+        "badge": "Samo složeni slučajevi"
+      }
+    ],
+    "workspaceTitle": "Radni prostor za agencije",
+    "workspaceDescription": "Strukturiran prijem, višejezična uputstva i alati za predaju slučaja stručnjacima.",
+    "comingSoon": "Uskoro",
+    "finalEyebrow": "Završna provera",
+    "finalTitle": "Započnite kontrolnu listu za boravak u Slovačkoj.",
+    "finalDescription": "Odgovorite na pet pitanja, preuzmite personalizovani PDF i zatim postavite Rii dodatna pitanja.",
+    "trust": [
+      "Samo opšte smernice",
+      "Nije pravni savet",
+      "Predaja stručnjaku kada je potrebna"
+    ]
+  },
+  "footer": {
+    "description": "Ria je Vaš praktični vodič za organizovanje kontrolne liste za boravak u Slovačkoj. Nisam pravnik. Ovo su opšte informacije, a ne pravni savet. Za složene slučajeve obratite se licenciranom stručnjaku za imigraciju."
+  },
+  "howItWorks": {
+    "eyebrow": "Kako funkcioniše",
+    "title": "Pet pitanja. Jedna praktična kontrolna lista za Slovačku.",
+    "description": "Strukturirani vodič prvo obavlja osnovni posao. Nakon toga možete pitati Riu za pojašnjenje.",
+    "steps": [
+      {
+        "title": "Odgovorite na 5 pitanja",
+        "text": "Recite Rii odakle dolazite, zašto se selite u Slovačku i šta već imate."
+      },
+      {
+        "title": "Ria priprema Vaš postupak",
+        "text": "Ria organizuje odgovore u verovatan osnov boravka, nedostatke u dokumentima i praktične sledeće korake."
+      },
+      {
+        "title": "Preuzmite PDF kontrolnu listu",
+        "text": "Sačuvajte personalizovanu listu sa postupkom, planom dokumenata, rokovima, zvaničnim linkovima i napomenom."
+      },
+      {
+        "title": "Dobijte e-mail nastavak",
+        "text": "Primite podsetnik i vratite se Rii sa dodatnim pitanjima nakon vodiča."
+      }
+    ]
+  },
+  "checklistFlow": {
+    "eyebrow": "Počnite ovde",
+    "title": "Napravite kontrolnu listu za Slovačku korak po korak.",
+    "description": "Riadence pretvara pet strukturiranih odgovora u praktičnu PDF listu. Za ovu verziju nisu potrebni nalog ni otpremanje dokumenata.",
+    "steps": [
+      {
+        "title": "Izaberite Slovačku",
+        "text": "Potvrdite odredište i pokrenite usmereni vodič za boravak."
+      },
+      {
+        "title": "Opišite svoju situaciju",
+        "text": "Dodajte državljanstvo, trenutnu lokaciju, svrhu i sadašnji status."
+      },
+      {
+        "title": "Označite dokumenta",
+        "text": "Izaberite dokumenta koja imate i recite Rii šta Vas najviše brine."
+      },
+      {
+        "title": "Preuzmite PDF",
+        "text": "Sačuvajte podatke, pregledajte postupak i preuzmite personalizovanu kontrolnu listu."
+      }
+    ],
+    "noteTitle": "Besplatne smernice sa PDF-om",
+    "noteText": "Počnite strukturiranim postupkom i planom dokumenata. Ria nije pravnik, ne podnosi zahteve i ne može garantovati odobrenje."
+  },
+  "agency": {
+    "eyebrow": "Za stručnjake",
+    "title": "Ria ne zamenjuje stručnjake. Ona priprema bolje informisane klijente.",
+    "description": "Riadence ostaje besplatan za standardnu pripremu kontrolne liste. Licencirane agencije i pravnici su najkorisniji za zaista složene slučajeve: azil, deportaciju, žalbe, prethodna odbijanja ili teško spajanje porodice.",
+    "cta": "Postanite partner Riadence-a",
+    "intake": "Stručni prijem",
+    "caseTitle": "Slučaj pripremljen uz Riu",
+    "beta": "Partnerska beta",
+    "rows": [
+      {
+        "label": "Vrsta slučaja",
+        "value": "Žalba nakon prethodnog odbijanja"
+      },
+      {
+        "label": "Nivo rizika",
+        "value": "Potreban stručni pregled"
+      },
+      {
+        "label": "Dokumenta koja nedostaju",
+        "value": "3 prioritetne stavke"
+      },
+      {
+        "label": "Pripremljen sažetak",
+        "value": "Spremno za konsultaciju"
+      },
+      {
+        "label": "Jezik klijenta",
+        "value": "Engleski / ukrajinski / srpski / slovački"
+      }
+    ],
+    "step": "Korak",
+    "workflow": [
+      "Klijent odgovara",
+      "Ria strukturira",
+      "Stručnjak pregleda"
+    ],
+    "summaryTitle": "Pripremljen sažetak klijenta",
+    "summaryText": "Podnosilac ima prethodno odbijanje i spajanje porodice sa spornim dokazima. Ria je organizovala vremensku liniju i nedostajuću dokumentaciju za pregled licenciranog stručnjaka."
+  },
+  "faq": {
+    "eyebrow": "Česta pitanja",
+    "title": "Prvo smernice. Stručna podrška kada je potrebna.",
+    "description": "Odgovori za srpske državljane u inostranstvu, dijasporu i druge podnosioce zahteva izvan EU koji planiraju boravak u Slovačkoj.",
+    "items": [
+      {
+        "question": "Dolazim iz Srbije — da li mi treba radna dozvola za Slovačku?",
+        "answer": "Bezvizni ulazak za kratku posetu nije isto što i pravo na rad ili život u Slovačkoj. Srpskim državljanima je za zaposlenje uglavnom potrebno odgovarajuće radno i boravišno odobrenje. Proverite aktuelne uslove kod slovačkih organa ili licenciranog pravnika."
+      },
+      {
+        "question": "Po čemu se ovo razlikuje od pitanja upućenog ChatGPT-u?",
+        "answer": "Riadence počinje strukturiranim vodičem usmerenim na Slovačku. Organizuje Vaše podatke u postupak i plan dokumenata i daje personalizovanu PDF kontrolnu listu."
+      },
+      {
+        "question": "Šta sadrži besplatna PDF kontrolna lista?",
+        "answer": "Sadrži verovatan postupak, dokumenta koja imate, moguće nedostatke, podsetnike za prevod ili apostil, vremensku liniju, zvanične linkove i pitanja za proveru."
+      },
+      {
+        "question": "Da li je Riadence advokatska kancelarija? Možete li garantovati vizu?",
+        "answer": "Ne. Riadence nije advokatska kancelarija, Ria nije pravnik i niko ne može garantovati ishod boravišnog ili viznog postupka. Konačnu odluku donosi nadležni organ."
+      },
+      {
+        "question": "Kada stupaju na snagu izmene slovačkog zakona o boravku iz 2026?",
+        "answer": "Ne postoji jedan datum za sve izmene iz 2026. Svaka izmena može imati svoj datum primene i prelazna pravila. Proverite Slov-Lex i potvrdite zahtev kod nadležnog organa ili pravnika."
+      },
+      {
+        "question": "Šta se dešava nakon preuzimanja liste? Da li šaljete e-mail?",
+        "answer": "Dobijate uvodni e-mail na adresu koju ste naveli. Ria ostaje dostupna nakon vodiča za praktična pitanja. Riadence ne podnosi zahtev umesto Vas."
+      },
+      {
+        "question": "Da li rešavate složene slučajeve poput azila ili deportacije?",
+        "answer": "Azil, odbrana od deportacije, žalbe, prethodna odbijanja i drugi visokorizični slučajevi zahtevaju licenciranog stručnjaka. Riadence može preporučiti partnersku agenciju ili pravnika."
+      }
+    ],
+    "legalBefore": "Nisam pravnik. Riadence i Ria pružaju opšte informacije, a ne pravni savet. Aktuelna pravila proverite kod zvaničnog slovačkog izvora ili licenciranog pravnika. Pročitajte našu",
+    "legalAnd": "i"
+  },
+  "pricing": {
+    "cardLabel": "Opcija cene"
+  },
+  "wizard": {
+    "guideLabel": "Ria · Vaš vodič za imigraciju",
+    "completeTitle": "Vaša kontrolna lista za Slovačku",
+    "stepLabels": [
+      "Vaše odredište",
+      "Vaša situacija",
+      "Dokumenta koja imate",
+      "Vaše najvažnije pitanje",
+      "Preuzmite kontrolnu listu"
+    ],
+    "stepProgress": "Korak {{step}} od 5",
+    "guideTitle": "Pet usmerenih koraka umesto otvorenog razgovora.",
+    "guideDescriptions": [
+      "Riadence je trenutno usmeren na državljane zemalja izvan EU koji se sele u Slovačku.",
+      "Ovi odgovori pomažu Rii da utvrdi najrelevantniji osnov boravka.",
+      "Označavanje dokumenata koje imate čini PDF plan korisnijim.",
+      "Recite Rii koju nejasnoću kontrolna lista treba prvo da reši.",
+      "Dodajte e-mail kako bismo sačuvali podatke, pripremili listu i poslali nastavak."
+    ],
+    "guideDisclaimer": "Nisam pravnik. Ria pruža opšte informacije, a ne pravni savet, i ne može garantovati odobrenje.",
+    "saving": "Čuvamo i pripremamo...",
+    "showChecklist": "Prikaži Ria kontrolnu listu",
+    "submitError": "Došlo je do greške. Pokušajte ponovo.",
+    "pdfError": "PDF trenutno nije moguće napraviti. Pokušajte ponovo.",
+    "destinationTitle": "Gde se selite?",
+    "destinationDescription": "Počinjemo sa jednim odredištem kako bi kontrolna lista ostala usmerena i praktična.",
+    "destinationLabel": "Odredišna zemlja",
+    "destinationValue": "Slovačka",
+    "situationTitle": "Kakva je Vaša trenutna situacija?",
+    "situationDescription": "Recite Rii dovoljno da prepozna verovatan postupak bez otpremanja ličnih dokumenata.",
+    "nationalityLabel": "Državljanstvo",
+    "nationalityPlaceholder": "Izaberite državljanstvo",
+    "locationLabel": "Trenutna lokacija",
+    "locationPlaceholder": "Gde se sada nalazite?",
+    "purposeLabel": "Svrha boravka",
+    "purposePlaceholder": "Izaberite svrhu",
+    "statusLabel": "Trenutni status / razlog",
+    "statusPlaceholder": "Šta Vas najbolje opisuje?",
+    "nationalities": [
+      "Ukrajina",
+      "Srbija",
+      "Severna Makedonija",
+      "Bosna i Hercegovina",
+      "Crna Gora",
+      "Albanija",
+      "Kosovo",
+      "Turska",
+      "Indija",
+      "Gruzija",
+      "Vijetnam",
+      "Druga zemlja izvan EU"
+    ],
+    "locations": [
+      "Izvan Slovačke",
+      "Već u Slovačkoj",
+      "U drugoj zemlji EU",
+      "Još nisam siguran/na"
+    ],
+    "statusReasons": [
+      "Imam poslodavca ili ponudu za posao",
+      "Primljen/a sam u školu",
+      "Pridružujem se porodici",
+      "Imam poslovni plan",
+      "Još upoređujem opcije",
+      "Nisam siguran/na"
+    ],
+    "purposes": {
+      "employment": "Zaposlenje",
+      "study": "Studije",
+      "family": "Spajanje porodice",
+      "business": "Poslovanje / samozapošljavanje",
+      "other": "Drugo / nisam siguran/na"
+    },
+    "documentsTitle": "Dokumenta koja već imate",
+    "documentsDescription": "Označite šta već imate spremno.",
+    "documents": [
+      "Pasoš",
+      "Izvod iz kaznene evidencije",
+      "Dokaz o smeštaju",
+      "Dokaz o finansijskim sredstvima",
+      "Ugovor o radu ili ponuda za posao",
+      "Potvrda o prijemu u školu",
+      "Dokaz o porodičnom odnosu",
+      "Poslovni plan ili preduzetnička dokumenta",
+      "Dokaz o zdravstvenom osiguranju",
+      "Fotografije za pasoš"
+    ],
+    "concernTitle": "Šta Vas najviše brine u ovom postupku?",
+    "concernDescription": "Ria će to koristiti da odredi prioritet objašnjenja u Vašoj prvoj listi.",
+    "concernLabel": "Vaše najvažnije pitanje",
+    "concernPlaceholder": "Primer: Nisam siguran/na da li izvodu iz kaznene evidencije treba apostil.",
+    "emailTitle": "Preuzmite kontrolnu listu",
+    "emailDescription": "Dodajte e-mail kako bi Riadence sačuvao odgovore i poslao nastavak.",
+    "nameLabel": "Ime (opciono)",
+    "namePlaceholder": "Vaše ime",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "vi@example.com",
+    "consent": "Šaljite mi 14-dnevni Riadence e-mail vodič sa praktičnim savetima i primerima. Mogu da se odjavim u bilo kom trenutku.",
+    "finalDisclaimer": "Nisam pravnik. Ova kontrolna lista sadrži opšte informacije, a ne pravni savet. Detalje proverite kod zvaničnog slovačkog izvora ili licenciranog pravnika.",
+    "errors": {
+      "nationality": "Izaberite državljanstvo.",
+      "purpose": "Izaberite svrhu boravka.",
+      "concern": "Recite Rii šta Vas najviše brine.",
+      "emailRequired": "Unesite e-mail.",
+      "emailInvalid": "Unesite važeću e-mail adresu."
+    },
+    "completeEyebrow": "Vodič je završen",
+    "completeHeading": "Vaš postupak za Slovačku je spreman za pregled.",
+    "preparedFor": "Pripremljeno za {{person}} iz zemlje {{nationality}}. Ria odgovara na Vaše prvo pitanje.",
+    "downloadTitle": "Preuzmite PDF",
+    "downloadDescription": "Ovde će biti dostupni personalizovan postupak, plan dokumenata, vremenska linija, zvanični linkovi i pravna napomena.",
+    "generatingPdf": "Pripremamo Vaš PDF...",
+    "downloadPdf": "Preuzmite PDF kontrolnu listu",
+    "askRia": "Pitajte Riu",
+    "followUpDescription": "Dodatna pitanja su dostupna nakon strukturiranog vodiča.",
+    "preparingResponse": "Ria priprema odgovor...",
+    "followUpLabel": "Postavite dodatno pitanje",
+    "followUpPlaceholder": "Pitajte Riu o dokumentima ili sledećim koracima.",
+    "responding": "Ria odgovara...",
+    "conversationDisclaimer": "Nisam pravnik. Ovo su opšte informacije, a ne pravni savet. Odobrenje nije zagarantovano."
+  },
+  "email": {
+    "welcomeSubject": "Vaša kontrolna lista za boravak u Slovačkoj je spremna",
+    "welcomeHeading": "Vaša kontrolna lista za Slovačku je spremna"
+  },
+  "metadata": {
+    "title": "Riadence | AI vodič za boravak u Slovačkoj",
+    "description": "Preuzmite personalizovanu kontrolnu listu za boravak u Slovačkoj. Riadence vodi srpske državljane i dijasporu kroz dokumenta, rokove i zahteve.",
+    "keywords": "boravak, viza, Srbija, Slovačka",
+    "ogLocale": "sr_RS"
+  }
 }

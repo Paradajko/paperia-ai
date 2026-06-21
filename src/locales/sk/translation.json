@@ -1,14 +1,360 @@
 {
-  "common": {},
-  "header": {},
-  "landing": {},
-  "footer": {},
-  "howItWorks": {},
-  "checklistFlow": {},
-  "agency": {},
-  "faq": {},
-  "pricing": {},
-  "wizard": {},
-  "email": {},
-  "metadata": {}
+  "common": {
+    "getChecklist": "Získať bezplatný checklist",
+    "samplePdf": "Zobraziť ukážku PDF",
+    "disclaimer": "Nie som právnik. Ide len o všeobecné usmernenie, nie o právne poradenstvo.",
+    "privacy": "Zásady ochrany súkromia",
+    "terms": "Podmienky používania",
+    "contact": "Kontakt",
+    "pricing": "Cenník",
+    "faq": "Časté otázky",
+    "close": "Zavrieť",
+    "back": "Späť",
+    "next": "Ďalej"
+  },
+  "header": {
+    "tagline": "Váš AI sprievodca pobytom na Slovensku",
+    "nav": {
+      "how": "Ako to funguje",
+      "sample": "Ukážka PDF",
+      "agencies": "Pre agentúry",
+      "pricing": "Cenník",
+      "faq": "Časté otázky"
+    }
+  },
+  "landing": {
+    "badge": "Bezplatný checklist pre pobyt na Slovensku",
+    "heroBefore": "Vraciate sa na Slovensko alebo sa sem sťahujete zo Srbska, Ukrajiny, Indie, Turecka či inej krajiny?",
+    "heroCountry": "Pripravte sa na Slovensko.",
+    "heroDescription": "Odpovedzte na päť praktických otázok a Ria Vám pripraví personalizovaný PDF checklist k pravdepodobnému typu pobytu, dokumentom, termínom a ďalším krokom.",
+    "problemEyebrow": "Problém s administratívou",
+    "problemTitle": "Pobytová agenda je neprehľadná, keď Vám ju nikto jasne nevysvetlí.",
+    "problemIntro": "Riadence Vám poskytne štruktúrovaný prvý krok: checklist pre Slovensko, výsledok vo formáte PDF a jasný signál, kedy zložitý prípad potrebuje licencovanú pomoc.",
+    "problems": [
+      {
+        "title": "Nejasné zoznamy dokumentov",
+        "description": "Rôzne zdroje uvádzajú odlišné požiadavky, preto je ťažké určiť, čo platí práve pre Vás."
+      },
+      {
+        "title": "Predčasné náklady na agentúru",
+        "description": "Mnohí ľudia platia skôr, než pochopia pravdepodobný postup a chýbajúce podklady."
+      },
+      {
+        "title": "Riziká prekladov a apostíl",
+        "description": "Dokument môže pôsobiť pripravený, kým úrad nevyžiada preklad, overenie alebo novšiu verziu."
+      },
+      {
+        "title": "Obava z jednej chyby",
+        "description": "Žiadatelia sa často boja, že jediný chýbajúci doklad alebo nesprávny dátum zdrží celý proces."
+      },
+      {
+        "title": "Nejasný typ pobytu",
+        "description": "Zamestnanie, štúdium, rodina a podnikanie môžu vyzerať podobne, kým nezačne príprava dokumentov."
+      },
+      {
+        "title": "Stres z termínu na úrade",
+        "description": "Je náročné prísť bez istoty, aké otázky alebo chýbajúce dokumenty sa môžu objaviť."
+      }
+    ],
+    "clarityEyebrow": "Od neistoty k jasnejšiemu plánu",
+    "clarityTitle": "Čomu Vám štruktúrovaný checklist pomôže predísť",
+    "clarityDescription": "Vaše odpovede sa zmenia na jasnejší postup, plán dokumentov, časovú os v PDF a súhrn pre odborníka.",
+    "avoidItems": [
+      "Platbe agentúre skôr, než pochopíte svoj prípad",
+      "Chýbajúcim prekladom alebo apostilám",
+      "Nesprávnemu typu pobytu",
+      "Nejasným požiadavkám na dokumenty",
+      "Nečakaným termínom",
+      "Nepripravenému stretnutiu na úrade"
+    ],
+    "pricingEyebrow": "Jednoduchý cenník",
+    "pricingTitle": "Riadence je bezplatné. Odborná pomoc sa rieši individuálne.",
+    "pricingDescription": "Bez mesačného predplatného. Štandardné vytvorenie checklistu zostáva bezplatné; zložitú právnu prácu oceňuje priamo licencovaná agentúra alebo právnik.",
+    "pricingCards": [
+      {
+        "title": "Riadence checklist",
+        "price": "Bezplatne",
+        "description": "Vyplňte sprievodcu pre Slovensko, získajte personalizovaný PDF checklist, e-mailové pokračovanie a možnosť položiť Rii praktické otázky.",
+        "badge": "Vždy bezplatne"
+      },
+      {
+        "title": "Licencovaná agentúra alebo právnik",
+        "price": "Individuálne",
+        "description": "Voliteľná platená pomoc pri azyle, vyhostení, odvolaniach, predchádzajúcich zamietnutiach alebo mimoriadne zložitom zlúčení rodiny.",
+        "badge": "Len zložité prípady"
+      }
+    ],
+    "workspaceTitle": "Pracovný priestor pre agentúry",
+    "workspaceDescription": "Štruktúrovaný zber údajov, viacjazyčné pokyny a nástroje na odovzdanie prípadu odborníkom.",
+    "comingSoon": "Pripravujeme",
+    "finalEyebrow": "Záverečná kontrola",
+    "finalTitle": "Začnite svoj checklist pre pobyt na Slovensku.",
+    "finalDescription": "Odpovedzte na päť otázok, stiahnite si personalizované PDF a potom položte Rii doplňujúce otázky.",
+    "trust": [
+      "Len všeobecné usmernenie",
+      "Nie právne poradenstvo",
+      "Odovzdanie odborníkovi podľa potreby"
+    ]
+  },
+  "footer": {
+    "description": "Ria je Váš praktický sprievodca pri organizovaní checklistu pre pobyt na Slovensku. Nie som právnik. Ide o všeobecné informácie, nie právne poradenstvo. Pri zložitých prípadoch sa obráťte na licencovaného imigračného odborníka."
+  },
+  "howItWorks": {
+    "eyebrow": "Ako to funguje",
+    "title": "Päť otázok. Jeden praktický checklist pre Slovensko.",
+    "description": "Najprv Vás prevedie štruktúrovaný sprievodca. Následne môžete požiadať Riu o vysvetlenie.",
+    "steps": [
+      {
+        "title": "Odpovedzte na 5 otázok",
+        "text": "Povedzte Rii, odkiaľ prichádzate, prečo smerujete na Slovensko a čo už máte pripravené."
+      },
+      {
+        "title": "Ria pripraví Váš postup",
+        "text": "Ria usporiada odpovede do pravdepodobného typu pobytu, chýbajúcich dokumentov a ďalších krokov."
+      },
+      {
+        "title": "Stiahnite si PDF checklist",
+        "text": "Získate personalizovaný checklist s postupom, dokumentmi, časovou osou, oficiálnymi odkazmi a upozornením."
+      },
+      {
+        "title": "Dostanete e-mailové pokračovanie",
+        "text": "Po sprievodcovi dostanete pripomenutie checklistu a môžete sa vrátiť k Rii s ďalšími otázkami."
+      }
+    ]
+  },
+  "checklistFlow": {
+    "eyebrow": "Začnite tu",
+    "title": "Vytvorte si checklist pre Slovensko krok za krokom.",
+    "description": "Riadence zmení päť štruktúrovaných odpovedí na praktický PDF checklist. V tejto verzii nepotrebujete účet ani nahrávať dokumenty.",
+    "steps": [
+      {
+        "title": "Vyberte Slovensko",
+        "text": "Potvrďte cieľovú krajinu a spustite zameraného pobytového sprievodcu."
+      },
+      {
+        "title": "Opíšte svoju situáciu",
+        "text": "Doplňte občianstvo, aktuálnu polohu, účel a súčasný status."
+      },
+      {
+        "title": "Označte dokumenty",
+        "text": "Vyberte dokumenty, ktoré už máte, a povedzte Rii, čo Vás najviac znepokojuje."
+      },
+      {
+        "title": "Získajte PDF",
+        "text": "Uložte údaje, skontrolujte postup a stiahnite si personalizovaný checklist."
+      }
+    ],
+    "noteTitle": "Bezplatné usmernenie s PDF",
+    "noteText": "Začnite štruktúrovaným postupom a plánom dokumentov. Ria nie je právnik, nepodáva žiadosti a nemôže zaručiť schválenie."
+  },
+  "agency": {
+    "eyebrow": "Pre odborníkov",
+    "title": "Ria nenahrádza odborníkov. Pripravuje lepšie informovaných klientov.",
+    "description": "Riadence zostáva bezplatné pre štandardnú prípravu checklistu. Licencované agentúry a právnici sú najvhodnejší pre skutočne zložité prípady: azyl, vyhostenie, odvolania, predchádzajúce zamietnutia alebo komplikované zlúčenie rodiny.",
+    "cta": "Stať sa partnerom Riadence",
+    "intake": "Odborný vstupný formulár",
+    "caseTitle": "Prípad pripravený Riou",
+    "beta": "Partnerská beta",
+    "rows": [
+      {
+        "label": "Typ prípadu",
+        "value": "Odvolanie po predchádzajúcom zamietnutí"
+      },
+      {
+        "label": "Úroveň rizika",
+        "value": "Vyžaduje odborné posúdenie"
+      },
+      {
+        "label": "Chýbajúce dokumenty",
+        "value": "3 prioritné položky"
+      },
+      {
+        "label": "Pripravený súhrn",
+        "value": "Pripravené na konzultáciu"
+      },
+      {
+        "label": "Jazyk klienta",
+        "value": "Angličtina / ukrajinčina / srbčina / slovenčina"
+      }
+    ],
+    "step": "Krok",
+    "workflow": [
+      "Klient odpovie",
+      "Ria údaje usporiada",
+      "Odborník ich posúdi"
+    ],
+    "summaryTitle": "Pripravený súhrn klienta",
+    "summaryText": "Žiadateľ má predchádzajúce zamietnutie a cestu zlúčenia rodiny so spornými podkladmi. Ria usporiadala časovú os a chýbajúce záznamy na posúdenie licencovaným odborníkom."
+  },
+  "faq": {
+    "eyebrow": "Časté otázky",
+    "title": "Najprv usmernenie. Odborná pomoc, keď je potrebná.",
+    "description": "Odpovede zamerané na Slovensko pre cudzincov na Slovensku, navrátilcov a žiadateľov z krajín mimo EÚ.",
+    "items": [
+      {
+        "question": "Som zo Srbska — potrebujem pracovné povolenie na Slovensku?",
+        "answer": "Bezvízový vstup na krátku návštevu nie je povolením pracovať alebo žiť na Slovensku. Srbskí občania pri zamestnaní spravidla potrebujú správne pracovné a pobytové oprávnenie. Aktuálne požiadavky overte na slovenskom úrade alebo u licencovaného právnika."
+      },
+      {
+        "question": "V čom sa to líši od otázky pre ChatGPT?",
+        "answer": "Riadence začína štruktúrovaným sprievodcom zameraným na Slovensko. Vaše údaje usporiada do postupu a plánu dokumentov a poskytne Vám personalizovaný PDF checklist."
+      },
+      {
+        "question": "Čo obsahuje bezplatný PDF checklist?",
+        "answer": "Obsahuje pravdepodobný postup, dokumenty, ktoré máte, možné chýbajúce položky, pripomienky k prekladom alebo apostilám, časovú os, oficiálne odkazy a otázky na overenie."
+      },
+      {
+        "question": "Je Riadence advokátska kancelária? Môžete zaručiť schválenie víza?",
+        "answer": "Nie. Riadence nie je advokátska kancelária, Ria nie je právnik a výsledok pobytového alebo vízového konania nemožno zaručiť. Konečné rozhodnutie prijíma príslušný orgán."
+      },
+      {
+        "question": "Kedy nadobúdajú účinnosť zmeny slovenského pobytového práva v roku 2026?",
+        "answer": "Neexistuje jediný dátum pre všetky zmeny v roku 2026. Každá novela môže mať vlastnú účinnosť a prechodné pravidlá. Overte si Slov-Lex a informáciu potvrďte u príslušného orgánu alebo právnika."
+      },
+      {
+        "question": "Čo sa stane po stiahnutí checklistu? Budete ma kontaktovať e-mailom?",
+        "answer": "Na uvedený e-mail dostanete uvítacie pokračovanie. Ria zostane dostupná po dokončení sprievodcu. Riadence za Vás žiadosť nepodáva."
+      },
+      {
+        "question": "Riešite zložité prípady, napríklad azyl alebo vyhostenie?",
+        "answer": "Azyl, obrana proti vyhosteniu, odvolania, predchádzajúce zamietnutia a iné rizikové prípady vyžadujú licencovaného odborníka. Riadence môže odporučiť partnerskú agentúru alebo právnika."
+      }
+    ],
+    "legalBefore": "Nie som právnik. Riadence a Ria poskytujú všeobecné informácie, nie právne poradenstvo. Aktuálne pravidlá overte v oficiálnom slovenskom zdroji alebo u licencovaného právnika. Prečítajte si naše",
+    "legalAnd": "a"
+  },
+  "pricing": {
+    "cardLabel": "Cenová možnosť"
+  },
+  "wizard": {
+    "guideLabel": "Ria · Váš imigračný sprievodca",
+    "completeTitle": "Váš checklist pre Slovensko",
+    "stepLabels": [
+      "Vaša cieľová krajina",
+      "Vaša situácia",
+      "Dokumenty, ktoré máte",
+      "Vaša najväčšia otázka",
+      "Získajte checklist"
+    ],
+    "stepProgress": "Krok {{step}} z 5",
+    "guideTitle": "Päť zameraných krokov namiesto otvoreného chatu.",
+    "guideDescriptions": [
+      "Riadence sa momentálne zameriava na občanov krajín mimo EÚ, ktorí smerujú na Slovensko.",
+      "Tieto odpovede pomôžu Rii určiť najrelevantnejší typ pobytu.",
+      "Označenie pripravených dokumentov zlepší plán v PDF.",
+      "Povedzte Rii, ktorú neistotu má checklist riešiť ako prvú.",
+      "Pridajte e-mail, aby sme uložili údaje, pripravili checklist a poslali pokračovanie."
+    ],
+    "guideDisclaimer": "Nie som právnik. Ria poskytuje všeobecné informácie, nie právne poradenstvo, a nemôže zaručiť schválenie.",
+    "saving": "Ukladáme a pripravujeme...",
+    "showChecklist": "Zobraziť checklist od Rie",
+    "submitError": "Niečo sa nepodarilo. Skúste to znova.",
+    "pdfError": "PDF sa momentálne nepodarilo vytvoriť. Skúste to znova.",
+    "destinationTitle": "Kam sa sťahujete?",
+    "destinationDescription": "Začíname jednou cieľovou krajinou, aby checklist zostal konkrétny a praktický.",
+    "destinationLabel": "Cieľová krajina",
+    "destinationValue": "Slovensko",
+    "situationTitle": "Aká je Vaša aktuálna situácia?",
+    "situationDescription": "Poskytnite Rii údaje potrebné na určenie pravdepodobného postupu bez nahrávania osobných dokumentov.",
+    "nationalityLabel": "Štátna príslušnosť",
+    "nationalityPlaceholder": "Vyberte štátnu príslušnosť",
+    "locationLabel": "Aktuálna poloha",
+    "locationPlaceholder": "Kde sa teraz nachádzate?",
+    "purposeLabel": "Účel pobytu",
+    "purposePlaceholder": "Vyberte účel",
+    "statusLabel": "Aktuálny status / dôvod",
+    "statusPlaceholder": "Čo Vás najlepšie vystihuje?",
+    "nationalities": [
+      "Ukrajina",
+      "Srbsko",
+      "Severné Macedónsko",
+      "Bosna a Hercegovina",
+      "Čierna Hora",
+      "Albánsko",
+      "Kosovo",
+      "Turecko",
+      "India",
+      "Gruzínsko",
+      "Vietnam",
+      "Iná krajina mimo EÚ"
+    ],
+    "locations": [
+      "Mimo Slovenska",
+      "Už na Slovensku",
+      "V inej krajine EÚ",
+      "Zatiaľ neviem"
+    ],
+    "statusReasons": [
+      "Mám zamestnávateľa alebo pracovnú ponuku",
+      "Mám potvrdenie o prijatí na školu",
+      "Pripájam sa k rodine",
+      "Mám podnikateľský plán",
+      "Stále porovnávam možnosti",
+      "Neviem"
+    ],
+    "purposes": {
+      "employment": "Zamestnanie",
+      "study": "Štúdium",
+      "family": "Zlúčenie rodiny",
+      "business": "Podnikanie / samostatná zárobková činnosť",
+      "other": "Iné / neviem"
+    },
+    "documentsTitle": "Dokumenty, ktoré už máte",
+    "documentsDescription": "Označte dokumenty, ktoré už máte pripravené.",
+    "documents": [
+      "Cestovný pas",
+      "Výpis z registra trestov",
+      "Doklad o ubytovaní",
+      "Doklad o finančnom zabezpečení",
+      "Pracovná zmluva alebo pracovná ponuka",
+      "Potvrdenie o prijatí na školu",
+      "Doklad o rodinnom vzťahu",
+      "Podnikateľský plán alebo živnostenské dokumenty",
+      "Doklad o zdravotnom poistení",
+      "Pasové fotografie"
+    ],
+    "concernTitle": "Čo Vás v tomto procese znepokojuje najviac?",
+    "concernDescription": "Ria podľa toho uprednostní vysvetlenie vo Vašom prvom checkliste.",
+    "concernLabel": "Vaša najväčšia otázka",
+    "concernPlaceholder": "Príklad: Neviem, či môj výpis z registra trestov potrebuje apostilu.",
+    "emailTitle": "Získajte checklist",
+    "emailDescription": "Pridajte e-mail, aby Riadence mohlo uložiť Vaše odpovede a poslať pokračovanie.",
+    "nameLabel": "Meno (voliteľné)",
+    "namePlaceholder": "Vaše meno",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "vy@example.com",
+    "consent": "Posielajte mi 14-dňového e-mailového sprievodcu Riadence s praktickými tipmi a príkladmi. Odber môžem kedykoľvek zrušiť.",
+    "finalDisclaimer": "Nie som právnik. Tento checklist obsahuje všeobecné informácie, nie právne poradenstvo. Podrobnosti overte v oficiálnom slovenskom zdroji alebo u licencovaného právnika.",
+    "errors": {
+      "nationality": "Vyberte štátnu príslušnosť.",
+      "purpose": "Vyberte účel pobytu.",
+      "concern": "Povedzte Rii, čo Vás najviac znepokojuje.",
+      "emailRequired": "Zadajte svoj e-mail.",
+      "emailInvalid": "Zadajte platnú e-mailovú adresu."
+    },
+    "completeEyebrow": "Sprievodca je dokončený",
+    "completeHeading": "Váš postup pre Slovensko je pripravený na kontrolu.",
+    "preparedFor": "Pripravené pre {{person}} zo štátu {{nationality}}. Ria odpovedá na Vašu prvú otázku.",
+    "downloadTitle": "Stiahnite si PDF",
+    "downloadDescription": "Tu bude dostupný Váš personalizovaný postup, plán dokumentov, časová os, oficiálne odkazy a právne upozornenie.",
+    "generatingPdf": "Vytvárame Vaše PDF...",
+    "downloadPdf": "Stiahnuť PDF checklist",
+    "askRia": "Opýtať sa Rie",
+    "followUpDescription": "Doplňujúce otázky sú dostupné po dokončení sprievodcu.",
+    "preparingResponse": "Ria pripravuje odpoveď...",
+    "followUpLabel": "Položte doplňujúcu otázku",
+    "followUpPlaceholder": "Opýtajte sa Rie na dokumenty alebo ďalšie kroky.",
+    "responding": "Ria odpovedá...",
+    "conversationDisclaimer": "Nie som právnik. Ide o všeobecné informácie, nie právne poradenstvo. Schválenie nemožno zaručiť."
+  },
+  "email": {
+    "welcomeSubject": "Váš checklist pre pobyt na Slovensku je pripravený",
+    "welcomeHeading": "Váš checklist pre Slovensko je pripravený"
+  },
+  "metadata": {
+    "title": "Riadence | AI sprievodca pobytom na Slovensku",
+    "description": "Získajte personalizovaný checklist pre pobyt alebo návrat na Slovensko. Riadence Vás prevedie dokumentmi, termínmi a oficiálnymi požiadavkami.",
+    "keywords": "pobyt, vízum, Slovensko",
+    "ogLocale": "sk_SK"
+  }
 }
