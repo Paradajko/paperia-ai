@@ -226,8 +226,24 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
     try {
       setIsPdfGenerating(true);
       setPdfError('');
-      const { generateChecklistPdf } = await import('../lib/pdf');
-      const blob = await generateChecklistPdf(values);
+      const response = await fetch('/api/generate-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.name,
+          nationality: values.nationality,
+          currentLocation: values.currentLocation,
+          purpose: values.purpose,
+          statusReason: values.statusReason,
+          documents: values.documents,
+          concern: values.concern,
+          email: values.email,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('PDF generation failed');
+      }
+      const blob = await response.blob();
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       const nationalitySlug = values.nationality

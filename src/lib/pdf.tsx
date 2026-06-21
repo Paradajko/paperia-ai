@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Text,
   View,
-  pdf,
 } from '@react-pdf/renderer';
 import riaGuide from '../assets/ria-guide-half.png';
 import {
@@ -316,10 +315,4 @@ function PageFooter({ pageNumber }: { pageNumber: number }) {
       <Text>{pageNumber} / 5</Text>
     </View>
   );
-}
-
-export async function generateChecklistPdf(
-  applicantData: ChecklistApplicantData,
-): Promise<Blob> {
-  return pdf(<ResidenceChecklistPDF applicantData={applicantData} />).toBlob();
 }
