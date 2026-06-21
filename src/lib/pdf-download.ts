@@ -1,4 +1,4 @@
-import type { ChecklistApplicantData } from './pdf-data';
+import type { ChecklistApplicantData } from '../../api/_pdf-data.js';
 
 type LinkLike = {
   href: string;

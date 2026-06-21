@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/generate-pdf.ts": {
+      "includeFiles": "src/assets/ria-guide-half.png",
       "memory": 1024,
       "maxDuration": 10
     }

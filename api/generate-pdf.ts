@@ -3,10 +3,10 @@ import { readFile } from 'node:fs/promises';
 
 import {
   ResidenceChecklistPDF,
-} from '../src/lib/pdf.js';
+} from './_pdf.js';
 import type {
   ChecklistApplicantData,
-} from '../src/lib/pdf-data.js';
+} from './_pdf-data.js';
 
 const MAX_BODY_BYTES = 20 * 1024;
 const WINDOW_MS = 60 * 60 * 1000;

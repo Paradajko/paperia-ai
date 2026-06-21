@@ -11,7 +11,7 @@ import type { SourceObject } from '@react-pdf/types';
 import {
   buildChecklistContent,
   type ChecklistApplicantData,
-} from './pdf-data.js';
+} from './_pdf-data.js';
 
 const colors = {
   ink: '#0B1726',

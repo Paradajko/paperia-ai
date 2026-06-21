@@ -15,7 +15,7 @@ async function importPdfDataModule() {
   execFileSync(
     resolve(repoRoot, 'node_modules/.bin/tsc'),
     [
-      resolve(repoRoot, 'src/lib/pdf-data.ts'),
+      resolve(repoRoot, 'api/_pdf-data.ts'),
       '--target',
       'ES2022',
       '--module',
@@ -33,7 +33,7 @@ async function importPdfDataModule() {
     { cwd: repoRoot },
   );
 
-  return import(`${pathToFileURL(resolve(tempDir, 'pdf-data.js')).href}?t=${Date.now()}`);
+  return import(`${pathToFileURL(resolve(tempDir, '_pdf-data.js')).href}?t=${Date.now()}`);
 }
 
 test('buildChecklistContent personalizes the employment route and missing documents', async () => {

@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pdf } from '@react-pdf/renderer';
 
 import { importTypescriptModule } from './helpers/import-typescript.mjs';
 
@@ -27,6 +29,17 @@ async function loadEndpoint() {
 }
 
 const endpointModule = loadEndpoint();
+
+test('serverless endpoint keeps runtime PDF imports inside api', async () => {
+  const source = await readFile(
+    resolve(repoRoot, 'api/generate-pdf.ts'),
+    'utf8',
+  );
+
+  assert.match(source, /from ['"]\.\/_pdf\.js['"]/);
+  assert.match(source, /from ['"]\.\/_pdf-data\.js['"]/);
+  assert.doesNotMatch(source, /from ['"]\.\.\/src\/lib\/pdf/);
+});
 
 function request(body, headers = {}) {
   return {
@@ -219,6 +232,29 @@ test('the production renderer returns a real PDF document', async () => {
   assert.ok(res.body.length > 10_000);
   assert.equal(
     (res.body.toString('latin1').match(/\/Type \/Page\b/g) ?? []).length,
+    5,
+  );
+});
+
+test('checked-in serverless JavaScript PDF module renders five pages', async () => {
+  const { ResidenceChecklistPDF } = await import(
+    `${pathToFileURL(resolve(repoRoot, 'api/_pdf.js')).href}?t=${Date.now()}`
+  );
+  const avatarSource = await readFile(
+    resolve(repoRoot, 'src/assets/ria-guide-half.png'),
+  );
+  const stream = await pdf(
+    ResidenceChecklistPDF({ applicantData: validPayload, avatarSource }),
+  ).toBuffer();
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+  const buffer = Buffer.concat(chunks);
+
+  assert.equal(buffer.subarray(0, 4).toString(), '%PDF');
+  assert.equal(
+    (buffer.toString('latin1').match(/\/Type \/Page\b/g) ?? []).length,
     5,
   );
 });

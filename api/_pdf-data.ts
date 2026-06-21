@@ -1,3 +1,4 @@
+// Shared server-side data model for PDF rendering and request validation.
 export type ChecklistApplicantData = {
   name: string;
   email: string;
