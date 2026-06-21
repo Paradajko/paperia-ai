@@ -85,7 +85,7 @@ test('verifies the URL-prefix property and submits sitemap.xml', async () => {
 
   assert.deepEqual(calls.sitemap, [{
     siteUrl: SITE_URL,
-    feedpath: 'sitemap.xml',
+    feedpath: 'https://riadence.com/sitemap.xml',
   }]);
 });
 

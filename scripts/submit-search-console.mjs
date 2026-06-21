@@ -60,7 +60,7 @@ export async function runSearchConsoleSubmit({
 
   await webmasters.sitemaps.submit({
     siteUrl: SITE_URL,
-    feedpath: 'sitemap.xml',
+    feedpath: `${SITE_URL}sitemap.xml`,
   });
   log('Sitemap submitted ✓');
 }
