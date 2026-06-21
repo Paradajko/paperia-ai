@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -p tsconfig.json && vite build",
+    "indexnow": "node scripts/submit-indexnow.mjs",
     "indexnow:key": "node scripts/ensure-indexnow-key.mjs",
+    "indexnow:url": "node scripts/submit-indexnow.mjs",
     "test": "node --test tests/*.test.mjs",
     "preview": "vite preview"
   },

@@ -14,4 +14,8 @@ test('IndexNow verification key is a single 32-character lowercase hex value', (
 
   assert.equal(key.length, 32);
   assert.match(key, /^[0-9a-f]{32}$/);
+  assert.equal(
+    readFileSync(resolve(repoRoot, `public/${key}.txt`), 'utf8'),
+    key,
+  );
 });
