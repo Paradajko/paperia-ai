@@ -22,6 +22,12 @@
       "faq": "Časté otázky"
     }
   },
+  "cookies": {
+    "title": "Cookies a analytika",
+    "body": "Na zlepšovanie Vašej skúsenosti používame Vercel Web Analytics. Nezhromažďujeme žiadne osobné údaje.",
+    "accept": "Prijať",
+    "decline": "Odmietnuť"
+  },
   "landing": {
     "badge": "Bezplatný checklist pre pobyt na Slovensku",
     "heroBefore": "Vraciate sa na Slovensko alebo sa sem sťahujete zo Srbska, Ukrajiny, Indie, Turecka či inej krajiny?",

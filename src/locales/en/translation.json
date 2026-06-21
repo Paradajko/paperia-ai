@@ -22,6 +22,12 @@
       "faq": "FAQ"
     }
   },
+  "cookies": {
+    "title": "Cookies & Analytics",
+    "body": "We use Vercel Web Analytics to improve your experience. No personal data is collected.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "landing": {
     "badge": "Free Slovakia residence checklist",
     "heroBefore": "Moving from the Balkans, India, Turkey, Ukraine, or beyond to",

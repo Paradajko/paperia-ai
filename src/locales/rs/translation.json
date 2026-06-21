@@ -22,6 +22,12 @@
       "faq": "Česta pitanja"
     }
   },
+  "cookies": {
+    "title": "Kolačići i analitika",
+    "body": "Koristimo Vercel Web Analytics da poboljšamo Vaše iskustvo. Ne prikupljamo lične podatke.",
+    "accept": "Prihvatiti",
+    "decline": "Odbaciti"
+  },
   "landing": {
     "badge": "Besplatna kontrolna lista za boravak u Slovačkoj",
     "heroBefore": "Srpski ste državljanin u inostranstvu ili deo dijaspore i planirate preseljenje u",

@@ -49,6 +49,7 @@ test('all locale resources are imported and contain the base namespaces', () => 
   const expectedNamespaces = [
     'common',
     'header',
+    'cookies',
     'landing',
     'footer',
     'howItWorks',

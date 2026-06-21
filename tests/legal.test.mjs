@@ -124,13 +124,15 @@ test('legal routes and global cookie consent are configured', () => {
   assert.match(cookieConsent, /riadence_cookie_consent/);
   assert.match(cookieConsent, /'accepted'/);
   assert.match(cookieConsent, /'declined'/);
-  assert.match(cookieConsent, /Cookies &amp; Analytics/);
-  assert.match(cookieConsent, /Vercel Web Analytics/);
-  assert.match(cookieConsent, /fully anonymized/);
-  assert.match(cookieConsent, /uses no cookies/);
-  assert.match(cookieConsent, /Do Not Track/);
-  assert.match(cookieConsent, /aria-label="Close cookies and analytics notice"/);
-  assert.match(cookieConsent, /to="\/privacy"/);
+  assert.match(cookieConsent, /useTranslation/);
+  assert.match(cookieConsent, /cookies\.title/);
+  assert.match(cookieConsent, /cookies\.body/);
+  assert.match(cookieConsent, /cookies\.accept/);
+  assert.match(cookieConsent, /cookies\.decline/);
+  assert.match(
+    read('src/locales/en/translation.json'),
+    /We use Vercel Web Analytics to improve your experience/,
+  );
 });
 
 test('privacy policy contains the approved controller identity and GDPR disclosures', () => {
