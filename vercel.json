@@ -29,6 +29,10 @@
       "destination": "/ua/index.html"
     },
     {
+      "source": "/bfacd551628758d4595c11f0d219fe25.txt",
+      "destination": "/bfacd551628758d4595c11f0d219fe25.txt"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

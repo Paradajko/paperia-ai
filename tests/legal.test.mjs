@@ -16,7 +16,7 @@ function read(relativePath) {
 
 const seoDescriptions = {
   home:
-    'Get a personalized checklist for your Slovakia residence permit. Riadence guides non-EU citizens through documents, timelines, and official requirements.',
+    'Get a personalized checklist for your residence permit or return to Slovakia. AI guide Ria walks you through documents, deadlines, and official requirements.',
   privacy:
     'Learn how Riadence collects, uses, stores, and protects your personal data when you use our AI residence guide for Slovakia, including your GDPR rights.',
   terms:

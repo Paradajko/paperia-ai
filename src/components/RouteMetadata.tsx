@@ -5,7 +5,7 @@ const metadata = {
   landing: {
     title: 'Riadence | AI Residence Guide for Europe',
     description:
-      'Get a personalized checklist for your Slovakia residence permit. Riadence guides non-EU citizens through documents, timelines, and official requirements.',
+      'Get a personalized checklist for your residence permit or return to Slovakia. AI guide Ria walks you through documents, deadlines, and official requirements.',
     keywords: 'residence permit, visa, Slovakia',
     ogLocale: 'en_GB',
     lang: 'en',

@@ -32,7 +32,11 @@ test('home head exposes all hreflang alternatives', () => {
 
 test('RouteMetadata defines localized title, description, keywords, and og locale', () => {
   const metadata = read('src/components/RouteMetadata.tsx');
+  const englishDescription =
+    'Get a personalized checklist for your residence permit or return to Slovakia. AI guide Ria walks you through documents, deadlines, and official requirements.';
 
+  assert.match(metadata, new RegExp(englishDescription.replaceAll('.', '\\.')));
+  assert.match(read('index.html'), new RegExp(englishDescription.replaceAll('.', '\\.')));
   for (const [path, locale, keywords] of [
     ['/sk/', 'sk_SK', 'pobyt, vízum, Slovensko'],
     ['/rs/', 'sr_RS', 'boravak, viza, Srbija'],
@@ -61,4 +65,19 @@ test('localized build entries, Vercel rewrites, and sitemap URLs are configured'
   for (const path of ['/', '/privacy', '/terms', '/unsubscribed']) {
     assert.match(sitemap, new RegExp(`<loc>https:\\/\\/riadence\\.com${path.replaceAll('/', '\\/')}</loc>`));
   }
+});
+
+test('Vercel serves the IndexNow key before the SPA catchall', () => {
+  const vercel = JSON.parse(read('vercel.json'));
+  const key = read('public/indexnow-key.txt');
+  const keyRewriteIndex = vercel.rewrites.findIndex(
+    (rewrite) => rewrite.source === `/${key}.txt`
+      && rewrite.destination === `/${key}.txt`,
+  );
+  const catchallIndex = vercel.rewrites.findIndex(
+    (rewrite) => rewrite.source === '/(.*)',
+  );
+
+  assert.ok(keyRewriteIndex >= 0);
+  assert.ok(catchallIndex > keyRewriteIndex);
 });
