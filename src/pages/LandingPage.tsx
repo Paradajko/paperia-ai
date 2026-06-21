@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { AgencySection } from '../components/AgencySection';
 import { ChecklistFlow } from '../components/ChecklistFlow';
@@ -11,6 +12,7 @@ import { PricingCard } from '../components/PricingCard';
 import { ProblemCard } from '../components/ProblemCard';
 import { RiadenceHeroMockup } from '../components/RiadenceHeroMockup';
 import { RiaIntakeModal } from '../components/RiaIntakeModal';
+import type { AppLocale } from '../i18n/locale';
 
 const problems = [
   {
@@ -66,8 +68,13 @@ const pricing = [
   },
 ];
 
-export function LandingPage() {
+export function LandingPage({ locale }: { locale: AppLocale }) {
+  const { i18n } = useTranslation();
   const [intakeOpen, setIntakeOpen] = useState(false);
+
+  useEffect(() => {
+    void i18n.changeLanguage(locale);
+  }, [i18n, locale]);
 
   const openIntake = () => {
     setIntakeOpen(true);

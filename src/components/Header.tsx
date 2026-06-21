@@ -1,4 +1,5 @@
 import { Logo } from './Logo';
+import { LocaleSwitcher } from './LocaleSwitcher';
 
 type HeaderProps = {
   onStart: () => void;
@@ -29,13 +30,16 @@ export function Header({ onStart }: HeaderProps) {
             </a>
           ))}
         </nav>
-        <button
-          type="button"
-          onClick={onStart}
-          className="rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] sm:px-5"
-        >
-          Get your free checklist
-        </button>
+        <div className="flex items-center gap-2">
+          <LocaleSwitcher />
+          <button
+            type="button"
+            onClick={onStart}
+            className="rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] sm:px-5"
+          >
+            Get your free checklist
+          </button>
+        </div>
       </div>
     </header>
   );

@@ -12,7 +12,10 @@ function App() {
     <BrowserRouter>
       <RouteMetadata />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage locale="en" />} />
+        <Route path="/sk/" element={<LandingPage locale="sk" />} />
+        <Route path="/rs/" element={<LandingPage locale="rs" />} />
+        <Route path="/ua/" element={<LandingPage locale="ua" />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/unsubscribed" element={<Unsubscribed />} />
