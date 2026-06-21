@@ -10,6 +10,18 @@
       "destination": "/terms/index.html"
     },
     {
+      "source": "/sk",
+      "destination": "/sk/index.html"
+    },
+    {
+      "source": "/rs",
+      "destination": "/rs/index.html"
+    },
+    {
+      "source": "/ua",
+      "destination": "/ua/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://riadence.com/</loc>
-    <lastmod>2026-06-19</lastmod>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>https://riadence.com/sk/</loc>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>https://riadence.com/rs/</loc>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>https://riadence.com/ua/</loc>
+    <lastmod>2026-06-21</lastmod>
   </url>
   <url>
     <loc>https://riadence.com/privacy</loc>
@@ -10,6 +22,10 @@
   </url>
   <url>
     <loc>https://riadence.com/terms</loc>
+    <lastmod>2026-06-19</lastmod>
+  </url>
+  <url>
+    <loc>https://riadence.com/unsubscribed</loc>
     <lastmod>2026-06-19</lastmod>
   </url>
 </urlset>
