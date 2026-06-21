@@ -1,6 +1,6 @@
 {
   "common": {
-    "getChecklist": "Získať bezplatný checklist",
+    "getChecklist": "Získať bezplatný zoznam krokov",
     "samplePdf": "Zobraziť ukážku PDF",
     "disclaimer": "Nie som právnik. Ide len o všeobecné usmernenie, nie o právne poradenstvo.",
     "privacy": "Zásady ochrany súkromia",
@@ -32,10 +32,18 @@
     "badge": "Bezplatný checklist pre pobyt na Slovensku",
     "heroBefore": "Vraciate sa na Slovensko alebo sa sem sťahujete zo Srbska, Ukrajiny, Indie, Turecka či inej krajiny?",
     "heroCountry": "Pripravte sa na Slovensko.",
-    "heroDescription": "Odpovedzte na päť praktických otázok a Ria Vám pripraví personalizovaný PDF checklist k pravdepodobnému typu pobytu, dokumentom, termínom a ďalším krokom.",
+    "heroDescription": "Odpovedzte na päť praktických otázok a Ria Vám pripraví personalizovaný PDF kontrolný zoznam podľa typu pobytu, ktorý pravdepodobne budete potrebovať, vrátane dokumentov, termínov a ďalších krokov.",
+    "heroCards": [
+      "Ria vytvorí tvoju trasu na Slovensko",
+      "Ria pripraví tvoj PDF kontrolný zoznam",
+      "Ria upozorní na chýbajúce dokumenty",
+      "Ria upozorní na preklady a apostily",
+      "Ria zoradí kroky do časovej osi",
+      "Ria odpovie aj na ďalšie otázky"
+    ],
     "problemEyebrow": "Problém s administratívou",
     "problemTitle": "Pobytová agenda je neprehľadná, keď Vám ju nikto jasne nevysvetlí.",
-    "problemIntro": "Riadence Vám poskytne štruktúrovaný prvý krok: checklist pre Slovensko, výsledok vo formáte PDF a jasný signál, kedy zložitý prípad potrebuje licencovanú pomoc.",
+    "problemIntro": "Riadence Vám poskytne jasný prvý krok: kontrolný zoznam pre Slovensko vo formáte PDF a vysvetlenie, kedy už zložitý prípad potrebuje licencovanú odbornú pomoc.",
     "problems": [
       {
         "title": "Nejasné zoznamy dokumentov",
@@ -59,11 +67,11 @@
       },
       {
         "title": "Stres z termínu na úrade",
-        "description": "Je náročné prísť bez istoty, aké otázky alebo chýbajúce dokumenty sa môžu objaviť."
+        "description": "Je nepríjemné prísť na úrad bez istoty, aké otázky dostanete alebo ktoré dokumenty Vám ešte chýbajú."
       }
     ],
     "clarityEyebrow": "Od neistoty k jasnejšiemu plánu",
-    "clarityTitle": "Čomu Vám štruktúrovaný checklist pomôže predísť",
+    "clarityTitle": "Čomu Vám prehľadný kontrolný zoznam pomôže predísť",
     "clarityDescription": "Vaše odpovede sa zmenia na jasnejší postup, plán dokumentov, časovú os v PDF a súhrn pre odborníka.",
     "avoidItems": [
       "Platbe agentúre skôr, než pochopíte svoj prípad",

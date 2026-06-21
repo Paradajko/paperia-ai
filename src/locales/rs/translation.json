@@ -33,6 +33,14 @@
     "heroBefore": "Srpski ste državljanin u inostranstvu ili deo dijaspore i planirate preseljenje u",
     "heroCountry": "Slovačku?",
     "heroDescription": "Odgovorite na pet praktičnih pitanja i Ria će pripremiti personalizovanu PDF kontrolnu listu za verovatnu osnovu boravka, dokumenta, rokove i sledeće korake.",
+    "heroCards": [
+      "Ria određuje Vaš put za Slovačku",
+      "Ria priprema Vašu PDF kontrolnu listu",
+      "Ria upozorava na dokumenta koja nedostaju",
+      "Ria označava prevode i apostile",
+      "Ria prikazuje Vašu vremensku liniju",
+      "Ria ostaje dostupna za dodatna pitanja"
+    ],
     "problemEyebrow": "Problem sa administracijom",
     "problemTitle": "Dokumentacija za boravak je zbunjujuća kada je niko jasno ne objasni.",
     "problemIntro": "Riadence Vam daje strukturiran prvi korak: kontrolnu listu za Slovačku, rezultat u PDF-u i jasan signal kada složen slučaj zahteva licenciranu pomoć.",
@@ -59,7 +67,7 @@
       },
       {
         "title": "Termin deluje presudno",
-        "description": "Stresno je doći bez saznanja koja pitanja ili dokumenta koja nedostaju mogu biti otvorena."
+        "description": "Neprijatno je doći na termin bez jasne slike o pitanjima koja Vas čekaju i dokumentima koji još nedostaju."
       }
     ],
     "clarityEyebrow": "Od zabune do jasnijeg plana",

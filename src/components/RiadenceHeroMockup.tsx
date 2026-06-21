@@ -1,45 +1,40 @@
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import riaGuide from '../assets/ria-guide-half.png';
 
 const helpCards = [
   {
-    title: 'Ria maps your Slovakia route',
     tone: 'green',
     mobilePosition: 'left-[2%] top-[6%]',
     position: 'lg:left-[10%] lg:top-[9%]',
     Icon: RouteIcon,
   },
   {
-    title: 'Ria builds your PDF checklist',
     tone: 'mint',
     mobilePosition: 'right-[2%] top-[6%]',
     position: 'lg:right-[10%] lg:top-[9%]',
     Icon: ChecklistIcon,
   },
   {
-    title: 'Ria flags translations and apostilles',
-    tone: 'paper',
+    tone: 'risk',
     mobilePosition: 'left-[0%] top-[38%]',
     position: 'lg:left-[6%] lg:top-[39%]',
-    Icon: MessageIcon,
-  },
-  {
-    title: 'Ria highlights missing documents',
-    tone: 'risk',
-    mobilePosition: 'right-[0%] top-[38%]',
-    position: 'lg:right-[6%] lg:top-[39%]',
     Icon: RiskIcon,
   },
   {
-    title: 'Ria lays out your timeline',
+    tone: 'paper',
+    mobilePosition: 'right-[0%] top-[38%]',
+    position: 'lg:right-[6%] lg:top-[39%]',
+    Icon: MessageIcon,
+  },
+  {
     tone: 'mint',
     mobilePosition: 'left-[3%] top-[70%]',
     position: 'lg:left-[11%] lg:top-[69%]',
     Icon: StepsIcon,
   },
   {
-    title: 'Ria stays for follow-up questions',
     tone: 'green',
     mobilePosition: 'right-[3%] top-[70%]',
     position: 'lg:right-[11%] lg:top-[69%]',
@@ -48,6 +43,13 @@ const helpCards = [
 ];
 
 export function RiadenceHeroMockup() {
+  const { t } = useTranslation();
+  const titles = t('landing.heroCards', { returnObjects: true }) as string[];
+  const localizedHelpCards = helpCards.map((card, index) => ({
+    ...card,
+    title: titles[index],
+  }));
+
   return (
     <div className="relative mx-auto w-full max-w-6xl">
       <div className="relative min-h-[380px] overflow-hidden sm:min-h-[430px] lg:min-h-[510px]">
@@ -70,7 +72,7 @@ export function RiadenceHeroMockup() {
         </div>
 
         <div className="absolute inset-0 z-30 lg:contents">
-          {helpCards.map((card) => (
+          {localizedHelpCards.map((card) => (
             <HelpCard key={card.title} {...card} />
           ))}
         </div>

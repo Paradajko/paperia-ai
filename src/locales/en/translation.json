@@ -33,6 +33,14 @@
     "heroBefore": "Moving from the Balkans, India, Turkey, Ukraine, or beyond to",
     "heroCountry": "Slovakia?",
     "heroDescription": "Answer five practical questions and Ria prepares a personalized PDF checklist for your likely residence route, documents, timeline, and next steps.",
+    "heroCards": [
+      "Ria maps your Slovakia route",
+      "Ria builds your PDF checklist",
+      "Ria flags missing documents",
+      "Ria flags translations and apostilles",
+      "Ria lays out your timeline",
+      "Ria stays for follow-up questions"
+    ],
     "problemEyebrow": "The paperwork problem",
     "problemTitle": "Residence paperwork is confusing when nobody explains it.",
     "problemIntro": "Riadence gives you a structured first step: build a Slovakia-specific checklist, keep the result as a PDF, and know when a complex case needs licensed help.",
