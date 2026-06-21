@@ -9,6 +9,8 @@
     "indexnow": "node scripts/submit-indexnow.mjs",
     "indexnow:key": "node scripts/ensure-indexnow-key.mjs",
     "indexnow:url": "node scripts/submit-indexnow.mjs",
+    "search-console:auth": "node scripts/google-oauth-setup.mjs",
+    "search-console:submit": "node scripts/submit-search-console.mjs",
     "test": "node --test tests/*.test.mjs",
     "preview": "vite preview"
   },
