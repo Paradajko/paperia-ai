@@ -3,6 +3,7 @@ import { webkit } from 'playwright';
 
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL ?? 'https://riadence.com';
 const apiBaseUrl = process.env.PLAYWRIGHT_API_BASE_URL;
+const useMarkdownFixture = process.env.PLAYWRIGHT_RIA_MARKDOWN_FIXTURE === '1';
 const browser = await webkit.launch({ headless: true });
 const page = await browser.newPage({ acceptDownloads: true });
 const diagnostics = [];
@@ -10,6 +11,17 @@ const diagnostics = [];
 if (apiBaseUrl) {
   await page.route('**/api/**', async (route) => {
     const requestUrl = new URL(route.request().url());
+    if (useMarkdownFixture && requestUrl.pathname === '/api/ria-chat') {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          reply:
+            '## Residency checklist\n\nUse **official documents**:\n\n- Passport\n- Apostille',
+        }),
+      });
+      return;
+    }
     const response = await route.fetch({
       url: `${apiBaseUrl}${requestUrl.pathname}`,
     });
@@ -63,6 +75,15 @@ try {
     .getByRole('heading', { name: 'Your Slovakia route is ready to review.' })
     .waitFor({ timeout: 30_000 });
   await riaResponsePromise;
+  if (useMarkdownFixture) {
+    const assistantMessage = page
+      .getByRole('heading', { name: 'Residency checklist' })
+      .locator('..');
+    await assistantMessage.getByText('official documents').waitFor();
+    assert.equal(await assistantMessage.locator('strong').count(), 1);
+    assert.equal(await assistantMessage.locator('li').count(), 2);
+    assert.doesNotMatch(await assistantMessage.innerText(), /##|\*\*/);
+  }
 
   const pdfResponsePromise = page.waitForResponse(
     (response) => response.url().includes('/api/generate-pdf'),

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { lazy, Suspense, useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import type { AppLocale } from '../i18n/locale';
@@ -18,6 +18,12 @@ import {
   type RiaMessage,
 } from '../lib/ria';
 import { RiaAvatar } from './RiaAvatar';
+
+const RiaMarkdown = lazy(() =>
+  import('./RiaMarkdown').then((module) => ({
+    default: module.RiaMarkdown,
+  })),
+);
 
 type RiaIntakeModalProps = {
   open: boolean;
@@ -773,7 +779,19 @@ function RiaConversation({
                     : 'bg-[#0B1726] text-white'
                 }`}
               >
-                <p className="whitespace-pre-wrap">{message.content}</p>
+                {message.role === 'assistant' ? (
+                  <Suspense
+                    fallback={
+                      <p className="font-medium text-[#0F8A6A]">
+                        {t('wizard.preparingResponse')}
+                      </p>
+                    }
+                  >
+                    <RiaMarkdown>{message.content}</RiaMarkdown>
+                  </Suspense>
+                ) : (
+                  <p className="whitespace-pre-wrap">{message.content}</p>
+                )}
               </div>
             </div>
           ))}
