@@ -6,6 +6,8 @@ import { LandingPage } from './pages/LandingPage';
 import { Privacy } from './pages/Privacy';
 import { Terms } from './pages/Terms';
 import { Unsubscribed } from './pages/Unsubscribed';
+import { BlogArticlePage } from './pages/blog/[slug]';
+import { BlogIndex } from './pages/blog/index';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/unsubscribed" element={<Unsubscribed />} />
+        <Route path="/blog" element={<BlogIndex />} />
+        <Route path="/blog/:slug" element={<BlogArticlePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <CookieConsent />
