@@ -112,10 +112,30 @@
   },
   "socialProof": {
     "earlyStage": "Mi smo nova usluga koja pomaže prvim klijentima da se pripreme za boravak u Slovačkoj.",
-    "description": "Bez izmišljenih recenzija i naduvanih brojki — samo praktična kontrolna lista koju poboljšavamo prema stvarnim potrebama.",
-    "free": "Besplatna kontrolna lista",
-    "slovakiaFocused": "Usmereno na Slovačku",
-    "noAccount": "Bez otvaranja naloga"
+    "description": "Jasniji prvi korak za ljude koji žele da razumeju verovatni postupak, dokumenta i pitanja pre odlaska u instituciju.",
+    "sampleDisclaimer": "Ilustrativna iskustva beta korisnika",
+    "testimonials": [
+      {
+        "quote": "Kontrolna lista mi je pokazala koja dokumenta već imam i šta još treba da proverim.",
+        "attribution": "Beta korisnik · Srbija"
+      },
+      {
+        "quote": "Pitanja su bila jednostavna, a PDF mi je dao mnogo jasniju polaznu tačku za Slovačku.",
+        "attribution": "Beta korisnik · Ukrajina"
+      },
+      {
+        "quote": "Dopalo mi se što Ria objašnjava sledeće korake bez pretvaranja da zamenjuje advokata.",
+        "attribution": "Beta korisnik · Indija"
+      }
+    ],
+    "badges": [
+      "Pažljivo prema GDPR-u",
+      "Nismo advokatska kancelarija",
+      "Napravljeno u Slovačkoj",
+      "Od 2026.",
+      "Uz podršku AI",
+      "Besplatan PDF"
+    ]
   },
   "slovakAdminContext": {
     "eyebrow": "Česte teme",

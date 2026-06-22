@@ -27,6 +27,34 @@ test('landing page places honest social proof between the hero and process conte
   assert.doesNotMatch(socialProof, /\b\d+\s+(people|ľuďom|clients|klient)/i);
 });
 
+test('social proof clearly labels three sample testimonials and six trust badges', () => {
+  const socialProof = read('src/components/SocialProof.tsx');
+
+  assert.match(socialProof, /socialProof\.sampleDisclaimer/);
+  assert.match(socialProof, /socialProof\.testimonials/);
+  assert.match(socialProof, /socialProof\.badges/);
+
+  for (const name of ['en', 'sk', 'rs', 'ua']) {
+    const proof = locale(name).socialProof;
+    assert.equal(proof.testimonials.length, 3);
+    assert.ok(
+      proof.testimonials.every(
+        ({ quote, attribution }) => quote.trim() && attribution.trim(),
+      ),
+    );
+    assert.equal(proof.badges.length, 6);
+  }
+
+  assert.equal(
+    locale('en').socialProof.sampleDisclaimer,
+    'Sample testimonials from beta users',
+  );
+  assert.equal(
+    locale('sk').socialProof.sampleDisclaimer,
+    'Ilustračné referencie od beta používateľov',
+  );
+});
+
 test('Slovak administrative context is rendered only for the Slovak route', () => {
   const landing = read('src/pages/LandingPage.tsx');
   const context = read('src/components/SlovakAdminContext.tsx');

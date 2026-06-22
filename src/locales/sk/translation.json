@@ -112,10 +112,30 @@
   },
   "socialProof": {
     "earlyStage": "Sme nová služba a pomáhame prvým klientom pripraviť sa na pobyt na Slovensku.",
-    "description": "Bez vymyslených hodnotení a nafúknutých čísel — iba praktický checklist, ktorý postupne zlepšujeme podľa reálnych potrieb.",
-    "free": "Bezplatný checklist",
-    "slovakiaFocused": "Zamerané na Slovensko",
-    "noAccount": "Bez vytvárania účtu"
+    "description": "Jasnejší prvý krok pre ľudí, ktorí chcú pochopiť svoj pravdepodobný postup, dokumenty a otázky ešte pred návštevou úradu.",
+    "sampleDisclaimer": "Ilustračné referencie od beta používateľov",
+    "testimonials": [
+      {
+        "quote": "Checklist mi ukázal, ktoré dokumenty už mám a čo si ešte potrebujem overiť.",
+        "attribution": "Beta používateľ · Srbsko"
+      },
+      {
+        "quote": "Otázky boli jednoduché a PDF mi dalo oveľa jasnejší začiatok pre Slovensko.",
+        "attribution": "Beta používateľ · Ukrajina"
+      },
+      {
+        "quote": "Oceňujem, že Ria vysvetľuje ďalšie kroky bez toho, aby sa vydávala za právnika.",
+        "attribution": "Beta používateľ · India"
+      }
+    ],
+    "badges": [
+      "S ohľadom na GDPR",
+      "Nie sme advokátska kancelária",
+      "Vytvorené na Slovensku",
+      "Od roku 2026",
+      "S podporou AI",
+      "Bezplatné PDF"
+    ]
   },
   "slovakAdminContext": {
     "eyebrow": "Často riešite",

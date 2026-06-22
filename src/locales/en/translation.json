@@ -112,10 +112,30 @@
   },
   "socialProof": {
     "earlyStage": "We are a new service helping our first clients prepare for residence in Slovakia.",
-    "description": "No invented reviews or inflated numbers — just a practical checklist that we improve around real needs.",
-    "free": "Free checklist",
-    "slovakiaFocused": "Focused on Slovakia",
-    "noAccount": "No account required"
+    "description": "A clearer first step for people who want to understand their likely route, documents, and questions before dealing with the authorities.",
+    "sampleDisclaimer": "Sample testimonials from beta users",
+    "testimonials": [
+      {
+        "quote": "The checklist helped me see which documents I already had and what I still needed to verify.",
+        "attribution": "Beta user · Serbia"
+      },
+      {
+        "quote": "The questions were simple, and the PDF gave me a much clearer starting point for Slovakia.",
+        "attribution": "Beta user · Ukraine"
+      },
+      {
+        "quote": "I liked that Ria explained the next steps without pretending to replace a lawyer.",
+        "attribution": "Beta user · India"
+      }
+    ],
+    "badges": [
+      "GDPR-conscious",
+      "Not a law firm",
+      "Made in Slovakia",
+      "Since 2026",
+      "AI-powered",
+      "Free PDF"
+    ]
   },
   "slovakAdminContext": {
     "eyebrow": "Common topics",
