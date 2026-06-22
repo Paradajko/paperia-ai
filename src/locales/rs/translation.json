@@ -110,6 +110,56 @@
       "Predaja stručnjaku kada je potrebna"
     ]
   },
+  "socialProof": {
+    "earlyStage": "Mi smo nova usluga koja pomaže prvim klijentima da se pripreme za boravak u Slovačkoj.",
+    "description": "Bez izmišljenih recenzija i naduvanih brojki — samo praktična kontrolna lista koju poboljšavamo prema stvarnim potrebama.",
+    "free": "Besplatna kontrolna lista",
+    "slovakiaFocused": "Usmereno na Slovačku",
+    "noAccount": "Bez otvaranja naloga"
+  },
+  "slovakAdminContext": {
+    "eyebrow": "Česte teme",
+    "title": "Slovačke institucije i pojmovi sa kojima se možete susresti",
+    "description": "Ria pomaže da razumete osnove. Konkretnu obavezu i aktuelni postupak uvek potvrdite kod nadležne institucije.",
+    "items": [
+      {
+        "title": "Policija za strance",
+        "description": "Obrađuje zahteve za boravak, prijavu boravka i više obaveza stranaca prema mestu stanovanja."
+      },
+      {
+        "title": "Ministarstvo unutrašnjih poslova Slovačke",
+        "description": "Nadležno je za pitanja boravka i objavljuje zvanične informacije, obrasce i kontakte za strance."
+      },
+      {
+        "title": "Zavod za rad, socijalna pitanja i porodicu",
+        "description": "Kod zapošljavanja stranaca može rešavati potvrde, prijavljena radna mesta i povezane uslove."
+      },
+      {
+        "title": "Zdravstveno osiguranje",
+        "description": "VšZP, Union ili Dôvera vode javno zdravstveno osiguranje prema statusu boravka i zaposlenja."
+      },
+      {
+        "title": "Socijalno osiguranje",
+        "description": "Evidentira socijalno osiguranje zaposlenih i samozaposlenih kada se primenjuju slovačka pravila."
+      },
+      {
+        "title": "Stalni / privremeni boravak",
+        "description": "To su različiti režimi boravka sa posebnim uslovima, svrhom, rokom važenja i obimom prava."
+      },
+      {
+        "title": "Lični identifikacioni broj",
+        "description": "Slovački identifikator može biti dodeljen u određenim boravišnim situacijama i koristi se u registrima."
+      },
+      {
+        "title": "Priznavanje diploma",
+        "description": "Studiranje ili regulisana profesija mogu zahtevati zvanično priznavanje stranog obrazovanja ili kvalifikacije."
+      },
+      {
+        "title": "Apostil / superlegalizacija",
+        "description": "Strane javne isprave mogu zahtevati dodatnu overu i zvaničan prevod pre upotrebe u Slovačkoj."
+      }
+    ]
+  },
   "footer": {
     "description": "Ria je Vaš praktični vodič za organizovanje kontrolne liste za boravak u Slovačkoj. Nisam pravnik. Ovo su opšte informacije, a ne pravni savet. Za složene slučajeve obratite se licenciranom stručnjaku za imigraciju."
   },

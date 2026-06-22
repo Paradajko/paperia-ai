@@ -110,6 +110,56 @@
       "Odovzdanie odborníkovi podľa potreby"
     ]
   },
+  "socialProof": {
+    "earlyStage": "Sme nová služba a pomáhame prvým klientom pripraviť sa na pobyt na Slovensku.",
+    "description": "Bez vymyslených hodnotení a nafúknutých čísel — iba praktický checklist, ktorý postupne zlepšujeme podľa reálnych potrieb.",
+    "free": "Bezplatný checklist",
+    "slovakiaFocused": "Zamerané na Slovensko",
+    "noAccount": "Bez vytvárania účtu"
+  },
+  "slovakAdminContext": {
+    "eyebrow": "Často riešite",
+    "title": "Slovenské úrady a pojmy, s ktorými sa môžete stretnúť",
+    "description": "Ria Vám pomôže zorientovať sa v základných pojmoch. Konkrétnu povinnosť a aktuálny postup si vždy potvrďte na príslušnom úrade.",
+    "items": [
+      {
+        "title": "Cudzinecká polícia",
+        "description": "Rieši pobytové žiadosti, registráciu pobytu a viaceré povinnosti cudzincov podľa miesta Vášho pobytu."
+      },
+      {
+        "title": "Ministerstvo vnútra SR",
+        "description": "Zastrešuje pobytovú agendu a zverejňuje oficiálne informácie, formuláre a kontakty pre cudzincov."
+      },
+      {
+        "title": "Úrad práce, sociálnych vecí a rodiny",
+        "description": "Pri zamestnávaní cudzincov môže riešiť potvrdenia, voľné pracovné miesto a súvisiace podmienky."
+      },
+      {
+        "title": "Zdravotná poisťovňa",
+        "description": "VšZP, Union alebo Dôvera riešia verejné zdravotné poistenie podľa Vášho pobytového a pracovného statusu."
+      },
+      {
+        "title": "Sociálna poisťovňa",
+        "description": "Eviduje sociálne poistenie zamestnancov a samostatne zárobkovo činných osôb, ak sa na Vás vzťahuje."
+      },
+      {
+        "title": "Trvalý pobyt / prechodný pobyt",
+        "description": "Ide o odlišné pobytové režimy s vlastnými podmienkami, účelom, dĺžkou platnosti a rozsahom práv."
+      },
+      {
+        "title": "Rodné číslo",
+        "description": "Slovenský identifikátor môže byť pridelený pri určitých pobytových situáciách a používa sa vo viacerých evidenciách."
+      },
+      {
+        "title": "Nostrifikácia dokladov",
+        "description": "Pri štúdiu alebo regulovanom povolaní môže byť potrebné úradné uznanie zahraničného vzdelania alebo kvalifikácie."
+      },
+      {
+        "title": "Apostila / superlegalizácia",
+        "description": "Zahraničné verejné listiny môžu pred použitím na Slovensku potrebovať vyššie overenie a úradný preklad."
+      }
+    ]
+  },
   "footer": {
     "description": "Ria je Váš praktický sprievodca pri organizovaní checklistu pre pobyt na Slovensku. Nie som právnik. Ide o všeobecné informácie, nie právne poradenstvo. Pri zložitých prípadoch sa obráťte na licencovaného imigračného odborníka."
   },

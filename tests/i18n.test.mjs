@@ -51,6 +51,8 @@ test('all locale resources are imported and contain the base namespaces', () => 
     'header',
     'cookies',
     'landing',
+    'socialProof',
+    'slovakAdminContext',
     'footer',
     'howItWorks',
     'checklistFlow',

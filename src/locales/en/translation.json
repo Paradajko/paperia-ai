@@ -110,6 +110,56 @@
       "Expert handoff when needed"
     ]
   },
+  "socialProof": {
+    "earlyStage": "We are a new service helping our first clients prepare for residence in Slovakia.",
+    "description": "No invented reviews or inflated numbers — just a practical checklist that we improve around real needs.",
+    "free": "Free checklist",
+    "slovakiaFocused": "Focused on Slovakia",
+    "noAccount": "No account required"
+  },
+  "slovakAdminContext": {
+    "eyebrow": "Common topics",
+    "title": "Slovak authorities and terms you may encounter",
+    "description": "Ria helps you understand the basics. Always confirm your specific duty and the current process with the responsible authority.",
+    "items": [
+      {
+        "title": "Foreign Police",
+        "description": "Handles residence applications, residence registration, and several obligations for foreigners based on where they live."
+      },
+      {
+        "title": "Ministry of Interior of the Slovak Republic",
+        "description": "Oversees residence matters and publishes official information, forms, and contact details for foreigners."
+      },
+      {
+        "title": "Office of Labour, Social Affairs and Family",
+        "description": "May handle confirmations, reported vacancies, and related conditions when a foreign national is employed."
+      },
+      {
+        "title": "Health insurance company",
+        "description": "VšZP, Union, or Dôvera handle public health insurance depending on your residence and employment status."
+      },
+      {
+        "title": "Social Insurance Agency",
+        "description": "Records social insurance for employees and self-employed people when Slovak insurance rules apply."
+      },
+      {
+        "title": "Permanent / temporary residence",
+        "description": "These are different residence regimes with their own conditions, purpose, validity period, and scope of rights."
+      },
+      {
+        "title": "Personal identification number",
+        "description": "A Slovak identifier may be assigned in certain residence situations and is used across several official registers."
+      },
+      {
+        "title": "Recognition of qualifications",
+        "description": "Study or a regulated profession may require official recognition of foreign education or professional qualifications."
+      },
+      {
+        "title": "Apostille / superlegalisation",
+        "description": "Foreign public documents may require higher authentication and an official translation before use in Slovakia."
+      }
+    ]
+  },
   "footer": {
     "description": "Ria is your friendly, practical guide for organizing a Slovakia residence checklist. I am not a lawyer. This is general information, not legal advice. For complex cases, consult a licensed immigration professional."
   },

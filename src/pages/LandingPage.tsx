@@ -12,6 +12,8 @@ import { PricingCard } from '../components/PricingCard';
 import { ProblemCard } from '../components/ProblemCard';
 import { RiadenceHeroMockup } from '../components/RiadenceHeroMockup';
 import { RiaIntakeModal } from '../components/RiaIntakeModal';
+import { SlovakAdminContext } from '../components/SlovakAdminContext';
+import { SocialProof } from '../components/SocialProof';
 import type { AppLocale } from '../i18n/locale';
 
 type TextCard = { title: string; description: string };
@@ -76,6 +78,8 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
           </div>
         </section>
 
+        <SocialProof />
+
         <section className="bg-porcelain py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
@@ -98,6 +102,7 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
         </section>
 
         <HowItWorks />
+        {locale === 'sk' && <SlovakAdminContext />}
 
         <section className="border-y border-line bg-[linear-gradient(180deg,#FFFCF6_0%,#EEF7F1_100%)] py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
