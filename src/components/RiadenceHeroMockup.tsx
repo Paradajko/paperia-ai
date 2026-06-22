@@ -105,14 +105,14 @@ function HelpCard({
 
   return (
     <article
-      className={`group absolute flex h-[44px] w-[96px] items-center overflow-hidden rounded-2xl border border-[#BFE6D2] bg-white/90 p-1.5 text-left shadow-[0_12px_28px_rgba(15,78,59,0.08)] backdrop-blur transition duration-200 ease-out hover:-translate-y-1 hover:border-[#0F8A6A]/35 hover:bg-white hover:shadow-[0_18px_38px_rgba(15,78,59,0.13)] sm:h-[58px] sm:w-[148px] sm:p-2.5 lg:h-[86px] lg:w-[244px] lg:p-3.5 ${mobilePosition} ${position}`}
+      className={`group absolute flex h-[44px] w-[96px] items-center overflow-hidden rounded-2xl border border-[#BFE6D2] bg-white/90 p-1.5 text-left shadow-[0_12px_28px_rgba(15,78,59,0.08)] backdrop-blur transition duration-200 ease-out hover:-translate-y-1 hover:border-[#0F8A6A]/35 hover:bg-white hover:shadow-[0_18px_38px_rgba(15,78,59,0.13)] sm:h-[58px] sm:w-[148px] sm:p-2.5 lg:h-[78px] lg:w-[220px] lg:p-3 ${mobilePosition} ${position}`}
     >
       <div className="flex w-full items-center gap-1 sm:gap-2 lg:gap-3">
         <div className={`flex h-[18px] w-[18px] flex-none items-center justify-center rounded-md sm:h-7 sm:w-7 sm:rounded-lg lg:h-9 lg:w-9 lg:rounded-xl ${toneClass}`}>
           <Icon />
         </div>
         <div className="min-w-0">
-          <h3 className="overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] text-[8px] font-semibold leading-[1.05] text-[#0F8A6A] sm:text-[11px] sm:leading-[1.12] lg:text-[15px] lg:leading-[1.22]">
+          <h3 className="overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2] text-[8px] font-semibold leading-[1.05] text-[#0F8A6A] sm:text-xs sm:leading-[1.12] lg:text-sm lg:leading-[1.22]">
             {title}
           </h3>
         </div>

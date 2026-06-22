@@ -24,7 +24,7 @@ export function ChecklistFlow({ onStart }: ChecklistFlowProps) {
           <button
             type="button"
             onClick={onStart}
-            className="mt-7 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+            className="mt-7 min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
           >
             {t('common.getChecklist')}
           </button>

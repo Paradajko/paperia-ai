@@ -22,7 +22,7 @@ export function AgencySection({ onJoin }: { onJoin: () => void }) {
           <button
             type="button"
             onClick={onJoin}
-            className="mt-7 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#064E3B] transition hover:bg-[#EEF7F1]"
+            className="mt-7 min-h-12 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#064E3B] transition hover:bg-[#EEF7F1]"
           >
             {t('agency.cta')}
           </button>

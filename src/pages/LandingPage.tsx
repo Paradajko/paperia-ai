@@ -178,7 +178,7 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
             <button
               type="button"
               onClick={openIntake}
-              className="mt-7 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+              className="mt-7 min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
             >
               {t('common.getChecklist')}
             </button>
@@ -201,14 +201,14 @@ function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showT
         <button
           type="button"
           onClick={onStart}
-          className="rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+          className="min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
         >
           {t('common.getChecklist')}
         </button>
         <button
           type="button"
           onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-          className="rounded-full border border-[#D7E9DE] bg-white/76 px-6 py-3 text-sm font-semibold text-ink transition hover:border-[#A7F3D0] hover:bg-white"
+          className="min-h-12 rounded-full border border-[#D7E9DE] bg-white/76 px-6 py-3 text-sm font-semibold text-ink transition hover:border-[#A7F3D0] hover:bg-white"
         >
           {t('common.samplePdf')}
         </button>

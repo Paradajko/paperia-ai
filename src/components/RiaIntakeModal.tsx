@@ -301,7 +301,7 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
             <button
               type="button"
               onClick={resetAndClose}
-              className="rounded-full border border-[#DDE8DF] bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#BFE6D2] hover:text-[#0B1726]"
+              className="min-h-12 rounded-full border border-[#DDE8DF] bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-[#BFE6D2] hover:text-[#0B1726]"
             >
               {t('common.close')}
             </button>
@@ -335,14 +335,14 @@ export function RiaIntakeModal({ open, onClose }: RiaIntakeModalProps) {
                       type="button"
                       onClick={moveBack}
                       disabled={step === 1 || isSubmitting}
-                      className="rounded-full border border-[#DDE8DF] bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#0F8A6A]/35 disabled:cursor-not-allowed disabled:opacity-40"
+                      className="min-h-12 rounded-full border border-[#DDE8DF] bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#0F8A6A]/35 disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       {t('common.back')}
                     </button>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
+                      className="min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
                     >
                       {step === 5
                         ? isSubmitting
@@ -675,7 +675,7 @@ function CompletionSummary({
           type="button"
           onClick={onDownloadPdf}
           disabled={isPdfGenerating}
-          className="mt-4 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
+          className="mt-4 min-h-12 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
         >
           {isPdfGenerating ? t('wizard.generatingPdf') : t('wizard.downloadPdf')}
         </button>
@@ -804,7 +804,7 @@ function RiaConversation({
           <button
             type="submit"
             disabled={isLoading || !followUp.trim()}
-            className="mt-3 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
+            className="mt-3 min-h-12 w-full rounded-full bg-[#0F8A6A] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_28px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
           >
             {isLoading ? t('wizard.responding') : t('wizard.askRia')}
           </button>
