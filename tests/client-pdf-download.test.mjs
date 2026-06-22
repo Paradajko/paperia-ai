@@ -111,3 +111,45 @@ test('rejects a failed API response before creating a download link', async () =
   );
   assert.equal(createdLink, false);
 });
+
+test('default browser fetch is invoked without binding it to the dependency object', async () => {
+  const originalFetch = globalThis.fetch;
+  let receivedThis;
+  globalThis.fetch = async function receiverSensitiveFetch() {
+    'use strict';
+    receivedThis = this;
+    if (this !== undefined) {
+      throw new TypeError('Can only call Window.fetch on instances of Window');
+    }
+    return {
+      ok: true,
+      blob: async () => new Blob(['%PDF-webkit'], { type: 'application/pdf' }),
+    };
+  };
+
+  try {
+    const { downloadChecklistPdf } = await importTypescriptModule(
+      repoRoot,
+      'src/lib/pdf-download.ts',
+      'client-pdf-download-webkit-fetch',
+    );
+    await downloadChecklistPdf(payload, {
+      createObjectUrl: () => 'blob:webkit-checklist',
+      revokeObjectUrl() {},
+      createLink: () => ({
+        href: '',
+        download: '',
+        click() {},
+        remove() {},
+      }),
+      appendLink() {},
+      schedule(callback) {
+        callback();
+      },
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+
+  assert.equal(receivedThis, undefined);
+});

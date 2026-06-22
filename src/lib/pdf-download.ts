@@ -18,7 +18,7 @@ type DownloadDependencies = {
 
 function defaultDependencies(): DownloadDependencies {
   return {
-    fetchImpl: fetch,
+    fetchImpl: (input, init) => fetch(input, init),
     createObjectUrl: (blob) => URL.createObjectURL(blob),
     revokeObjectUrl: (url) => URL.revokeObjectURL(url),
     createLink: () => document.createElement('a'),
