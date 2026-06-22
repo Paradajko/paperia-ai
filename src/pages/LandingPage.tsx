@@ -178,7 +178,7 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
             <button
               type="button"
               onClick={openIntake}
-              className="mt-7 min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+              className="mt-7 h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
             >
               {t('common.getChecklist')}
             </button>
@@ -201,7 +201,7 @@ function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showT
         <button
           type="button"
           onClick={onStart}
-          className="min-h-12 rounded-full bg-[#0F8A6A] px-6 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+          className="h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
         >
           {t('common.getChecklist')}
         </button>

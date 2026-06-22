@@ -46,7 +46,7 @@ export function Header({ onStart }: HeaderProps) {
           <button
             type="button"
             onClick={onStart}
-            className="min-h-11 rounded-full bg-[#0F8A6A] px-3 text-xs font-semibold text-white shadow-[0_10px_25px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] sm:px-5 sm:text-sm"
+            className="h-12 rounded-full bg-[#0F8A6A] px-3 text-xs font-semibold text-white shadow-[0_10px_25px_rgba(15,138,106,0.18)] transition hover:bg-[#0B6F56] sm:px-5 sm:text-sm"
           >
             {t('common.getChecklist')}
           </button>

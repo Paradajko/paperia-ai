@@ -10,17 +10,28 @@ function read(path) {
   return readFileSync(resolve(repoRoot, path), 'utf8');
 }
 
-test('primary landing CTAs expose 48px touch targets', () => {
-  const landing = read('src/pages/LandingPage.tsx');
-  const checklistFlow = read('src/components/ChecklistFlow.tsx');
-  const agency = read('src/components/AgencySection.tsx');
+test('every translated primary checklist CTA has an explicit 48px height', () => {
+  for (const path of [
+    'src/components/Header.tsx',
+    'src/pages/LandingPage.tsx',
+    'src/components/ChecklistFlow.tsx',
+  ]) {
+    const source = read(path);
+    const buttons = [
+      ...source.matchAll(
+        /<button[\s\S]*?className="([^"]*)"[\s\S]*?\{t\('common\.getChecklist'\)\}[\s\S]*?<\/button>/g,
+      ),
+    ];
 
-  assert.ok(
-    (landing.match(/min-h-12/g) ?? []).length >= 3,
-    'Landing page should have 48px primary and secondary CTA targets',
-  );
-  assert.match(checklistFlow, /min-h-12/);
-  assert.match(agency, /min-h-12/);
+    assert.ok(buttons.length > 0, `${path} should render a checklist CTA`);
+    for (const [, className] of buttons) {
+      assert.match(
+        className,
+        /(?:^|\s)h-12(?:\s|$)/,
+        `${path} checklist CTA must render at exactly 48px`,
+      );
+    }
+  }
 });
 
 test('wizard action buttons expose 48px touch targets', () => {
