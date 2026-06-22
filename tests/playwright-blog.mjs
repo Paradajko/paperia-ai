@@ -13,6 +13,46 @@ try {
     })
     .waitFor();
   assert.equal(await page.title(), 'Blog | Riadence');
+  await page
+    .getByRole('link', {
+      name: 'Slovakia Residence Permit for Serbian Citizens in 2026',
+    })
+    .click();
+  await page
+    .getByRole('heading', {
+      name: 'Slovakia Residence Permit for Serbian Citizens in 2026',
+    })
+    .waitFor();
+  await page.waitForFunction(
+    () =>
+      document
+        .querySelector('meta[property="og:type"]')
+        ?.getAttribute('content') === 'article',
+  );
+  assert.equal(
+    await page.locator('meta[property="og:type"]').getAttribute('content'),
+    'article',
+  );
+  assert.match(
+    (await page.locator('meta[name="description"]').getAttribute('content')) ??
+      '',
+    /Serbian citizens preparing a Slovak residence application/,
+  );
+  const schema = JSON.parse(
+    await page.locator('script[data-riadence-article-schema]').textContent(),
+  );
+  assert.equal(schema['@type'], 'Article');
+  const articleWords = (await page.locator('main article').innerText())
+    .split(/\s+/)
+    .filter(Boolean);
+  assert.ok(
+    articleWords.length >= 800,
+    `Rendered article has only ${articleWords.length} words`,
+  );
+  await page.screenshot({
+    path: '/tmp/riadence-pilot-blog-article.png',
+    fullPage: true,
+  });
 
   await page.goto(`${baseUrl}/blog/not-published`, {
     waitUntil: 'networkidle',

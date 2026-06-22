@@ -69,6 +69,25 @@ export function BlogArticlePage() {
           <div className="mt-10 border-t border-line pt-10">
             <Content />
           </div>
+          <section className="mt-12 border-t border-line pt-8">
+            <h2 className="text-xl font-semibold text-ink">
+              Official and specialist sources
+            </h2>
+            <ul className="mt-4 space-y-3 text-sm leading-6">
+              {article.sources.map((source) => (
+                <li key={source.href}>
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-harbor underline decoration-[#A7F3D0] underline-offset-4"
+                  >
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         </article>
       </main>
 

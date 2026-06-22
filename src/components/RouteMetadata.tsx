@@ -191,6 +191,35 @@ export function RouteMetadata() {
     } else {
       robots?.remove();
     }
+
+    const existingArticleSchema = document.querySelector<HTMLScriptElement>(
+      'script[data-riadence-article-schema]',
+    );
+    existingArticleSchema?.remove();
+    if (article) {
+      const articleSchema = document.createElement('script');
+      articleSchema.type = 'application/ld+json';
+      articleSchema.dataset.riadenceArticleSchema = 'true';
+      articleSchema.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: article.title,
+        description: article.description,
+        datePublished: '2026-06-22',
+        dateModified: '2026-06-22',
+        author: {
+          '@type': 'Organization',
+          name: article.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Riadence',
+          url: 'https://riadence.com',
+        },
+        mainEntityOfPage: `https://riadence.com/blog/${article.slug}`,
+      });
+      document.head.appendChild(articleSchema);
+    }
   }, [pathname]);
 
   return null;
