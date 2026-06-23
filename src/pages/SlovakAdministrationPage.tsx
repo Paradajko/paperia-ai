@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { RiaIntakeModal } from '../components/RiaIntakeModal';
 import { SlovakAdminContext } from '../components/SlovakAdminContext';
+
+const RiaIntakeModal = lazy(() =>
+  import('../components/RiaIntakeModal').then((module) => ({
+    default: module.RiaIntakeModal,
+  })),
+);
 
 export function SlovakAdministrationPage() {
   const { i18n } = useTranslation();
@@ -21,7 +26,11 @@ export function SlovakAdministrationPage() {
         <SlovakAdminContext />
       </main>
       <Footer />
-      <RiaIntakeModal open={intakeOpen} onClose={() => setIntakeOpen(false)} />
+      {intakeOpen && (
+        <Suspense fallback={null}>
+          <RiaIntakeModal open onClose={() => setIntakeOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

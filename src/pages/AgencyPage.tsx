@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AgencySection } from '../components/AgencySection';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { RiaIntakeModal } from '../components/RiaIntakeModal';
 import type { AppLocale } from '../i18n/locale';
+
+const RiaIntakeModal = lazy(() =>
+  import('../components/RiaIntakeModal').then((module) => ({
+    default: module.RiaIntakeModal,
+  })),
+);
 
 export function AgencyPage({ locale }: { locale: AppLocale }) {
   const { i18n } = useTranslation();
@@ -27,7 +32,11 @@ export function AgencyPage({ locale }: { locale: AppLocale }) {
         <AgencySection onJoin={contactPartnerTeam} />
       </main>
       <Footer />
-      <RiaIntakeModal open={intakeOpen} onClose={() => setIntakeOpen(false)} />
+      {intakeOpen && (
+        <Suspense fallback={null}>
+          <RiaIntakeModal open onClose={() => setIntakeOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

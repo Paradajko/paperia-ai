@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { PricingCard } from '../components/PricingCard';
-import { RiaIntakeModal } from '../components/RiaIntakeModal';
 import type { AppLocale } from '../i18n/locale';
+
+const RiaIntakeModal = lazy(() =>
+  import('../components/RiaIntakeModal').then((module) => ({
+    default: module.RiaIntakeModal,
+  })),
+);
 
 type PricingItem = {
   title: string;
@@ -66,7 +71,11 @@ export function PricingPage({ locale }: { locale: AppLocale }) {
         </section>
       </main>
       <Footer />
-      <RiaIntakeModal open={intakeOpen} onClose={() => setIntakeOpen(false)} />
+      {intakeOpen && (
+        <Suspense fallback={null}>
+          <RiaIntakeModal open onClose={() => setIntakeOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }

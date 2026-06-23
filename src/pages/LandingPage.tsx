@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ChecklistPreview } from '../components/ChecklistPreview';
@@ -8,9 +8,14 @@ import { Header } from '../components/Header';
 import { HowItWorks } from '../components/HowItWorks';
 import { ProblemCard } from '../components/ProblemCard';
 import { RiadenceHeroMockup } from '../components/RiadenceHeroMockup';
-import { RiaIntakeModal } from '../components/RiaIntakeModal';
 import { SocialProof } from '../components/SocialProof';
 import type { AppLocale } from '../i18n/locale';
+
+const RiaIntakeModal = lazy(() =>
+  import('../components/RiaIntakeModal').then((module) => ({
+    default: module.RiaIntakeModal,
+  })),
+);
 
 type TextCard = { title: string; description: string };
 const problemIndexes = [0, 4, 2];
@@ -90,7 +95,11 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
       </main>
 
       <Footer />
-      <RiaIntakeModal open={intakeOpen} onClose={() => setIntakeOpen(false)} />
+      {intakeOpen && (
+        <Suspense fallback={null}>
+          <RiaIntakeModal open onClose={() => setIntakeOpen(false)} />
+        </Suspense>
+      )}
     </div>
   );
 }
