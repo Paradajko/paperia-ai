@@ -27,6 +27,14 @@ export function Footer() {
             <a href={`${home}#faq`} className="hover:text-ink">
               {t('common.faq')}
             </a>
+            {locale === 'sk' && (
+              <Link
+                to={localizedPath(locale, 'administrativa')}
+                className="hover:text-ink"
+              >
+                {t('slovakAdminContext.eyebrow')}
+              </Link>
+            )}
             <Link to="/privacy" className="hover:text-ink">
               {t('common.privacy')}
             </Link>

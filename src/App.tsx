@@ -6,6 +6,7 @@ import { AgencyPage } from './pages/AgencyPage';
 import { LandingPage } from './pages/LandingPage';
 import { PricingPage } from './pages/PricingPage';
 import { Privacy } from './pages/Privacy';
+import { SlovakAdministrationPage } from './pages/SlovakAdministrationPage';
 import { Terms } from './pages/Terms';
 import { Unsubscribed } from './pages/Unsubscribed';
 import { BlogArticlePage } from './pages/blog/[slug]';
@@ -28,6 +29,10 @@ function App() {
         <Route path="/sk/for-agencies" element={<AgencyPage locale="sk" />} />
         <Route path="/rs/for-agencies" element={<AgencyPage locale="rs" />} />
         <Route path="/ua/for-agencies" element={<AgencyPage locale="ua" />} />
+        <Route
+          path="/sk/administrativa"
+          element={<SlovakAdministrationPage />}
+        />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/unsubscribed" element={<Unsubscribed />} />

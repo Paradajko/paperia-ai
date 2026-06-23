@@ -55,12 +55,27 @@ test('social proof clearly labels three sample testimonials and six trust badges
   );
 });
 
-test('Slovak administrative context is rendered only for the Slovak route', () => {
+test('Slovak administrative context lives on a dedicated Slovak route', () => {
+  const app = read('src/App.tsx');
   const landing = read('src/pages/LandingPage.tsx');
+  const administrationPage = read('src/pages/SlovakAdministrationPage.tsx');
   const context = read('src/components/SlovakAdminContext.tsx');
+  const footer = read('src/components/Footer.tsx');
+  const metadata = read('src/components/RouteMetadata.tsx');
   const sk = locale('sk').slovakAdminContext;
 
-  assert.ok(landing.includes("{locale === 'sk' && <SlovakAdminContext />}"));
+  assert.doesNotMatch(landing, /SlovakAdminContext/);
+  assert.match(
+    app,
+    /path="\/sk\/administrativa"[\s\S]*element=\{<SlovakAdministrationPage \/>\}/,
+  );
+  assert.match(administrationPage, /<SlovakAdminContext \/>/);
+  assert.match(
+    footer,
+    /locale === 'sk'[\s\S]*localizedPath\(locale, 'administrativa'\)/,
+  );
+  assert.match(metadata, /administration:/);
+  assert.match(metadata, /pathname === '\/sk\/administrativa'/);
   assert.match(context, /slovakAdminContext\.items/);
   assert.equal(sk.items.length, 9);
   assert.deepEqual(

@@ -10,7 +10,6 @@ import { HowItWorks } from '../components/HowItWorks';
 import { ProblemCard } from '../components/ProblemCard';
 import { RiadenceHeroMockup } from '../components/RiadenceHeroMockup';
 import { RiaIntakeModal } from '../components/RiaIntakeModal';
-import { SlovakAdminContext } from '../components/SlovakAdminContext';
 import { SocialProof } from '../components/SocialProof';
 import type { AppLocale } from '../i18n/locale';
 
@@ -92,7 +91,6 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
         </section>
 
         <HowItWorks />
-        {locale === 'sk' && <SlovakAdminContext />}
 
         <section className="border-y border-line bg-[linear-gradient(180deg,#FFFCF6_0%,#EEF7F1_100%)] py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

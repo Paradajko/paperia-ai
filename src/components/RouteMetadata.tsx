@@ -104,6 +104,15 @@ const metadata = {
     lang: 'en',
     url: 'https://riadence.com/for-agencies',
   },
+  administration: {
+    title: 'Slovenská administratíva pre cudzincov | Riadence',
+    description:
+      'Zorientujte sa v slovenských úradoch, pobytových pojmoch, poistení, uznávaní dokladov a overovaní zahraničných dokumentov.',
+    keywords: 'cudzinecká polícia, pobyt, slovenská administratíva',
+    ogLocale: 'sk_SK',
+    lang: 'sk',
+    url: 'https://riadence.com/sk/administrativa',
+  },
 } satisfies Record<string, PageMetadata>;
 
 export function RouteMetadata() {
@@ -158,21 +167,23 @@ export function RouteMetadata() {
                       url: `https://riadence.com${pathname}`,
                       noindex: true,
                     }
-                : pathname.endsWith('/pricing')
-                  ? {
-                      ...metadata.pricing,
-                      ogLocale: localeMetadata.ogLocale,
-                      lang: localeMetadata.lang,
-                      url: `https://riadence.com${localePrefix}/pricing`,
-                    }
-                  : pathname.endsWith('/for-agencies')
+                : pathname === '/sk/administrativa'
+                  ? metadata.administration
+                  : pathname.endsWith('/pricing')
                     ? {
-                        ...metadata.agencies,
+                        ...metadata.pricing,
                         ogLocale: localeMetadata.ogLocale,
                         lang: localeMetadata.lang,
-                        url: `https://riadence.com${localePrefix}/for-agencies`,
+                        url: `https://riadence.com${localePrefix}/pricing`,
                       }
-                    : localeMetadata;
+                    : pathname.endsWith('/for-agencies')
+                      ? {
+                          ...metadata.agencies,
+                          ogLocale: localeMetadata.ogLocale,
+                          lang: localeMetadata.lang,
+                          url: `https://riadence.com${localePrefix}/for-agencies`,
+                        }
+                      : localeMetadata;
 
     document.title = page.title;
     document.documentElement.lang = page.lang;
