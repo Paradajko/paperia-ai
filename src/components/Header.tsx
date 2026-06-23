@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
+import { detectLocaleFromPath, localizedPath } from '../i18n/locale';
 import { Logo } from './Logo';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
@@ -9,12 +11,18 @@ type HeaderProps = {
 
 export function Header({ onStart }: HeaderProps) {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const locale = detectLocaleFromPath(pathname);
+  const home = localizedPath(locale);
   const navItems = [
-    { label: t('header.nav.how'), href: '#how-it-works' },
-    { label: t('header.nav.sample'), href: '#product' },
-    { label: t('header.nav.agencies'), href: '#agencies' },
-    { label: t('header.nav.pricing'), href: '#pricing' },
-    { label: t('header.nav.faq'), href: '#faq' },
+    { label: t('header.nav.how'), href: `${home}#how-it-works` },
+    { label: t('header.nav.sample'), href: `${home}#product` },
+    {
+      label: t('header.nav.agencies'),
+      href: localizedPath(locale, 'for-agencies'),
+    },
+    { label: t('header.nav.pricing'), href: localizedPath(locale, 'pricing') },
+    { label: t('header.nav.faq'), href: `${home}#faq` },
   ];
 
   return (

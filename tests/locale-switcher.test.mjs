@@ -29,7 +29,7 @@ test('LocaleSwitcher renders four labeled flag buttons', () => {
   }
 });
 
-test('LocaleSwitcher click navigates to each locale route', () => {
+test('LocaleSwitcher click preserves the current page across locale routes', () => {
   const switcher = read('src/components/LocaleSwitcher.tsx');
 
   assert.match(switcher, /useNavigate\(\)/);
@@ -37,7 +37,9 @@ test('LocaleSwitcher click navigates to each locale route', () => {
   assert.match(switcher, /path: '\/sk\/'/);
   assert.match(switcher, /path: '\/rs\/'/);
   assert.match(switcher, /path: '\/ua\/'/);
-  assert.match(switcher, /onClick=\{\(\) => navigate\(path\)\}/);
+  assert.match(switcher, /pageFromPath\(pathname\)/);
+  assert.match(switcher, /navigate\(localizedPath\(locale, currentPage\)\)/);
+  assert.match(switcher, /onClick=\{\(\) => switchLocale\(locale\)\}/);
 });
 
 test('active locale follows pathname and localized landing routes are mounted', () => {
@@ -47,9 +49,7 @@ test('active locale follows pathname and localized landing routes are mounted', 
   const switcher = read('src/components/LocaleSwitcher.tsx');
 
   assert.match(switcher, /useLocation\(\)/);
-  assert.match(switcher, /pathname\.startsWith\('\/sk'\)/);
-  assert.match(switcher, /pathname\.startsWith\('\/rs'\)/);
-  assert.match(switcher, /pathname\.startsWith\('\/ua'\)/);
+  assert.match(switcher, /detectLocaleFromPath\(pathname\)/);
   assert.match(switcher, /aria-pressed=\{activeLocale === locale\}/);
   assert.match(app, /path="\/" element=\{<LandingPage locale="en" \/>\}/);
   assert.match(app, /path="\/sk\/" element=\{<LandingPage locale="sk" \/>\}/);

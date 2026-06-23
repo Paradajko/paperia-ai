@@ -24,7 +24,10 @@ test('mobile header exposes a compact LocaleSwitcher before the CTA', () => {
 
 test('compact LocaleSwitcher navigates from a 44px language control', () => {
   assert.match(switcher, /compact\?: boolean/);
-  assert.match(switcher, /onChange=\{\(event\) => \{[\s\S]*navigate\(selected\.path\)/);
+  assert.match(
+    switcher,
+    /onChange=\{\(event\) => \{[\s\S]*switchLocale\(selected\.locale\)/,
+  );
   assert.match(switcher, /min-h-11/);
   assert.match(switcher, /aria-label="Language"/);
 });

@@ -86,6 +86,24 @@ const metadata = {
     lang: 'en',
     url: 'https://riadence.com/blog',
   },
+  pricing: {
+    title: 'Pricing | Riadence',
+    description:
+      'See what is included in the free Riadence Slovakia residence checklist and when licensed professional support may be useful.',
+    keywords: 'Riadence pricing, Slovakia residence checklist',
+    ogLocale: 'en_GB',
+    lang: 'en',
+    url: 'https://riadence.com/pricing',
+  },
+  agencies: {
+    title: 'For Agencies | Riadence',
+    description:
+      'Learn how Riadence prepares structured multilingual residence case intake for licensed agencies and immigration professionals.',
+    keywords: 'Riadence agencies, immigration intake Slovakia',
+    ogLocale: 'en_GB',
+    lang: 'en',
+    url: 'https://riadence.com/for-agencies',
+  },
 } satisfies Record<string, PageMetadata>;
 
 export function RouteMetadata() {
@@ -96,6 +114,24 @@ export function RouteMetadata() {
       ? pathname.slice('/blog/'.length).replace(/\/$/, '')
       : undefined;
     const article = getBlogArticle(blogSlug);
+    const localeMetadata =
+      pathname === '/sk' || pathname.startsWith('/sk/')
+        ? metadata.sk
+        : pathname === '/rs' || pathname.startsWith('/rs/')
+          ? metadata.rs
+          : pathname === '/ua' || pathname.startsWith('/ua/')
+            ? metadata.ua
+            : metadata.landing;
+    const localePrefix =
+      localeMetadata.lang === 'en'
+        ? ''
+        : `/${
+            localeMetadata.lang === 'sr'
+              ? 'rs'
+              : localeMetadata.lang === 'uk'
+                ? 'ua'
+                : localeMetadata.lang
+          }`;
     const page: PageMetadata =
       pathname === '/privacy'
         ? metadata.privacy
@@ -122,13 +158,21 @@ export function RouteMetadata() {
                       url: `https://riadence.com${pathname}`,
                       noindex: true,
                     }
-                : pathname === '/sk' || pathname.startsWith('/sk/')
-              ? metadata.sk
-              : pathname === '/rs' || pathname.startsWith('/rs/')
-                ? metadata.rs
-                : pathname === '/ua' || pathname.startsWith('/ua/')
-                  ? metadata.ua
-                  : metadata.landing;
+                : pathname.endsWith('/pricing')
+                  ? {
+                      ...metadata.pricing,
+                      ogLocale: localeMetadata.ogLocale,
+                      lang: localeMetadata.lang,
+                      url: `https://riadence.com${localePrefix}/pricing`,
+                    }
+                  : pathname.endsWith('/for-agencies')
+                    ? {
+                        ...metadata.agencies,
+                        ogLocale: localeMetadata.ogLocale,
+                        lang: localeMetadata.lang,
+                        url: `https://riadence.com${localePrefix}/for-agencies`,
+                      }
+                    : localeMetadata;
 
     document.title = page.title;
     document.documentElement.lang = page.lang;

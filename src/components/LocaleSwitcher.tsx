@@ -1,6 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import type { AppLocale } from '../i18n/locale';
+import {
+  detectLocaleFromPath,
+  localizedPath,
+  pageFromPath,
+  type AppLocale,
+} from '../i18n/locale';
 
 const locales: Array<{
   locale: AppLocale;
@@ -21,13 +26,14 @@ type LocaleSwitcherProps = {
 export function LocaleSwitcher({ compact = false }: LocaleSwitcherProps) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const activeLocale: AppLocale = pathname.startsWith('/sk')
-    ? 'sk'
-    : pathname.startsWith('/rs')
-      ? 'rs'
-      : pathname.startsWith('/ua')
-        ? 'ua'
-        : 'en';
+  const activeLocale = detectLocaleFromPath(pathname);
+  const currentPathPage = pageFromPath(pathname);
+  const currentPage = ['pricing', 'for-agencies'].includes(currentPathPage)
+    ? currentPathPage
+    : '';
+  const switchLocale = (locale: AppLocale) => {
+    navigate(localizedPath(locale, currentPage));
+  };
 
   if (compact) {
     return (
@@ -40,7 +46,7 @@ export function LocaleSwitcher({ compact = false }: LocaleSwitcherProps) {
             const selected = locales.find(
               ({ locale }) => locale === event.target.value,
             );
-            if (selected) navigate(selected.path);
+            if (selected) switchLocale(selected.locale);
           }}
           className="min-h-11 min-w-14 appearance-none rounded-full border border-[#DDE8DF] bg-white px-3 pr-7 text-xs font-semibold text-slate-700"
         >
@@ -65,13 +71,13 @@ export function LocaleSwitcher({ compact = false }: LocaleSwitcherProps) {
       aria-label="Language"
       className="hidden items-center rounded-full border border-[#DDE8DF] bg-white/80 p-1 sm:flex"
     >
-      {locales.map(({ locale, label, flag, path }) => (
+      {locales.map(({ locale, label, flag }) => (
         <button
           key={locale}
           type="button"
           aria-label={`Switch to ${label}`}
           aria-pressed={activeLocale === locale}
-          onClick={() => navigate(path)}
+          onClick={() => switchLocale(locale)}
           className={`min-h-11 min-w-11 rounded-full px-2 text-xs font-semibold transition ${
             activeLocale === locale
               ? 'bg-[#0F8A6A] text-white'

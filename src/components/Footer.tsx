@@ -1,10 +1,14 @@
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 
+import { detectLocaleFromPath, localizedPath } from '../i18n/locale';
 import { Logo } from './Logo';
 
 export function Footer() {
   const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const locale = detectLocaleFromPath(pathname);
+  const home = localizedPath(locale);
 
   return (
     <footer className="bg-porcelain">
@@ -17,10 +21,10 @@ export function Footer() {
             </p>
           </div>
           <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2 md:text-right">
-            <a href="/#pricing" className="hover:text-ink">
+            <Link to={localizedPath(locale, 'pricing')} className="hover:text-ink">
               {t('common.pricing')}
-            </a>
-            <a href="/#faq" className="hover:text-ink">
+            </Link>
+            <a href={`${home}#faq`} className="hover:text-ink">
               {t('common.faq')}
             </a>
             <Link to="/privacy" className="hover:text-ink">
