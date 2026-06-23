@@ -70,37 +70,6 @@
         "description": "It is stressful to show up without knowing which questions or missing documents may come up."
       }
     ],
-    "clarityEyebrow": "From confusion to a clearer plan",
-    "clarityTitle": "What a structured checklist helps you avoid",
-    "clarityDescription": "Your answers become a clearer route, document plan, PDF timeline, and handoff summary.",
-    "avoidItems": [
-      "Paying an agency before you understand your case",
-      "Missing translations or apostille",
-      "Wrong residence route",
-      "Confusing document requirements",
-      "Deadline surprises",
-      "Going to an appointment unprepared"
-    ],
-    "pricingEyebrow": "Simple pricing",
-    "pricingTitle": "Riadence is free. Professional help is case by case.",
-    "pricingDescription": "There is no monthly subscription. Standard checklist generation stays free; complex legal work is priced directly by the licensed agency or lawyer handling the case.",
-    "pricingCards": [
-      {
-        "title": "Riadence checklist",
-        "price": "Free",
-        "description": "Complete the Slovakia wizard, get your personalized PDF checklist, receive email follow-up, and ask Ria practical questions.",
-        "badge": "Always free"
-      },
-      {
-        "title": "Licensed agency or lawyer",
-        "price": "Case by case",
-        "description": "Optional paid support for asylum, deportation defense, appeals, prior refusals, or unusually complex family reunification cases.",
-        "badge": "Complex cases only"
-      }
-    ],
-    "workspaceTitle": "Agency workspace",
-    "workspaceDescription": "Structured intake, multilingual instructions, and case handoff tools for professionals.",
-    "comingSoon": "Coming soon",
     "finalEyebrow": "Final check",
     "finalTitle": "Start your Slovakia residence checklist.",
     "finalDescription": "Answer five questions, download your personalized PDF, then ask Ria any follow-up questions.",
@@ -110,24 +79,53 @@
       "Expert handoff when needed"
     ]
   },
+  "checklistPreview": {
+    "eyebrow": "Sample PDF output",
+    "title": "See what your checklist can include",
+    "description": "A structured wizard becomes a portable Slovakia residence plan you can save, print, and discuss with an employer, school, agency, or licensed lawyer.",
+    "applicantLabel": "Applicant",
+    "applicantTitle": "Non-EU citizen with a job offer in Slovakia",
+    "applicantDescription": "The applicant knows they need residence paperwork, but not which documents should be translated, legalized, or prepared before an appointment.",
+    "preparedItems": [
+      "Personalized PDF checklist",
+      "Document plan",
+      "Translation and apostille notes",
+      "Timeline",
+      "Risk flags",
+      "Questions for your employer"
+    ],
+    "previewLabel": "PDF checklist preview",
+    "previewTitle": "Your residence checklist for Slovakia",
+    "disclaimer": "I am not a lawyer. This is guidance only, not legal advice.",
+    "risk": "Medium risk",
+    "output": [
+      {
+        "label": "Likely route",
+        "value": "Temporary residence for employment"
+      },
+      {
+        "label": "Missing",
+        "value": "Criminal record extract, proof of accommodation, official translation"
+      },
+      {
+        "label": "Risk",
+        "value": "Apostille may be required"
+      },
+      {
+        "label": "Next step",
+        "value": "Confirm document country rules"
+      },
+      {
+        "label": "Expert summary",
+        "value": "Ready to share"
+      }
+    ],
+    "noteTitle": "Ria's practical note",
+    "note": "Prepare the criminal record first, because translation and apostille rules can add time before your appointment."
+  },
   "socialProof": {
     "earlyStage": "We are a new service helping our first clients prepare for residence in Slovakia.",
     "description": "A clearer first step for people who want to understand their likely route, documents, and questions before dealing with the authorities.",
-    "sampleDisclaimer": "Sample testimonials from beta users",
-    "testimonials": [
-      {
-        "quote": "The checklist helped me see which documents I already had and what I still needed to verify.",
-        "attribution": "Beta user · Serbia"
-      },
-      {
-        "quote": "The questions were simple, and the PDF gave me a much clearer starting point for Slovakia.",
-        "attribution": "Beta user · Ukraine"
-      },
-      {
-        "quote": "I liked that Ria explained the next steps without pretending to replace a lawyer.",
-        "attribution": "Beta user · India"
-      }
-    ],
     "badges": [
       "GDPR-conscious",
       "Not a law firm",
@@ -206,31 +204,6 @@
       }
     ]
   },
-  "checklistFlow": {
-    "eyebrow": "Start here",
-    "title": "Build your Slovakia checklist step by step.",
-    "description": "Riadence turns five structured answers into a practical PDF checklist. No account or document uploads are needed for this first version.",
-    "steps": [
-      {
-        "title": "Choose Slovakia",
-        "text": "Confirm your destination and start the focused residence wizard."
-      },
-      {
-        "title": "Describe your situation",
-        "text": "Add nationality, current location, purpose, and current status."
-      },
-      {
-        "title": "Mark your documents",
-        "text": "Check the papers you already have and tell Ria what worries you most."
-      },
-      {
-        "title": "Get the PDF",
-        "text": "Save your lead, review the route, and download your personalized checklist."
-      }
-    ],
-    "noteTitle": "Free, PDF-first guidance",
-    "noteText": "Start with a structured route and document plan. Ria is not a lawyer, does not file applications, and cannot guarantee approval."
-  },
   "agency": {
     "eyebrow": "For professionals",
     "title": "Ria does not replace experts. She prepares better clients.",
@@ -308,6 +281,26 @@
     "legalAnd": "and"
   },
   "pricing": {
+    "eyebrow": "Simple pricing",
+    "title": "Riadence is free. Professional help is case by case.",
+    "description": "There is no monthly subscription. Standard checklist generation stays free; complex legal work is priced directly by the licensed agency or lawyer handling the case.",
+    "cards": [
+      {
+        "title": "Riadence checklist",
+        "price": "Free",
+        "description": "Complete the Slovakia wizard, get your personalized PDF checklist, receive email follow-up, and ask Ria practical questions.",
+        "badge": "Always free"
+      },
+      {
+        "title": "Licensed agency or lawyer",
+        "price": "Case by case",
+        "description": "Optional paid support for asylum, deportation defense, appeals, prior refusals, or unusually complex family reunification cases.",
+        "badge": "Complex cases only"
+      }
+    ],
+    "workspaceTitle": "Agency workspace",
+    "workspaceDescription": "Structured intake, multilingual instructions, and case handoff tools for professionals.",
+    "comingSoon": "Coming soon",
     "cardLabel": "Pricing option"
   },
   "wizard": {

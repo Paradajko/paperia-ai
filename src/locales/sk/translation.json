@@ -70,37 +70,6 @@
         "description": "Je nepríjemné prísť na úrad bez istoty, aké otázky dostanete alebo ktoré dokumenty Vám ešte chýbajú."
       }
     ],
-    "clarityEyebrow": "Od neistoty k jasnejšiemu plánu",
-    "clarityTitle": "Čomu Vám prehľadný kontrolný zoznam pomôže predísť",
-    "clarityDescription": "Vaše odpovede sa zmenia na jasnejší postup, plán dokumentov, časovú os v PDF a súhrn pre odborníka.",
-    "avoidItems": [
-      "Platbe agentúre skôr, než pochopíte svoj prípad",
-      "Chýbajúcim prekladom alebo apostilám",
-      "Nesprávnemu typu pobytu",
-      "Nejasným požiadavkám na dokumenty",
-      "Nečakaným termínom",
-      "Nepripravenému stretnutiu na úrade"
-    ],
-    "pricingEyebrow": "Jednoduchý cenník",
-    "pricingTitle": "Riadence je bezplatné. Odborná pomoc sa rieši individuálne.",
-    "pricingDescription": "Bez mesačného predplatného. Štandardné vytvorenie checklistu zostáva bezplatné; zložitú právnu prácu oceňuje priamo licencovaná agentúra alebo právnik.",
-    "pricingCards": [
-      {
-        "title": "Riadence checklist",
-        "price": "Bezplatne",
-        "description": "Vyplňte sprievodcu pre Slovensko, získajte personalizovaný PDF checklist, e-mailové pokračovanie a možnosť položiť Rii praktické otázky.",
-        "badge": "Vždy bezplatne"
-      },
-      {
-        "title": "Licencovaná agentúra alebo právnik",
-        "price": "Individuálne",
-        "description": "Voliteľná platená pomoc pri azyle, vyhostení, odvolaniach, predchádzajúcich zamietnutiach alebo mimoriadne zložitom zlúčení rodiny.",
-        "badge": "Len zložité prípady"
-      }
-    ],
-    "workspaceTitle": "Pracovný priestor pre agentúry",
-    "workspaceDescription": "Štruktúrovaný zber údajov, viacjazyčné pokyny a nástroje na odovzdanie prípadu odborníkom.",
-    "comingSoon": "Pripravujeme",
     "finalEyebrow": "Záverečná kontrola",
     "finalTitle": "Začnite svoj checklist pre pobyt na Slovensku.",
     "finalDescription": "Odpovedzte na päť otázok, stiahnite si personalizované PDF a potom položte Rii doplňujúce otázky.",
@@ -110,24 +79,53 @@
       "Odovzdanie odborníkovi podľa potreby"
     ]
   },
+  "checklistPreview": {
+    "eyebrow": "Ukážka výstupu PDF",
+    "title": "Pozrite si, čo môže obsahovať Váš checklist",
+    "description": "Štruktúrovaný sprievodca vytvorí prenosný plán pobytu na Slovensku, ktorý si môžete uložiť, vytlačiť a prebrať so zamestnávateľom, školou, agentúrou alebo licencovaným právnikom.",
+    "applicantLabel": "Žiadateľ",
+    "applicantTitle": "Občan krajiny mimo EÚ s pracovnou ponukou na Slovensku",
+    "applicantDescription": "Žiadateľ vie, že potrebuje pobytové dokumenty, ale nevie, ktoré z nich treba preložiť, overiť alebo pripraviť pred termínom.",
+    "preparedItems": [
+      "Personalizovaný PDF checklist",
+      "Plán dokumentov",
+      "Poznámky k prekladom a apostile",
+      "Časová os",
+      "Upozornenia na riziká",
+      "Otázky pre zamestnávateľa"
+    ],
+    "previewLabel": "Náhľad PDF checklistu",
+    "previewTitle": "Váš checklist pre pobyt na Slovensku",
+    "disclaimer": "Nie som právnik. Toto je iba usmernenie, nie právne poradenstvo.",
+    "risk": "Stredné riziko",
+    "output": [
+      {
+        "label": "Pravdepodobný postup",
+        "value": "Prechodný pobyt na účel zamestnania"
+      },
+      {
+        "label": "Chýba",
+        "value": "Výpis z registra trestov, doklad o ubytovaní, úradný preklad"
+      },
+      {
+        "label": "Riziko",
+        "value": "Môže byť potrebná apostila"
+      },
+      {
+        "label": "Ďalší krok",
+        "value": "Overiť pravidlá pre dokumenty podľa krajiny pôvodu"
+      },
+      {
+        "label": "Súhrn pre odborníka",
+        "value": "Pripravený na zdieľanie"
+      }
+    ],
+    "noteTitle": "Praktická poznámka od Rie",
+    "note": "Najskôr si pripravte výpis z registra trestov, pretože pravidlá pre preklad a apostilu môžu predĺžiť čas do termínu."
+  },
   "socialProof": {
     "earlyStage": "Sme nová služba a pomáhame prvým klientom pripraviť sa na pobyt na Slovensku.",
     "description": "Jasnejší prvý krok pre ľudí, ktorí chcú pochopiť svoj pravdepodobný postup, dokumenty a otázky ešte pred návštevou úradu.",
-    "sampleDisclaimer": "Ilustračné referencie od beta používateľov",
-    "testimonials": [
-      {
-        "quote": "Checklist mi ukázal, ktoré dokumenty už mám a čo si ešte potrebujem overiť.",
-        "attribution": "Beta používateľ · Srbsko"
-      },
-      {
-        "quote": "Otázky boli jednoduché a PDF mi dalo oveľa jasnejší začiatok pre Slovensko.",
-        "attribution": "Beta používateľ · Ukrajina"
-      },
-      {
-        "quote": "Oceňujem, že Ria vysvetľuje ďalšie kroky bez toho, aby sa vydávala za právnika.",
-        "attribution": "Beta používateľ · India"
-      }
-    ],
     "badges": [
       "S ohľadom na GDPR",
       "Nie sme advokátska kancelária",
@@ -206,31 +204,6 @@
       }
     ]
   },
-  "checklistFlow": {
-    "eyebrow": "Začnite tu",
-    "title": "Vytvorte si checklist pre Slovensko krok za krokom.",
-    "description": "Riadence zmení päť štruktúrovaných odpovedí na praktický PDF checklist. V tejto verzii nepotrebujete účet ani nahrávať dokumenty.",
-    "steps": [
-      {
-        "title": "Vyberte Slovensko",
-        "text": "Potvrďte cieľovú krajinu a spustite zameraného pobytového sprievodcu."
-      },
-      {
-        "title": "Opíšte svoju situáciu",
-        "text": "Doplňte občianstvo, aktuálnu polohu, účel a súčasný status."
-      },
-      {
-        "title": "Označte dokumenty",
-        "text": "Vyberte dokumenty, ktoré už máte, a povedzte Rii, čo Vás najviac znepokojuje."
-      },
-      {
-        "title": "Získajte PDF",
-        "text": "Uložte údaje, skontrolujte postup a stiahnite si personalizovaný checklist."
-      }
-    ],
-    "noteTitle": "Bezplatné usmernenie s PDF",
-    "noteText": "Začnite štruktúrovaným postupom a plánom dokumentov. Ria nie je právnik, nepodáva žiadosti a nemôže zaručiť schválenie."
-  },
   "agency": {
     "eyebrow": "Pre odborníkov",
     "title": "Ria nenahrádza odborníkov. Pripravuje lepšie informovaných klientov.",
@@ -308,6 +281,26 @@
     "legalAnd": "a"
   },
   "pricing": {
+    "eyebrow": "Jednoduchý cenník",
+    "title": "Riadence je bezplatné. Odborná pomoc sa rieši individuálne.",
+    "description": "Bez mesačného predplatného. Štandardné vytvorenie checklistu zostáva bezplatné; zložitú právnu prácu oceňuje priamo licencovaná agentúra alebo právnik.",
+    "cards": [
+      {
+        "title": "Riadence checklist",
+        "price": "Bezplatne",
+        "description": "Vyplňte sprievodcu pre Slovensko, získajte personalizovaný PDF checklist, e-mailové pokračovanie a možnosť položiť Rii praktické otázky.",
+        "badge": "Vždy bezplatne"
+      },
+      {
+        "title": "Licencovaná agentúra alebo právnik",
+        "price": "Individuálne",
+        "description": "Voliteľná platená pomoc pri azyle, vyhostení, odvolaniach, predchádzajúcich zamietnutiach alebo mimoriadne zložitom zlúčení rodiny.",
+        "badge": "Len zložité prípady"
+      }
+    ],
+    "workspaceTitle": "Pracovný priestor pre agentúry",
+    "workspaceDescription": "Štruktúrovaný zber údajov, viacjazyčné pokyny a nástroje na odovzdanie prípadu odborníkom.",
+    "comingSoon": "Pripravujeme",
     "cardLabel": "Cenová možnosť"
   },
   "wizard": {

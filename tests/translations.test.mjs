@@ -47,6 +47,72 @@ test('all four languages have identical non-empty translation keys', () => {
   }
 });
 
+test('checklist preview and pricing copy use dedicated namespaces', () => {
+  const preview = read('src/components/ChecklistPreview.tsx');
+  const pricingPage = read('src/pages/PricingPage.tsx');
+
+  assert.match(preview, /useTranslation/);
+  assert.match(preview, /checklistPreview\./);
+  assert.doesNotMatch(preview, /Sample PDF output|Likely route|Ria's practical note/);
+  assert.match(pricingPage, /pricing\.cards/);
+  assert.doesNotMatch(pricingPage, /landing\.pricing/);
+
+  for (const locale of ['en', 'sk', 'rs', 'ua']) {
+    const resource = JSON.parse(
+      read(`src/locales/${locale}/translation.json`),
+    );
+
+    assert.deepEqual(Object.keys(resource.checklistPreview), [
+      'eyebrow',
+      'title',
+      'description',
+      'applicantLabel',
+      'applicantTitle',
+      'applicantDescription',
+      'preparedItems',
+      'previewLabel',
+      'previewTitle',
+      'disclaimer',
+      'risk',
+      'output',
+      'noteTitle',
+      'note',
+    ]);
+    assert.deepEqual(Object.keys(resource.pricing), [
+      'eyebrow',
+      'title',
+      'description',
+      'cards',
+      'workspaceTitle',
+      'workspaceDescription',
+      'comingSoon',
+      'cardLabel',
+    ]);
+
+    for (const obsoleteKey of [
+      'clarityEyebrow',
+      'clarityTitle',
+      'clarityDescription',
+      'avoidItems',
+      'pricingEyebrow',
+      'pricingTitle',
+      'pricingDescription',
+      'pricingCards',
+      'workspaceTitle',
+      'workspaceDescription',
+      'comingSoon',
+    ]) {
+      assert.equal(resource.landing[obsoleteKey], undefined);
+    }
+    assert.equal(resource.checklistFlow, undefined);
+    assert.deepEqual(Object.keys(resource.socialProof), [
+      'earlyStage',
+      'description',
+      'badges',
+    ]);
+  }
+});
+
 test('all planned landing and wizard components use react-i18next', () => {
   for (const file of [
     'src/pages/LandingPage.tsx',

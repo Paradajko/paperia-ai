@@ -17,7 +17,7 @@ type PricingItem = {
 export function PricingPage({ locale }: { locale: AppLocale }) {
   const { t, i18n } = useTranslation();
   const [intakeOpen, setIntakeOpen] = useState(false);
-  const pricing = t('landing.pricingCards', {
+  const pricing = t('pricing.cards', {
     returnObjects: true,
   }) as PricingItem[];
 
@@ -33,13 +33,13 @@ export function PricingPage({ locale }: { locale: AppLocale }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-wide text-harbor">
-                {t('landing.pricingEyebrow')}
+                {t('pricing.eyebrow')}
               </p>
               <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                {t('landing.pricingTitle')}
+                {t('pricing.title')}
               </h1>
               <p className="mt-4 text-base leading-7 text-slate-600">
-                {t('landing.pricingDescription')}
+                {t('pricing.description')}
               </p>
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -51,14 +51,14 @@ export function PricingPage({ locale }: { locale: AppLocale }) {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-ink">
-                    {t('landing.workspaceTitle')}
+                    {t('pricing.workspaceTitle')}
                   </p>
                   <p className="mt-1 text-sm leading-6 text-slate-600">
-                    {t('landing.workspaceDescription')}
+                    {t('pricing.workspaceDescription')}
                   </p>
                 </div>
                 <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 ring-1 ring-line">
-                  {t('landing.comingSoon')}
+                  {t('pricing.comingSoon')}
                 </span>
               </div>
             </div>
