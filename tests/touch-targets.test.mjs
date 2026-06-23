@@ -14,7 +14,7 @@ test('every translated primary checklist CTA has an explicit 48px height', () =>
   for (const path of [
     'src/components/Header.tsx',
     'src/pages/LandingPage.tsx',
-    'src/components/ChecklistFlow.tsx',
+    'src/components/FAQ.tsx',
   ]) {
     const source = read(path);
     const buttons = [

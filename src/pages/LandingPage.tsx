@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { ChecklistFlow } from '../components/ChecklistFlow';
 import { ChecklistPreview } from '../components/ChecklistPreview';
 import { FAQ } from '../components/FAQ';
 import { Footer } from '../components/Footer';
@@ -14,12 +13,15 @@ import { SocialProof } from '../components/SocialProof';
 import type { AppLocale } from '../i18n/locale';
 
 type TextCard = { title: string; description: string };
+const problemIndexes = [0, 4, 2];
 
 export function LandingPage({ locale }: { locale: AppLocale }) {
   const { t, i18n } = useTranslation();
   const [intakeOpen, setIntakeOpen] = useState(false);
-  const problems = t('landing.problems', { returnObjects: true }) as TextCard[];
-  const avoidItems = t('landing.avoidItems', { returnObjects: true }) as string[];
+  const allProblems = t('landing.problems', {
+    returnObjects: true,
+  }) as TextCard[];
+  const problems = problemIndexes.map((index) => allProblems[index]);
 
   useEffect(() => {
     void i18n.changeLanguage(locale);
@@ -49,25 +51,15 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
               </p>
             </div>
 
-            <div className="mx-auto mt-5 max-w-3xl text-center lg:hidden">
-              <HeroActions onStart={openIntake} showTrust={false} />
-            </div>
-
             <div className="mt-3 sm:mt-4 lg:mt-2">
               <RiadenceHeroMockup />
             </div>
 
-            <div className="mx-auto mt-4 max-w-3xl text-center lg:hidden">
-              <TrustLine />
-            </div>
-
-            <div className="mx-auto mt-2 hidden max-w-3xl text-center lg:block">
+            <div className="mx-auto mt-4 max-w-3xl text-center">
               <HeroActions onStart={openIntake} />
             </div>
           </div>
         </section>
-
-        <SocialProof />
 
         <section className="bg-porcelain py-16 sm:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -92,53 +84,9 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
 
         <HowItWorks />
 
-        <section className="border-y border-line bg-[linear-gradient(180deg,#FFFCF6_0%,#EEF7F1_100%)] py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-harbor">{t('landing.clarityEyebrow')}</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-                {t('landing.clarityTitle')}
-              </h2>
-              <p className="mt-4 text-base leading-7 text-slate-600">
-                {t('landing.clarityDescription')}
-              </p>
-            </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {avoidItems.map((item) => (
-                <article key={item} className="rounded-3xl border border-line bg-white/74 p-5 shadow-sm">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#EEF7F1] text-sm font-bold text-[#0F8A6A] ring-1 ring-[#DDE8DF]">
-                    ✓
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold leading-6 text-ink">{item}</h3>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <ChecklistPreview />
-        <ChecklistFlow onStart={openIntake} />
 
-        <FAQ />
-
-        <section className="bg-[linear-gradient(180deg,#EEF7F1_0%,#FFFCF6_100%)] py-16 sm:py-20">
-          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <p className="text-sm font-semibold uppercase tracking-wide text-harbor">{t('landing.finalEyebrow')}</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              {t('landing.finalTitle')}
-            </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              {t('landing.finalDescription')}
-            </p>
-            <button
-              type="button"
-              onClick={openIntake}
-              className="mt-7 h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
-            >
-              {t('common.getChecklist')}
-            </button>
-          </div>
-        </section>
+        <FAQ onStart={openIntake} />
       </main>
 
       <Footer />
@@ -147,35 +95,25 @@ export function LandingPage({ locale }: { locale: AppLocale }) {
   );
 }
 
-function HeroActions({ onStart, showTrust = true }: { onStart: () => void; showTrust?: boolean }) {
+function HeroActions({ onStart }: { onStart: () => void }) {
   const { t } = useTranslation();
 
   return (
     <>
-      <div className="flex flex-col justify-center gap-3 sm:flex-row">
-        <button
-          type="button"
-          onClick={onStart}
-          className="h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
-        >
-          {t('common.getChecklist')}
-        </button>
-        <button
-          type="button"
-          onClick={() => document.getElementById('product')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-          className="min-h-12 rounded-full border border-[#D7E9DE] bg-white/76 px-6 py-3 text-sm font-semibold text-ink transition hover:border-[#A7F3D0] hover:bg-white"
-        >
-          {t('common.samplePdf')}
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={onStart}
+        className="h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+      >
+        {t('common.getChecklist')}
+      </button>
       <p className="mx-auto mt-3 max-w-xl text-xs font-medium leading-5 text-slate-600">
         {t('common.disclaimer')}
       </p>
-      {showTrust && (
-        <div className="mt-4">
-          <TrustLine />
-        </div>
-      )}
+      <div className="mt-4">
+        <TrustLine />
+      </div>
+      <SocialProof />
     </>
   );
 }

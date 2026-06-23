@@ -14,45 +14,28 @@ function locale(name) {
   return JSON.parse(read(`src/locales/${name}/translation.json`));
 }
 
-test('landing page places honest social proof between the hero and process content', () => {
+test('landing page embeds honest social proof in the hero', () => {
   const landing = read('src/pages/LandingPage.tsx');
   const socialProof = read('src/components/SocialProof.tsx');
 
   assert.match(landing, /import \{ SocialProof \}/);
-  assert.ok(
-    landing.indexOf('<SocialProof') < landing.indexOf('<HowItWorks'),
-    'Social proof should appear before HowItWorks',
-  );
+  assert.match(landing, /<TrustLine \/>[\s\S]*<SocialProof \/>/);
   assert.match(socialProof, /socialProof\.earlyStage/);
   assert.doesNotMatch(socialProof, /\b\d+\s+(people|ľuďom|clients|klient)/i);
 });
 
-test('social proof clearly labels three sample testimonials and six trust badges', () => {
+test('social proof keeps the early-stage statement and six trust badges', () => {
   const socialProof = read('src/components/SocialProof.tsx');
 
-  assert.match(socialProof, /socialProof\.sampleDisclaimer/);
-  assert.match(socialProof, /socialProof\.testimonials/);
+  assert.match(socialProof, /socialProof\.earlyStage/);
+  assert.match(socialProof, /socialProof\.description/);
   assert.match(socialProof, /socialProof\.badges/);
+  assert.doesNotMatch(socialProof, /socialProof\.testimonials/);
 
   for (const name of ['en', 'sk', 'rs', 'ua']) {
     const proof = locale(name).socialProof;
-    assert.equal(proof.testimonials.length, 3);
-    assert.ok(
-      proof.testimonials.every(
-        ({ quote, attribution }) => quote.trim() && attribution.trim(),
-      ),
-    );
     assert.equal(proof.badges.length, 6);
   }
-
-  assert.equal(
-    locale('en').socialProof.sampleDisclaimer,
-    'Sample testimonials from beta users',
-  );
-  assert.equal(
-    locale('sk').socialProof.sampleDisclaimer,
-    'Ilustračné referencie od beta používateľov',
-  );
 });
 
 test('Slovak administrative context lives on a dedicated Slovak route', () => {

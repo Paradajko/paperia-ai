@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-export function FAQ() {
+type FAQProps = {
+  onStart: () => void;
+};
+
+export function FAQ({ onStart }: FAQProps) {
   const { t } = useTranslation();
   const faqs = t('faq.items', { returnObjects: true }) as Array<{
     question: string;
@@ -44,6 +48,24 @@ export function FAQ() {
           </Link>
           .
         </p>
+        <div className="mt-8 rounded-[2rem] border border-[#BFE6D2] bg-[linear-gradient(180deg,#EEF7F1_0%,#FFFCF6_100%)] px-5 py-10 text-center shadow-sm sm:px-8">
+          <p className="text-sm font-semibold uppercase tracking-wide text-harbor">
+            {t('landing.finalEyebrow')}
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink">
+            {t('landing.finalTitle')}
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
+            {t('landing.finalDescription')}
+          </p>
+          <button
+            type="button"
+            onClick={onStart}
+            className="mt-7 h-12 rounded-full bg-[#0F8A6A] px-6 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(15,138,106,0.22)] transition hover:bg-[#0B6F56]"
+          >
+            {t('common.getChecklist')}
+          </button>
+        </div>
       </div>
     </section>
   );

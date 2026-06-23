@@ -53,7 +53,6 @@ test('all planned landing and wizard components use react-i18next', () => {
     'src/components/Header.tsx',
     'src/components/Footer.tsx',
     'src/components/HowItWorks.tsx',
-    'src/components/ChecklistFlow.tsx',
     'src/components/AgencySection.tsx',
     'src/components/FAQ.tsx',
     'src/components/RiaIntakeModal.tsx',
