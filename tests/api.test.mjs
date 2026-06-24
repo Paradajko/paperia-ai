@@ -131,12 +131,15 @@ test('ria-chat sends the required model settings, context, and system prompt', a
   assert.deepEqual(response.payload, {
     reply: 'Prepare your passport and proof of accommodation.',
   });
-  assert.equal(completionRequest.model, 'gpt-4o-mini');
-  assert.equal(completionRequest.max_tokens, 600);
+  assert.equal(completionRequest.model, 'gpt-4o');
+  assert.equal(completionRequest.max_tokens, 800);
   assert.equal(completionRequest.temperature, 0.4);
   assert.match(completionRequest.messages[0].content, /You are Ria/);
   assert.match(completionRequest.messages[0].content, /not a lawyer/);
   assert.match(completionRequest.messages[0].content, /Slovakia/);
+  assert.match(completionRequest.messages[0].content, /minv\.sk/);
+  assert.match(completionRequest.messages[0].content, /cudzinec\.policia\.sk/);
+  assert.match(completionRequest.messages[0].content, /verify/i);
   assert.match(completionRequest.messages[0].content, /\/privacy/);
   assert.match(completionRequest.messages[0].content, /\/terms/);
 });
